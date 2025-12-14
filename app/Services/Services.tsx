@@ -1,7 +1,7 @@
 "use client";
 
 import ServiceHero from './components/ServiceHero';
-import ServicesLists from './components/ServicesLists';
+import ServicesOffering  from './components/ServicesOffering';
 
 export default function Services() {
     return (
@@ -13,7 +13,7 @@ export default function Services() {
             <div className="w-[70%] mx-auto border-t border-blue-400" />
 
             {/* Service Section */}
-            <ServicesLists />
+            <ServicesOffering />
 
             <div className="w-[70%] mx-auto border-t border-blue-400" />
         </div>
