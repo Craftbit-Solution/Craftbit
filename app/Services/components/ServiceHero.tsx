@@ -61,7 +61,7 @@ export default function ServiceHero() {
                             <div className="relative bg-white flex items-center justify-center">
                                 <div className='flex items-center justify-center  rounded-[50%] p-8 lg:p-10 w-[400px] h-[400px] shadow-4xl shadow-blue-200/50 border border-blue-400'>
                                     <img
-                                        src="/images/service_hero_img.jpg"
+                                        src="https://i.pinimg.com/1200x/33/ae/98/33ae98d3f7ee3f79ce452e81299d200b.jpg"
                                         alt="Services Hero"
                                         className="max-h-full w-auto object-contain rounded-[50%]"
                                     />
