@@ -20,7 +20,7 @@ export default function ServiceHero() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8 }}
                         >
-                            {/* Badge */}
+
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -30,7 +30,7 @@ export default function ServiceHero() {
                                 <span className="text-sm font-medium text-slate-700">Our Services</span>
                             </motion.div>
 
-                            {/* Headline */}
+
                             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-[1.1] tracking-tight mb-6">
                                 Web solutions tailored to {" "}
                                 <span className="relative">
@@ -40,11 +40,11 @@ export default function ServiceHero() {
                                 </span>
                             </h1>
 
-                            {/* Subheading */}
+
                             <p className="text-lg sm:text-xl text-slate-600 leading-relaxed mb-10 max-w-xl">
                                 From simple business websites to complex SaaS applications, we have the expertise to bring your vision to life.                            </p>
 
-                            {/* CTAs */}
+
                             <div className="flex flex-col sm:flex-row gap-4 mb-12">
                                 <Button size="lg" className="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-white rounded-[var(--radius)] px-8 h-14 text-base font-medium group">
                                     Get a Free Quate
@@ -53,24 +53,25 @@ export default function ServiceHero() {
                             </div>
                         </motion.div>
 
+                        {/* Right */}
                         <motion.div
                             animate={{ y: [0, 10, 0] }}
                             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                             className="relative"
                         >
                             <div className="relative bg-white flex items-center justify-center">
-                                <div className='flex items-center justify-center  rounded-[50%] p-8 lg:p-10 w-[400px] h-[400px] shadow-4xl shadow-blue-200/50 border border-blue-400'>
+                                <div className="flex items-center justify-center w-64 sm:w-80 lg:w-[400px] aspect-square rounded-full p-6 sm:p-8 lg:p-10 shadow-4xl shadow-blue-200/50 border border-blue-400">
                                     <img
                                         src="https://i.pinimg.com/1200x/33/ae/98/33ae98d3f7ee3f79ce452e81299d200b.jpg"
                                         alt="Services Hero"
-                                        className="max-h-full w-auto object-contain rounded-[50%]"
+                                        className="max-h-full w-auto object-contain rounded-full"
                                     />
                                 </div>
 
                                 <motion.div
                                     animate={{ y: [0, 10, 0] }}
                                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                                    className="absolute -bottom-1 -right-1 bg-white rounded-2xl shadow-xl p-4 border border-slate-100"
+                                    className="absolute bottom-0 right-0 sm:-bottom-1 sm:-right-1 lg:-bottom-1 lg:-right-1 bg-white rounded-2xl shadow-xl p-4 border border-slate-100"
                                 >
                                     <div className="flex items-center gap-2">
                                         <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
