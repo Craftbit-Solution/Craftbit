@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Workflow } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
@@ -66,6 +66,19 @@ export default function ServiceHero() {
                                         className="max-h-full w-auto object-contain rounded-[50%]"
                                     />
                                 </div>
+
+                                <motion.div
+                                    animate={{ y: [0, 10, 0] }}
+                                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                                    className="absolute -bottom-1 -right-1 bg-white rounded-2xl shadow-xl p-4 border border-slate-100"
+                                >
+                                    <div className="flex items-center gap-2">
+                                        <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+                                            <Workflow />
+                                        </div>
+                                        <span className="text-sm font-medium text-slate-700">Our Services</span>
+                                    </div>
+                                </motion.div>
                             </div>
 
                         </motion.div>
@@ -76,6 +89,5 @@ export default function ServiceHero() {
     )
 }
 
-// "https://i.pinimg.com/736x/9c/21/1a/9c211a5c817650599203a3058ba606b3.jpg" 
 // "/images/service_hero_img.jpg"
 // "https://i.pinimg.com/1200x/33/ae/98/33ae98d3f7ee3f79ce452e81299d200b.jpg"
