@@ -108,7 +108,7 @@ const maintenance = {
     bgColor: 'bg-slate-100',
 }
 
-export default function ServicesLists() {
+export default function ServicesOffering() {
 
     return (
         <>
