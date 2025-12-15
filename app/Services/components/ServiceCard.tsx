@@ -30,7 +30,7 @@ export default function ServiceCard({ service, index }: any) {
             transition={{ delay: index * 0.1 }}
             className={`relative group`}
         >
-            <Card className="overflow-hidden p-4 lg:p-6 mt-4 space-y-4 hover:shadow-xl transition-all duration-300">
+            <Card className="overflow-hidden p-4 lg:p-6 mt-4 gap-0 space-y-4 hover:shadow-xl transition-all duration-300">
                 {/* Icon */}
                 <div className={`w-14 h-14 rounded-[var(--radius)] ${bgColor} flex items-center justify-center mb-2`}>
                     <Icon className={`h-7 w-7 bg-gradient-to-br ${color} text-white rounded-[var(--radius)] p-1.5`} />
