@@ -5,6 +5,7 @@
 import { Code2, ShoppingCart, Globe, Rocket, RefreshCw, Wrench, ArrowRight, CheckCircle2, MessageCircle, Calendar, Check, MagnetIcon, CheckCheck, Gift, Play, Star, Icon } from 'lucide-react';
 import ServiceCard from './ServiceCard';
 import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 
 const services: any[] = [
     {
@@ -108,7 +109,7 @@ const maintenance = {
     bgColor: 'bg-slate-100',
 }
 
-export default function ServicesOffering() {
+export default function ServicesLists() {
 
     return (
         <>
@@ -130,7 +131,7 @@ export default function ServicesOffering() {
                         ))}
                     </div>
 
-                    <div className="flex flex-col bg-white rounded-[var(--radius)] shadow-lg border border-slate-100 overflow-hidden p-4 lg:p-6 mt-4 space-y-4">
+                    <Card className="overflow-hidden p-4 lg:p-6 mt-4 space-y-4 hover:shadow-xl transition-all duration-300">
 
                         <div className="flex items-start gap-4">
                             <div className={`w-14 h-14 rounded-[var(--radius)] ${maintenance.bgColor} flex items-center justify-center mb-2`}>
@@ -145,7 +146,7 @@ export default function ServicesOffering() {
 
                         <ul className="flex flex-wrap gap-4 mt-2">
                             {maintenance.features.map((feature, idx) => (
-                                <li key={idx} className="flex items-center gap-2 bg-slate-50 px-3 py-1 rounded-[var(--radius)]">
+                                <li key={idx} className="flex items-center gap-2  px-3 py-1 rounded-[var(--radius)]">
                                     <div className="w-5 h-5 flex items-center justify-center bg-green-100 rounded-[var(--radius)]">
                                         <Check className="h-3 w-3 text-green-600" />
                                     </div>
@@ -171,10 +172,11 @@ export default function ServicesOffering() {
                             </Button>
                         </div>
 
-                    </div>
+                    </Card>
                 </div>
 
             </section>
         </>
     )
 }
+
