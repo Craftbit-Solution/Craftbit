@@ -131,7 +131,7 @@ export default function ServicesLists() {
                         ))}
                     </div>
 
-                    <Card className="overflow-hidden p-4 lg:p-6 mt-4 space-y-4 hover:shadow-xl transition-all duration-300">
+                    <Card className="overflow-hidden p-4 lg:p-6 mt-4 space-y-4 gap-0 hover:shadow-xl transition-all duration-300">
 
                         <div className="flex items-start gap-4">
                             <div className={`w-14 h-14 rounded-[var(--radius)] ${maintenance.bgColor} flex items-center justify-center mb-2`}>
