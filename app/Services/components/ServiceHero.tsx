@@ -8,11 +8,11 @@ import { motion } from 'framer-motion';
 export default function ServiceHero() {
     return (
         <>
-            <section className="relative min-h-screen flex items-center overflow-hidden">
+            <section className="relative flex items-center overflow-hidden">
                 {/* Grid Pattern */}
                 <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
-                <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-12">
+                <div className="relative px-6 py-12">
                     <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                         {/* Left Content */}
                         <motion.div
