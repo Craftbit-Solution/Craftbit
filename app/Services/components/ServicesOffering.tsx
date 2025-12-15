@@ -114,7 +114,7 @@ export default function ServicesLists() {
     return (
         <>
             <section className="py-4 lg:py-4">
-                <div className="max-w-7xl mx-auto px-8 lg:px-10">
+                <div className="px-6">
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         <div>
                             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-[1.1] tracking-tight mb-6">
