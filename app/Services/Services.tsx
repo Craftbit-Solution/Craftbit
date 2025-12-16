@@ -2,10 +2,10 @@
 
 import CTASection from './components/CTASection';
 import IncludedWithProject from './components/IncludedWithProject';
+import OurAppeoach from './components/OurAppeoach';
+import ProcessSection from './components/ProcessSection';
 import ServiceHero from './components/ServiceHero';
 import ServicesLists from './components/ServicesLists';
-
-
 
 export default function Services() {
 
@@ -24,10 +24,11 @@ export default function Services() {
             <IncludedWithProject />
 
             {/* Our Approach */}
+            <OurAppeoach />
 
             {/* Lounch Steps */}
+            <ProcessSection />
 
-            {/* <CTASection /> */}
         </div>
     );
 }
