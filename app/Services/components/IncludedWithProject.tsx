@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Monitor, Search, Zap, Shield, GraduationCap, Headphones, BarChart3, RefreshCw, CheckCircle2 } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import SectionLabel from './SectionLabel';
+import IconWraper from './IconWraper';
 
 export default function IncludedWithProject() {
   const features: any[] = [
@@ -87,7 +88,7 @@ export default function IncludedWithProject() {
     <div className="py-6  px-6">
 
       <SectionLabel text={"All Inclusive"} />
-      
+
       <div className="">
         {/* Header */}
         <motion.div
@@ -150,18 +151,10 @@ export default function IncludedWithProject() {
                     <CheckCircle2 className="w-5 h-5 text-white" strokeWidth={2.5} />
                   </motion.div>
 
-                  {/* Icon Container */}
-                  <motion.div
-                    className="mb-4 relative"
-                    whileHover={{ scale: 1.05, rotate: 5 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <div className={`w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow duration-300`}>
-                      <Icon className="w-7 h-7 text-white" strokeWidth={2} />
-                    </div>
 
-                  </motion.div>
-
+                  <IconWraper
+                    element={<Icon className="w-6 h-6 text-white" strokeWidth={2} />}
+                  />
                   {/* Title */}
                   <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
                     {feature.title}
