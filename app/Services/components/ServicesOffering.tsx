@@ -2,10 +2,13 @@
 
 "use client";
 
-import { Code2, ShoppingCart, Globe, Rocket, RefreshCw, Wrench, ArrowRight, CheckCircle2, MessageCircle, Calendar, Check, MagnetIcon, CheckCheck, Gift, Play, Star, Icon } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Code2, ShoppingCart, Globe, Rocket, RefreshCw, Wrench, ArrowRight, Check } from 'lucide-react';
 import ServiceCard from './ServiceCard';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import SectionLabel from './SectionLabel';
+import IconWraper from './IconWraper';
 
 const services: any[] = [
     {
@@ -111,8 +114,21 @@ const maintenance = {
 
 export default function ServicesLists() {
 
+    const titleVariants: any = {
+        hidden: { opacity: 0, y: 20 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.6,
+                ease: "easeOut"
+            }
+        }
+    };
+
     return (
         <>
+            <SectionLabel text="What We Offer" />
             <section className="py-4 lg:py-4">
                 <div className="px-6">
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -124,22 +140,28 @@ export default function ServicesLists() {
                                     </span>
                                 </span>
                             </h1>
-                            <p>Explore our professional services and solutions designed to help businesses grow, including web applications, e-commerce platforms, and SaaS development</p>
+                            <motion.p
+                                variants={titleVariants}
+                                className="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
+                            >
+                                Explore our professional services and solutions designed to help businesses grow, including web applications, e-commerce platforms, and SaaS development.
+                            </motion.p>
                         </div>
                         {services.map((service, index) => (
                             <ServiceCard key={service.title} service={service} index={index} />
                         ))}
                     </div>
 
-                    <Card className="overflow-hidden p-4 lg:p-6 mt-4 space-y-4 gap-0 hover:shadow-xl transition-all duration-300">
+                    {/* Maintenance  Card */}
+                    <Card className="overflow-hidden p-4 lg:p-6 mt-4 space-y-4 gap-0 hover:shadow-xl transition-all duration-300 group">
 
                         <div className="flex items-start gap-4">
-                            <div className={`w-14 h-14 rounded-[var(--radius)] ${maintenance.bgColor} flex items-center justify-center mb-2`}>
-                                <Wrench className={`h-7 w-7 bg-gradient-to-br ${maintenance.color} text-white rounded-[var(--radius)] p-1.5`} />
-                            </div>
+                            <IconWraper
+                                element={<Wrench className="w-5 h-5 text-white" strokeWidth={2} />}
+                            />
 
                             <div className="flex-1 space-y-1">
-                                <h3 className="text-xl font-bold text-slate-900">{maintenance.title}</h3>
+                                <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-300 mb-2">{maintenance.title}</h3>
                                 <p className="text-slate-600">{maintenance.description}</p>
                             </div>
                         </div>
