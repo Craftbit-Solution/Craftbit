@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import SectionLabel from './SectionLabel';
 
 export default function OurAppeoach() {
 
@@ -58,14 +59,7 @@ export default function OurAppeoach() {
 
     return (
         <>
-            <motion.div
-                variants={itemVariants}
-                className="flex items-center justify-center gap-3 mb-2 mt-6"
-            >
-                <div className="h-px w-8 bg-blue-500" />
-                <span className="text-blue-600 font-medium text-sm tracking-wider uppercase">How We Work</span>
-                <div className="h-px w-8 bg-blue-500" />
-            </motion.div>
+            <SectionLabel text={"How We Work"} />
 
             <div className="flex items-center justify-center py-6 px-4">
 
