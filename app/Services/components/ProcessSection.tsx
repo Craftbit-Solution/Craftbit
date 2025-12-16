@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Lightbulb, Palette, Code, Rocket, ArrowRight } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import SectionLabel from './SectionLabel';
 
 export default function ProcessSection() {
     const steps: any[] = [
@@ -65,6 +66,9 @@ export default function ProcessSection() {
 
     return (
         <div className="py-12 px-6">
+
+            <SectionLabel text={"Our Process"} />
+            
             <div className="">
                 {/* Header */}
                 <motion.div
@@ -74,14 +78,7 @@ export default function ProcessSection() {
                     viewport={{ once: true, amount: 0.3 }}
                     variants={titleVariants}
                 >
-                    <motion.div
-                        className="inline-flex items-center gap-3 mb-6"
-                        variants={titleVariants}
-                    >
-                        <div className="h-px w-12 bg-gradient-to-r from-transparent to-blue-500" />
-                        <span className="text-blue-600 font-medium text-sm tracking-wider uppercase">Our Process</span>
-                        <div className="h-px w-12 bg-gradient-to-l from-transparent to-blue-500" />
-                    </motion.div>
+
 
                     <motion.h2
                         variants={titleVariants}
@@ -144,6 +141,9 @@ export default function ProcessSection() {
                                     <p className="text-slate-600 leading-relaxed group-hover:text-slate-700 transition-colors duration-300">
                                         {step.description}
                                     </p>
+
+
+
                                 </Card>
 
                             </motion.div>
