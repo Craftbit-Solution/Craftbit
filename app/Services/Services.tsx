@@ -16,7 +16,7 @@ export default function Services() {
             {/* Hero Section */}
             <ServiceHero />
 
-            <div className="w-[100%] mx-auto border-t border-grey-400" />
+            {/* <div className="w-[100%] mx-auto border-t border-grey-400" /> */}
 
             {/* Service Section */}
             <ServicesLists />
