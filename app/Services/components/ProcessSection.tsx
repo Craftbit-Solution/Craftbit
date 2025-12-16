@@ -119,7 +119,7 @@ export default function ProcessSection() {
                                     <div className="hidden lg:block absolute top-24 left-full w-8 h-px bg-gradient-to-r from-blue-300 to-transparent z-0" />
                                 )}
 
-                                <Card className="overflow-hidden p-4 lg:p-6 mt-4 h-[300px]  space-y-4 gap-0 hover:shadow-xl transition-all duration-300">
+                                <Card className="overflow-hidden p-4 lg:p-6 mt-4 h-[270px]  space-y-4 gap-0 hover:shadow-xl transition-all duration-300">
 
                                     {/* Icon Container */}
                                     <div className="flex-shrink-0">
