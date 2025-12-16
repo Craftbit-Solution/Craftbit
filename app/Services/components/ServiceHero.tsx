@@ -55,34 +55,48 @@ export default function ServiceHero() {
 
                         {/* Right */}
                         <motion.div
-                            animate={{ y: [0, 10, 0] }}
-                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                            className="relative"
+                            animate={{ y: [0, 12, 0] }}
+                            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                            className="relative flex items-center justify-center"
                         >
-                            <div className="relative bg-white flex items-center justify-center">
-                                <div className="flex items-center justify-center w-64 sm:w-80 lg:w-[400px] aspect-square rounded-full p-6 sm:p-8 lg:p-10 shadow-4xl shadow-blue-200/50 border border-blue-400">
+                            {/* Glow background */}
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                <div className="w-[420px] h-[420px] rounded-full bg-blue-500/10 blur-3xl" />
+                            </div>
+
+                            {/* Decorative rings */}
+                            <div className="absolute w-[460px] h-[460px] rounded-full border border-blue-200/40" />
+                            <div className="absolute w-[520px] h-[520px] rounded-full border border-blue-100/30" />
+
+                            {/* Image container */}
+                            <div className="relative z-10  flex items-center justify-center">
+                                <div className="flex items-center justify-center w-64 sm:w-80 lg:w-[400px] aspect-square rounded-full p-6 sm:p-8 lg:p-10 shadow-2xl shadow-blue-300/40 border border-blue-400">
                                     <img
+                                        // src="/images/services_hero_image.png"
                                         src="https://i.pinimg.com/1200x/33/ae/98/33ae98d3f7ee3f79ce452e81299d200b.jpg"
                                         alt="Services Hero"
-                                        className="max-h-full w-auto object-contain rounded-full"
+                                        className="h-full w-full object-cover"
                                     />
                                 </div>
 
+                                {/* Floating badge */}
                                 <motion.div
-                                    animate={{ y: [0, 10, 0] }}
+                                    animate={{ y: [0, 8, 0] }}
                                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                                    className="absolute bottom-0 right-0 sm:-bottom-1 sm:-right-1 lg:-bottom-1 lg:-right-1 bg-white rounded-2xl shadow-xl p-4 border border-slate-100"
+                                    className="absolute -bottom-4 -right-4 bg-white rounded-2xl shadow-xl px-4 py-3 border border-slate-100"
                                 >
-                                    <div className="flex items-center gap-2">
-                                        <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
-                                            <Workflow />
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-9 h-9 rounded-full bg-blue-100 flex items-center justify-center">
+                                            <Workflow className="text-blue-600 w-5 h-5" />
                                         </div>
-                                        <span className="text-sm font-medium text-slate-700">Our Services</span>
+                                        <span className="text-sm font-medium text-slate-700">
+                                            Scalable Solutions
+                                        </span>
                                     </div>
                                 </motion.div>
                             </div>
-
                         </motion.div>
+
                     </div>
                 </div>
             </section>
