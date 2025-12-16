@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Monitor, Search, Zap, Shield, GraduationCap, Headphones, BarChart3, RefreshCw, CheckCircle2 } from 'lucide-react';
 import { Card } from '@/components/ui/card';
+import SectionLabel from './SectionLabel';
 
 export default function IncludedWithProject() {
   const features: any[] = [
@@ -84,6 +85,9 @@ export default function IncludedWithProject() {
 
   return (
     <div className="py-6  px-6">
+
+      <SectionLabel text={"All Inclusive"} />
+      
       <div className="">
         {/* Header */}
         <motion.div
@@ -93,14 +97,6 @@ export default function IncludedWithProject() {
           viewport={{ once: true, amount: 0.3 }}
           variants={titleVariants}
         >
-          <motion.div
-            className="inline-flex items-center gap-3 mb-2"
-            variants={titleVariants}
-          >
-            <div className="h-px w-12 bg-gradient-to-r from-transparent to-blue-500" />
-            <span className="text-blue-600 font-medium text-sm tracking-wider uppercase">All Inclusive</span>
-            <div className="h-px w-12 bg-gradient-to-l from-transparent to-blue-500" />
-          </motion.div>
 
           <motion.h2
             variants={titleVariants}
