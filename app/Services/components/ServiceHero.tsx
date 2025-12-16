@@ -70,14 +70,19 @@ export default function ServiceHero() {
 
                             {/* Image container */}
                             <div className="relative z-10  flex items-center justify-center">
-                                <div className="flex items-center justify-center w-64 sm:w-80 lg:w-[400px] aspect-square rounded-full p-6 sm:p-8 lg:p-10 shadow-2xl shadow-blue-300/40 border border-blue-400">
+
+                                <div className="relative flex items-center justify-center w-64 sm:w-80 lg:w-[400px] aspect-square">
+
+                                    <div className="absolute inset-0 rounded-full border-2 border-blue-400 shadow-2xl shadow-blue-300/40 pointer-events-none" />
+
                                     <img
-                                        // src="/images/services_hero_image.png"
                                         src="https://i.pinimg.com/1200x/33/ae/98/33ae98d3f7ee3f79ce452e81299d200b.jpg"
+                                        // src="/images/services_hero_image.png"
                                         alt="Services Hero"
-                                        className="h-full w-full object-cover"
+                                        className="w-full h-full object-contain"
                                     />
                                 </div>
+
 
                                 {/* Floating badge */}
                                 <motion.div
@@ -103,6 +108,3 @@ export default function ServiceHero() {
         </>
     )
 }
-
-// "/images/service_hero_img.jpg"
-// "https://i.pinimg.com/1200x/33/ae/98/33ae98d3f7ee3f79ce452e81299d200b.jpg"
