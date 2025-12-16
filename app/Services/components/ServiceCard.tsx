@@ -6,9 +6,10 @@ import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Card } from '@/components/ui/card';
+import IconWraper from './IconWraper';
 
 export default function ServiceCard({ service, index }: any) {
-    
+
     const {
         icon: Icon,
         title,
@@ -32,13 +33,14 @@ export default function ServiceCard({ service, index }: any) {
         >
             <Card className="overflow-hidden p-4 lg:p-6 mt-4 gap-0 space-y-4 hover:shadow-xl transition-all duration-300">
                 {/* Icon */}
-                <div className={`w-14 h-14 rounded-[var(--radius)] ${bgColor} flex items-center justify-center mb-2`}>
-                    <Icon className={`h-7 w-7 bg-gradient-to-br ${color} text-white rounded-[var(--radius)] p-1.5`} />
-                </div>
+
+                <IconWraper
+                    element={<Icon className="w-5 h-5 text-white" strokeWidth={2} />}
+                />
 
                 {/* Title & Description */}
-                <h3 className="text-xl font-bold text-slate-900 mb-2">{title}</h3>
-                <p className="text-slate-600 mb-4 leading-relaxed">{description}</p>
+                <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-300 mb-2">{title}</h3>
+                <p className="text-slate-600 mb-4 leading-relaxed group-hover:text-slate-600 transition-colors duration-300">{description}</p>
 
                 {/* Price */}
                 <div className="mb-6 pb-6 border-b border-slate-100">
