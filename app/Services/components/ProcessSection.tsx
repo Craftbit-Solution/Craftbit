@@ -4,6 +4,7 @@ import { Lightbulb, Palette, Code, Rocket, ArrowRight } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import SectionLabel from './SectionLabel';
+import IconWraper from './IconWraper';
 
 export default function ProcessSection() {
     const steps: any[] = [
@@ -68,7 +69,7 @@ export default function ProcessSection() {
         <div className="py-12 px-6">
 
             <SectionLabel text={"Our Process"} />
-            
+
             <div className="">
                 {/* Header */}
                 <motion.div
@@ -121,16 +122,11 @@ export default function ProcessSection() {
                                 <Card className="overflow-hidden p-4 lg:p-6 mt-4 h-[300px]  space-y-4 gap-0 hover:shadow-xl transition-all duration-300">
 
                                     {/* Icon Container */}
-                                    <motion.div
-                                        className="mb-6 relative"
-                                        whileHover={{ scale: 1.05 }}
-                                        transition={{ duration: 0.3 }}
-                                    >
-                                        <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow duration-300`}>
-                                            <Icon className="w-8 h-8 text-white" strokeWidth={2} />
-                                        </div>
-
-                                    </motion.div>
+                                    <div className="flex-shrink-0">
+                                        <IconWraper
+                                            element={<Icon className="w-6 h-6 text-white" strokeWidth={2} />}
+                                        />
+                                    </div>
 
                                     {/* Title */}
                                     <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-blue-600 transition-colors duration-300">
@@ -141,8 +137,6 @@ export default function ProcessSection() {
                                     <p className="text-slate-600 leading-relaxed group-hover:text-slate-700 transition-colors duration-300">
                                         {step.description}
                                     </p>
-
-
 
                                 </Card>
 
