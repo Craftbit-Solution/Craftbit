@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Workflow } from 'lucide-react';
+import { ArrowRight, Sparkles, Workflow } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
@@ -10,7 +10,7 @@ export default function ServiceHero() {
         <>
             <section className="relative flex items-center overflow-hidden">
                 {/* Grid Pattern */}
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
+                {/* <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" /> */}
 
                 <div className="relative px-6 py-12">
                     <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -20,14 +20,15 @@ export default function ServiceHero() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8 }}
                         >
-
                             <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.2 }}
-                                className="inline-flex items-center gap-2 px-4 py-2 rounded-[var(--radius)] bg-blue-50 border border-blue-100 mb-4"
+                                initial={{ opacity: 0, scale: 0.5 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-medium mb-8"
                             >
-                                <span className="text-sm font-medium text-slate-700">Our Services</span>
+                                <motion.div animate={{ rotate: 360 }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }}>
+                                    <Sparkles className="w-4 h-4" />
+                                </motion.div>
+                                <span className="text-sm font-semibold">Our Services</span>
                             </motion.div>
 
 
@@ -76,8 +77,8 @@ export default function ServiceHero() {
                                     <div className="absolute inset-0 rounded-full border-2 border-blue-400 shadow-2xl shadow-blue-300/40 pointer-events-none" />
 
                                     <img
-                                        src="https://i.pinimg.com/1200x/33/ae/98/33ae98d3f7ee3f79ce452e81299d200b.jpg"
-                                        // src="/images/services_hero_image.png"
+                                        // src="https://i.pinimg.com/1200x/33/ae/98/33ae98d3f7ee3f79ce452e81299d200b.jpg"
+                                        src="/images/services_hero_image.png"
                                         alt="Services Hero"
                                         className="w-full h-full object-contain"
                                     />
