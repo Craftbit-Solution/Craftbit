@@ -97,37 +97,41 @@ export default function OurAppeoach() {
 
                             {/* Main Image Card */}
                             <motion.div
-                                className="relative w-[280px] md:w-[340px] h-[320px] md:h-[380px] rounded-3xl bg-white border border-slate-200 shadow-2xl overflow-hidden group"
                                 whileHover={{ scale: 1.03, y: -5 }}
                                 transition={{ duration: 0.4, ease: "easeOut" }}
                             >
-                                {/* Image */}
-                                <img
-                                    src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&auto=format&fit=crop&q=80"
-                                    alt="Team collaboration"
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                />
-
-                                {/* Overlay Gradient */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                                {/* Decorative Corner Element */}
-                                <motion.div
-                                    className="absolute bottom-0 left-0 w-24 h-24"
-                                    initial={{ pathLength: 0 }}
+                                <div
+                                    className="relative w-[280px] md:w-[340px] h-[320px] md:h-[380px] rounded-3xl bg-white border border-slate-200 shadow-2xl overflow-hidden group"
                                 >
-                                    <svg viewBox="0 0 100 100" className="w-full h-full">
-                                        <motion.path
-                                            d="M 0 100 Q 0 50 50 50 Q 100 50 100 0"
-                                            fill="none"
-                                            stroke="#3B82F6"
-                                            strokeWidth="3"
-                                            initial={{ pathLength: 0 }}
-                                            animate={{ pathLength: 1 }}
-                                            transition={{ duration: 1.5, delay: 0.8 }}
-                                        />
-                                    </svg>
-                                </motion.div>
+
+                                    {/* Image */}
+                                    <img
+                                        src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&auto=format&fit=crop&q=80"
+                                        alt="Team collaboration"
+                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                    />
+
+                                    {/* Overlay Gradient */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                                    {/* Decorative Corner Element */}
+                                    <motion.div
+                                        className="absolute bottom-0 left-0 w-24 h-24"
+                                        initial={{ pathLength: 0 }}
+                                    >
+                                        <svg viewBox="0 0 100 100" className="w-full h-full">
+                                            <motion.path
+                                                d="M 0 100 Q 0 50 50 50 Q 100 50 100 0"
+                                                fill="none"
+                                                stroke="#3B82F6"
+                                                strokeWidth="3"
+                                                initial={{ pathLength: 0 }}
+                                                animate={{ pathLength: 1 }}
+                                                transition={{ duration: 1.5, delay: 0.8 }}
+                                            />
+                                        </svg>
+                                    </motion.div>
+                                </div>
                             </motion.div>
 
                             {/* Floating Decorative Elements */}
