@@ -50,7 +50,7 @@ export default function ContactDetails() {
                 <motion.div
                     initial={{ opacity: 0, scale: 0.5 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-medium mb-8"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-medium mb-2"
                 >
                     <motion.div animate={{ rotate: 360 }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }}>
                         <Sparkles className="w-4 h-4" />
@@ -71,7 +71,7 @@ export default function ContactDetails() {
                 </p>
 
                 {/* Contact Methods */}
-                <div className="grid sm:grid-cols-2 gap-4 mb-10">
+                <div className="grid sm:grid-cols-1 gap-4 mb-10">
                     {contactMethods.map((method, index) => (
                         <motion.div
                             key={method.title}
@@ -79,46 +79,25 @@ export default function ContactDetails() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 + index * 0.05 }}
                         >
-                            {method.href ? (
-                                <Card className="block overflow-hidden p-4 mt-2 gap-0 space-y-4 hover:shadow-xl transition-all duration-300">
-                                    <a
-                                        href={method.href}
-                                        target={method.href.startsWith('http') ? '_blank' : undefined}
-                                        rel={method.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                                    >
-                                        <div className="flex items-start gap-3">
-                                            <div className={`w-10 h-10 rounded-xl ${method.color} flex items-center justify-center shrink-0`}>
-                                                <method.icon className="h-5 w-5" />
-                                            </div>
-                                            <div>
-                                                <h3 className="font-semibold text-slate-900 mb-0.5">{method.title}</h3>
-                                                <p className="text-xs text-slate-500 mb-1">{method.description}</p>
-                                                <p className="text-sm font-medium text-slate-700">{method.value}</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </Card>
+                            <Card className="block overflow-hidden p-4 mt-2 gap-0 space-y-4 hover:shadow-xl transition-all duration-300">
 
-                            ) : (
-                                <Card className="block overflow-hidden p-4 mt-2 gap-0 space-y-4 hover:shadow-xl transition-all duration-300">
-                                    <div className="flex items-start gap-3">
-                                        <div className={`w-10 h-10 rounded-xl ${method.color} flex items-center justify-center shrink-0`}>
-                                            <method.icon className="h-5 w-5" />
-                                        </div>
-                                        <div>
-                                            <h3 className="font-semibold text-slate-900 mb-0.5">{method.title}</h3>
-                                            <p className="text-xs text-slate-500 mb-1">{method.description}</p>
-                                            <p className="text-sm font-medium text-slate-700">{method.value}</p>
-                                        </div>
+                                <div className="flex items-start gap-3">
+                                    <div className={`w-10 h-10 rounded-xl ${method.color} flex items-center justify-center shrink-0`}>
+                                        <method.icon className="h-5 w-5" />
                                     </div>
-                                </Card>
-                            )}
+                                    <div>
+                                        <h3 className="font-semibold text-slate-900 mb-0.5">{method.title}</h3>
+                                        <p className="text-xs text-slate-500 mb-1">{method.description}</p>
+                                        <p className="text-sm font-medium text-slate-700">{method.value}</p>
+                                    </div>
+                                </div>
+                            </Card>
                         </motion.div>
                     ))}
                 </div>
 
                 {/* Book a Call CTA */}
-                <div className="p-6 bg-slate-900 rounded-[var(--radius)]">
+                {/* <div className="p-6 bg-slate-900 rounded-[var(--radius)]">
                     <div className="flex items-center gap-4 mb-4">
                         <div className="w-12 h-12 rounded-xl bg-blue-500 flex items-center justify-center">
                             <Calendar className="h-6 w-6 text-white" />
@@ -135,7 +114,7 @@ export default function ContactDetails() {
                             Schedule a Call
                         </Button>
                     </a>
-                </div>
+                </div> */}
             </motion.div>
         </>
     )
