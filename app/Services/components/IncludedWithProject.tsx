@@ -134,11 +134,11 @@ export default function IncludedWithProject() {
                 className="group relative"
               >
                 {/* Card */}
-                <Card className="overflow-hidden p-2 lg:p-6 mt-4 gap-0 hover:shadow-xl transition-all duration-300">
+                <Card className="overflow-hidden p-2 lg:p-4 mt-4 gap-0 hover:shadow-xl transition-all duration-300">
 
                   {/* Checkmark Badge - Top Right */}
                   <motion.div
-                    className="absolute -top-1 -right-3 w-8 h-8 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center shadow-lg shadow-green-500/30"
+                    className="absolute top-1 -right-3 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center"
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true }}
@@ -153,10 +153,10 @@ export default function IncludedWithProject() {
 
 
                   <IconWraper
-                    element={<Icon className="w-6 h-6 text-white" strokeWidth={2} />}
+                    element={<Icon className="w-5 h-5 text-white" strokeWidth={2} />}
                   />
                   {/* Title */}
-                  <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                  <h3 className="text-lg font-bold text-slate-900 mb-1 mt-2 group-hover:text-blue-600 transition-colors duration-300">
                     {feature.title}
                   </h3>
 
