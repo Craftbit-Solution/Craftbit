@@ -8,32 +8,24 @@ import { Button } from '@/components/ui/button';
 
 export default function HomeHero() {
     return (
-        <section className="">
-            {/* Background Elements */}
-            <div className="absolute inset-0">
-                {/* Floating Elements */}
-                <motion.div
-                    animate={{
-                        y: [0, -20, 0],
-                        rotate: [0, 5, 0]
-                    }}
-                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute top-32 right-1/4 w-16 h-16 bg-gradient-to-br from-[#3E92CC]/20 to-[#0D3082]/20 rounded-2xl backdrop-blur-sm border border-white/20"
-                />
-            </div>
+        <section className="relative z-10 select-text">
 
-
-            <div className="relative px-6 pt-12 pb-20">
+            <div className="px-6 pt-12 pb-20 relative z-10">
                 <div className="text-center">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.5 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-bg-[#0D3082] text-blue-600 text-sm font-medium mb-8"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-[#0D3082] text-blue-600 text-sm font-medium mb-8"
                     >
-                        <motion.div animate={{ rotate: 360 }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }}>
+                        <motion.div
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                        >
                             <Sparkles className="w-4 h-4" />
                         </motion.div>
-                        <span className="text-sm font-semibold">Digital Excellence Delivered</span>
+                        <span className="text-sm font-semibold">
+                            Digital Excellence Delivered
+                        </span>
                     </motion.div>
 
                     {/* Main Headline */}
@@ -45,15 +37,16 @@ export default function HomeHero() {
                     >
                         We Craft Digital
                         <br />
-                        <span className="relative">
+                        <span className="relative inline-block">
                             <span className="text-[#0D3082] animate-gradient">
                                 Experiences
                             </span>
+
                             <motion.svg
                                 initial={{ pathLength: 0, opacity: 0 }}
                                 animate={{ pathLength: 1, opacity: 1 }}
                                 transition={{ duration: 1.5, delay: 0.8 }}
-                                className="absolute -bottom-2 left-0 w-full"
+                                className="absolute -bottom-2 left-0 w-full pointer-events-none"
                                 viewBox="0 0 300 12"
                                 fill="none"
                             >
@@ -99,6 +92,7 @@ export default function HomeHero() {
                             Start Your Project
                             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </Button>
+
                         <Button
                             variant="outline"
                             size="lg"
@@ -108,7 +102,6 @@ export default function HomeHero() {
                             View Our Work
                         </Button>
                     </motion.div>
-
                 </div>
             </div>
         </section>
