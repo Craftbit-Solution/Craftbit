@@ -1,7 +1,7 @@
 import React from 'react'
 import HomeHero from './components/HomeHero'
-import WhyChooseUs from './components/WhyChoseUs'
 import CraftStudio from './components/CraftStudio'
+import WhyChooseUs from './components/WhyChooseUs'
 
 export default function HomePage() {
     return (
