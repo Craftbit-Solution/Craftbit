@@ -1,5 +1,4 @@
 'use client'
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -191,7 +190,7 @@ export default function ContactForm() {
                         <Button
                             type="submit"
                             disabled={isSubmitting}
-                            className="w-full h-12 rounded-[var(--radius)] bg-slate-900 hover:bg-slate-800 text-white font-medium text-base"
+                            className="w-full h-12 mt-2 rounded-[var(--radius)] bg-slate-900 hover:bg-slate-800 text-white font-medium text-base"
                         >
                             {isSubmitting ? (
                                 <>
@@ -206,12 +205,12 @@ export default function ContactForm() {
                             )}
                         </Button>
 
-                        <p className="text-center text-sm text-slate-500">
+                        <p className="text-center text-sm text-slate-500 mt-2">
                             By submitting this form, you agree to our privacy policy.
                         </p>
 
 
-                        <div className="p-6 bg-slate-900 rounded-[var(--radius)] mt-8">
+                        <div className="p-6 bg-slate-900 rounded-[var(--radius)] mt-12">
                             <div className="flex items-center gap-4 mb-4">
                                 <div className="w-12 h-12 rounded-xl bg-blue-500 flex items-center justify-center">
                                     <Clock className="h-6 w-6 text-white" />
