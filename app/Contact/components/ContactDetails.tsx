@@ -117,11 +117,13 @@ export default function ContactDetails() {
                             <Calendar className="h-6 w-6 text-white" />
                         </div>
                         <div>
-                            <h3 className="font-semibold text-white">Prefer a call?</h3>
-                            <p className="text-sm text-slate-400">Book a free 30-min consultation</p>
+                            <h3 className="font-semibold text-white">Free Consultation</h3>
+                            <p className="text-sm text-slate-400">
+                                Not sure where to start? Book a free 30-minute consultation call. 
+                            </p>
                         </div>
                     </div>
-                    <a href="https://calendly.com/webcraft-studio" target="_blank" rel="noopener noreferrer">
+                    <a href="" target="_blank" rel="noopener noreferrer">
                         <Button className="w-full bg-white text-slate-900 hover:bg-slate-100 rounded-[var(--radius)] h-12 font-medium">
                             Schedule a Call
                         </Button>
