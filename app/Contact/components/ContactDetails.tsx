@@ -1,6 +1,6 @@
 'use client'
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, MessageCircle, Calendar } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageCircle, Calendar, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 
@@ -47,9 +47,16 @@ export default function ContactDetails() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
             >
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-medium mb-8">
-                    Get In Touch
-                </div>
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-medium mb-8"
+                >
+                    <motion.div animate={{ rotate: 360 }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }}>
+                        <Sparkles className="w-4 h-4" />
+                    </motion.div>
+                    <span className="text-sm font-semibold">Get In Touch</span>
+                </motion.div>
 
                 <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 leading-tight mb-4">
                     Let's build something{' '}
@@ -119,7 +126,7 @@ export default function ContactDetails() {
                         <div>
                             <h3 className="font-semibold text-white">Free Consultation</h3>
                             <p className="text-sm text-slate-400">
-                                Not sure where to start? Book a free 30-minute consultation call. 
+                                Not sure where to start? Book a free 30-minute consultation call.
                             </p>
                         </div>
                     </div>
