@@ -42,17 +42,17 @@ export default function FeaturesSection() {
                     viewport={{ once: true }}
                     className="text-center mb-10"
                 >
-                    <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 mb-6">
+
+                    <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 leading-tight mb-6">
                         What We Bring
-                        <span className="block bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
-                            To The Table
-                        </span>
+                        <span className="block text-blue-500">To The Table</span>
                     </h2>
 
                     <p className="text-lg text-slate-600">
                         Everything you need to launch and scale your digital product, all in one place.
                     </p>
                 </motion.div>
+
 
                 {/* Features grid */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
