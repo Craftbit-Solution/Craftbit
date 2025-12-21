@@ -1,6 +1,3 @@
-
-'use client'
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles, Play } from 'lucide-react';
@@ -15,7 +12,7 @@ export default function HomeHero() {
                     <motion.div
                         initial={{ opacity: 0, scale: 0.5 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-[#0D3082] text-blue-600 text-sm font-medium mb-8"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-medium mb-8"
                     >
                         <motion.div
                             animate={{ rotate: 360 }}
