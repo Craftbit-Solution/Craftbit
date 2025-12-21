@@ -36,7 +36,7 @@ export default function AboutHero() {
                 </motion.div>
             ))}
 
-            <div className="relative px-8 py-12 text-center">
+            <div className="relative py-12 text-center">
                 {/* Badge */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -58,13 +58,13 @@ export default function AboutHero() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.1 }}
-                    className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight mb-8"
+                    className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-8"
                 >
                     <span className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text text-transparent">
                         We Craft Digital
                     </span>
                     <br />
-                    <span className="bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 bg-clip-text text-transparent">
+                    <span className="bg-blue-600 via-blue-500 to-blue-600 bg-clip-text text-transparent">
                         Experiences
                     </span>
                 </motion.h1>
@@ -74,7 +74,7 @@ export default function AboutHero() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-12"
+                    className="text-lg sm:text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed mb-12"
                 >
                     CraftBit helps early-stage startups turn ideas into polished, high-impact digital products. 
                     We design and build clean, fast, and scalable websites that grow with your business from day one.
