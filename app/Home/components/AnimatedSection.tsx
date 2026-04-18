@@ -1,37 +1,36 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
-export default function AnimatedSection({ 
-  children, 
-  className = '', 
+export default function AnimatedSection({
+  children,
+  className = "",
   delay = 0,
-  direction = 'up',
-  duration = 0.6
+  direction = "up",
+  duration = 0.6,
 }: any) {
   const directions: any = {
     up: { y: 40, x: 0 },
     down: { y: -40, x: 0 },
     left: { y: 0, x: 40 },
     right: { y: 0, x: -40 },
-    none: { y: 0, x: 0 }
+    none: { y: 0, x: 0 },
   };
 
   return (
     <motion.div
-      initial={{ 
-        opacity: 0, 
-        ...directions[direction]
+      initial={{
+        opacity: 0,
+        ...directions[direction],
       }}
-      whileInView={{ 
-        opacity: 1, 
-        y: 0, 
-        x: 0 
+      whileInView={{
+        opacity: 1,
+        y: 0,
+        x: 0,
       }}
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ 
+      transition={{
         duration,
         delay,
-        ease: [0.22, 1, 0.36, 1]
+        ease: [0.22, 1, 0.36, 1],
       }}
       className={className}
     >
