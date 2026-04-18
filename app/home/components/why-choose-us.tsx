@@ -1,11 +1,25 @@
 'use client';
 
 import { motion, Variants } from 'framer-motion';
-import { Shield, Clock, Users, Activity, CheckCircle } from 'lucide-react';
+import {
+  Shield,
+  Clock,
+  Users,
+  Activity,
+  CheckCircle,
+  LucideIcon,
+} from 'lucide-react';
 import AnimatedSection from './animated-section';
 import SectionHeader from './header';
+import SectionWrapper from '@/components/shared/section-wrapper';
 
-const features = [
+type Feature = {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+};
+
+const features: Feature[] = [
   {
     icon: Shield,
     title: 'On-time delivery',
@@ -55,7 +69,7 @@ const fadeUp: Variants = {
 
 export default function WhyChooseUs() {
   return (
-    <section className="mb-8 py-0">
+    <SectionWrapper className="py-16">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -126,6 +140,6 @@ export default function WhyChooseUs() {
           </div>
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   );
 }

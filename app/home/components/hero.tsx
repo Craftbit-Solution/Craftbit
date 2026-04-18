@@ -6,10 +6,20 @@ import {
   Shield,
   Clock,
   MessageCircle,
+  LucideIcon,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import SectionWrapper from '@/components/shared/section-wrapper';
 
-const guarantees = [
+type Guarantee = {
+  icon: LucideIcon;
+  iconBg: string;
+  iconColor: string;
+  title: string;
+  desc: string;
+};
+
+const guarantees: Guarantee[] = [
   {
     icon: Shield,
     iconBg: '#eef3ff',
@@ -48,7 +58,7 @@ const fadeUp: Variants = {
 
 export default function HomeHero() {
   return (
-    <section className="relative z-10 select-text">
+    <SectionWrapper className="pt-28 pb-20">
       <div className="relative z-10 px-6 pt-12 pb-20">
         <div className="text-center">
           <motion.div
@@ -177,6 +187,6 @@ export default function HomeHero() {
           </motion.div>
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   );
 }

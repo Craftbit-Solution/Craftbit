@@ -8,7 +8,7 @@ import ServicesLists from './components/service-list';
 
 export default function ServicesPage() {
   return (
-    <div className="mx-auto min-h-screen max-w-7xl">
+    <div>
       <ServiceHero />
       {/* <div className="w-[100%] mx-auto border-t border-grey-400" /> */}
       <ServicesLists />

@@ -86,7 +86,6 @@ export default function ProcessSection() {
       <SectionLabel text={'Our Process'} />
 
       <div className="">
-        ={' '}
         <motion.div
           className="mb-16 text-center"
           initial="hidden"

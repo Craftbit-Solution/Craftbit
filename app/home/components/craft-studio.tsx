@@ -1,9 +1,22 @@
 'use client';
 
+import SectionWrapper from '@/components/shared/section-wrapper';
 import { motion, Variants } from 'framer-motion';
-import { Code2, Monitor, Clock, Shield, CheckCircle2 } from 'lucide-react';
+import {
+  Code2,
+  Monitor,
+  Clock,
+  Shield,
+  CheckCircle2,
+  LucideIcon,
+} from 'lucide-react';
 
-const reasons = [
+type Reason = {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+};
+const reasons: Reason[] = [
   {
     icon: Code2,
     title: 'Built by engineers',
@@ -61,7 +74,7 @@ const fadeUp: Variants = {
 
 export default function CraftStudio() {
   return (
-    <section className="py-8">
+    <SectionWrapper className="py-16">
       <div className="relative mx-auto max-w-5xl px-6 lg:px-8">
         {/* Eyebrow */}
         <motion.div
@@ -188,6 +201,6 @@ export default function CraftStudio() {
           </span>
         </p>
       </div>
-    </section>
+    </SectionWrapper>
   );
 }
