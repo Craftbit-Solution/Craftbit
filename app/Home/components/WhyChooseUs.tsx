@@ -1,84 +1,86 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Shield, Clock, Users, Award, CheckCircle } from "lucide-react";
+import { motion, Variants } from "framer-motion";
+import { Shield, Clock, Users, Activity, CheckCircle } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import SectionHeader from "./SectionHeader";
 
 const features = [
   {
     icon: Shield,
-    title: "Trusted Expertise",
+    title: "On-time delivery",
     description:
-      "Over 8 years of experience delivering high-quality digital solutions for businesses worldwide.",
+      "We set realistic timelines and stick to them. Late delivery means your next revision is on us.",
   },
   {
     icon: Clock,
-    title: "On-Time Delivery",
+    title: "48h response",
     description:
-      "We respect deadlines and deliver projects on schedule without compromising quality.",
+      "Every message gets a reply within 48 hours — usually much faster during business hours.",
   },
   {
     icon: Users,
-    title: "Dedicated Support",
+    title: "Direct access",
     description:
-      "24/7 support and maintenance to ensure your digital presence runs smoothly.",
+      "You talk to the designer and developer directly — no middlemen, no lost-in-translation moments.",
   },
   {
-    icon: Award,
-    title: "Award-Winning Design",
+    icon: Activity,
+    title: "Performance-first",
     description:
-      "Recognized for excellence in web design and user experience innovation.",
+      "Every site we ship is optimized for speed, SEO, and Core Web Vitals out of the box.",
   },
 ];
 
 const checkItems = [
   "Custom-tailored solutions",
   "Transparent pricing",
-  "Agile methodology",
+  "Fixed-scope contracts",
   "Post-launch support",
-  "SEO optimization",
-  "Security-first approach",
+  "SEO-ready builds",
+  "You own everything",
 ];
 
-export default function WhyChooseUs() {
-  const textVariants: any = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1],
     },
-  };
+  },
+};
 
+export default function WhyChooseUs() {
   return (
     <section className="py-0 mb-8">
       <motion.div
-        className="flex items-center justify-center gap-3 mb-2"
-        variants={textVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeUp}
+        className="flex items-center justify-center gap-3 mb-12"
       >
-        <div className="h-px w-12 bg-linear-to-r from-transparent to-blue-500" />
-        <span className="text-blue-600 font-medium text-sm tracking-wider uppercase">
+        <div className="h-px w-10 bg-linear-to-r from-transparent to-[#3E92CC]" />
+        <span className="text-[#3E92CC] font-medium text-xs tracking-widest uppercase">
           Why CraftBit
         </span>
-        <div className="h-px w-12 bg-linear-to-l from-transparent to-blue-500" />
+        <div className="h-px w-10 bg-linear-to-l from-transparent to-[#3E92CC]" />
       </motion.div>
 
-      <div className="px-6 mt-12 relative">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Content */}
+      <div className="px-6 relative">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
           <div>
             <SectionHeader
-              label="Why CraftBit"
-              title="Building Digital Excellence Together"
-              description="We don't just build websites — we craft digital experiences that transform businesses and captivate audiences."
+              label=""
+              title="What makes working with us different"
+              description="We're a small team, which means you get direct access to the people actually building your product — not account managers passing messages around."
               centered={false}
             />
 
-            <div className="mt-10 grid grid-cols-2 gap-4">
+            <div className="mt-10 grid grid-cols-2 gap-3">
               {checkItems.map((item, index) => (
                 <AnimatedSection key={item} delay={index * 0.05}>
                   <div className="flex items-center gap-3">
@@ -94,39 +96,28 @@ export default function WhyChooseUs() {
             </div>
           </div>
 
-          {/* Right Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 grid-rows-2 gap-4">
             {features.map((feature, index) => (
               <AnimatedSection
                 key={feature.title}
                 delay={index * 0.1}
                 direction={index % 2 === 0 ? "left" : "right"}
+                className="h-full"
               >
                 <motion.div
-                  whileHover={{ scale: 1.03 }}
-                  className={`p-6 rounded-2xl transition-all duration-300 ${
-                    index === 0
-                      ? "bg-linear-to-br from-[#0D3082] to-[#3E92CC] text-white shadow-xl shadow-[#0D3082]/20"
-                      : "bg-white shadow-lg shadow-[#0D3082]/5 border border-[#0D3082]/5 hover:shadow-xl"
-                  }`}
+                  whileHover={{ scale: 1.02 }}
+                  className="h-full p-6 rounded-2xl border border-[#0D3082]/08 bg-[#fafbff] hover:shadow-lg hover:shadow-[#0D3082]/08 transition-all duration-300"
                 >
-                  <div
-                    className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${
-                      index === 0 ? "bg-white/20" : "bg-[#3E92CC]/10"
-                    }`}
-                  >
+                  <div className="w-11 h-11 rounded-xl bg-[#3E92CC]/10 flex items-center justify-center mb-4">
                     <feature.icon
-                      className={`w-6 h-6 ${index === 0 ? "text-white" : "text-[#3E92CC]"}`}
+                      className="w-5 h-5 text-[#3E92CC]"
+                      strokeWidth={2}
                     />
                   </div>
-                  <h3
-                    className={`text-lg font-bold mb-2 ${index === 0 ? "text-white" : "text-[#0D3082]"}`}
-                  >
+                  <h3 className="text-base font-semibold text-[#0D3082] mb-2">
                     {feature.title}
                   </h3>
-                  <p
-                    className={`text-sm leading-relaxed ${index === 0 ? "text-white/80" : "text-[#0D3082]/60"}`}
-                  >
+                  <p className="text-sm text-[#0D3082]/60 leading-relaxed">
                     {feature.description}
                   </p>
                 </motion.div>
