@@ -1,9 +1,5 @@
-import Services from "./Services/Services";
+import Services from './Services/Services';
 
 export default function Home() {
-  return (
-    <>
-      <Services />
-    </>
-  );
+  return <Services />;
 }

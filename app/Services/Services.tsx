@@ -1,36 +1,29 @@
-"use client";
+'use client';
 
-import CTASection from './components/CTASection';
 import IncludedWithProject from './components/IncludedWithProject';
-import OurAppeoach from './components/OurAppeoach';
+import OurApproach from './components/OurApproach';
 import ProcessSection from './components/ProcessSection';
 import ServiceHero from './components/ServiceHero';
 import ServicesLists from './components/ServicesLists';
 
 export default function Services() {
+  return (
+    <div className="mx-auto min-h-screen max-w-7xl">
+      {/* Hero Section */}
+      <ServiceHero />
 
+      {/* <div className="w-[100%] mx-auto border-t border-grey-400" /> */}
 
-    return (
-        <div className="min-h-screen max-w-7xl mx-auto">
+      {/* Service Section */}
+      <ServicesLists />
 
-            {/* Hero Section */}
-            <ServiceHero />
+      <IncludedWithProject />
 
-            {/* <div className="w-[100%] mx-auto border-t border-grey-400" /> */}
+      {/* Our Approach */}
+      <OurApproach />
 
-            {/* Service Section */}
-            <ServicesLists />
-            
-            <IncludedWithProject />
-
-            {/* Our Approach */}
-            <OurAppeoach />
-
-            {/* Lounch Steps */}
-            <ProcessSection />
-
-        </div>
-    );
+      {/* Lounch Steps */}
+      <ProcessSection />
+    </div>
+  );
 }
-
-
