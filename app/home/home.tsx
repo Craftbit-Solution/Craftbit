@@ -7,7 +7,7 @@ export default function HomePage() {
     <>
       <HomeHero />
       <WhyChooseUs />
-      <CraftStudio />
+    <CraftStudio />
     </>
   );
 }
