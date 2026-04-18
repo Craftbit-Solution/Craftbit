@@ -1,12 +1,25 @@
-import { motion } from 'framer-motion';
-import { Lightbulb, Palette, Code, Rocket, ArrowRight } from 'lucide-react';
+import { motion, Variants } from 'framer-motion';
+import {
+  Lightbulb,
+  Palette,
+  Code,
+  Rocket,
+  ArrowRight,
+  LucideIcon,
+} from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import SectionLabel from './SectionLabel';
-import IconWrapper from './IconWrapper';
+import SectionLabel from './section-label';
+import IconWrapper from './icon-wrapper';
+
+type Step = {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+};
 
 export default function ProcessSection() {
-  const steps: any[] = [
+  const steps: Step[] = [
     {
       icon: Lightbulb,
       title: 'Discovery',
@@ -33,7 +46,7 @@ export default function ProcessSection() {
     },
   ];
 
-  const containerVariants: any = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -44,7 +57,7 @@ export default function ProcessSection() {
     },
   };
 
-  const cardVariants: any = {
+  const cardVariants: Variants = {
     hidden: { opacity: 0, y: 40 },
     visible: {
       opacity: 1,
@@ -56,7 +69,7 @@ export default function ProcessSection() {
     },
   };
 
-  const titleVariants: any = {
+  const titleVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
@@ -73,7 +86,7 @@ export default function ProcessSection() {
       <SectionLabel text={'Our Process'} />
 
       <div className="">
-        {/* Header */}
+        ={' '}
         <motion.div
           className="mb-16 text-center"
           initial="hidden"
@@ -99,8 +112,6 @@ export default function ProcessSection() {
             involved every step of the way.
           </motion.p>
         </motion.div>
-
-        {/* Process Cards */}
         <motion.div
           className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-8"
           initial="hidden"
@@ -112,7 +123,7 @@ export default function ProcessSection() {
             const Icon = step.icon;
             return (
               <motion.div
-                key={index}
+                key={step.title}
                 variants={cardVariants}
                 className="group relative"
               >
@@ -121,7 +132,6 @@ export default function ProcessSection() {
                 )}
 
                 <Card className="mt-4 h-[270px] gap-0 space-y-4 overflow-hidden p-4 transition-all duration-300 hover:shadow-xl lg:p-6">
-                  {/* Icon Container */}
                   <div className="shrink-0">
                     <IconWrapper
                       element={
@@ -130,12 +140,10 @@ export default function ProcessSection() {
                     />
                   </div>
 
-                  {/* Title */}
                   <h3 className="mb-4 text-2xl font-bold text-slate-900 transition-colors duration-300 group-hover:text-blue-600">
                     {step.title}
                   </h3>
 
-                  {/* Description */}
                   <p className="leading-relaxed text-slate-600 transition-colors duration-300 group-hover:text-slate-700">
                     {step.description}
                   </p>
@@ -144,7 +152,6 @@ export default function ProcessSection() {
             );
           })}
         </motion.div>
-
         <motion.div
           className="mt-16 text-center"
           initial={{ opacity: 0, y: 20 }}
@@ -155,7 +162,7 @@ export default function ProcessSection() {
           <Button
             className={`group/btn h-14 w-[250px] rounded-(--radius) bg-slate-900 font-medium text-white hover:bg-slate-800`}
           >
-            Let's Get Started
+            Let&apos;s Get Started
             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
           </Button>
         </motion.div>

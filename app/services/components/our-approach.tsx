@@ -1,30 +1,36 @@
-import { motion } from 'framer-motion';
-import SectionLabel from './SectionLabel';
-import IconWrapper from './IconWrapper';
+import { motion, Variants } from 'framer-motion';
+import SectionLabel from './section-label';
+import IconWrapper from './icon-wrapper';
+
+type Approach = {
+  id: number;
+  title: string;
+  description: string;
+};
 
 export default function OurApproach() {
-  const approaches: any[] = [
+  const approaches: Approach[] = [
     {
-      number: '1',
+      id: 1,
       title: 'Understand First',
       description:
         'We start by deeply understanding your goals, users, and challenges to ensure the solution fits your needs perfectly.',
     },
     {
-      number: '2',
+      id: 2,
       title: 'Design & Iterate',
       description:
         'We craft elegant, user-centered designs through rapid prototyping and continuous feedback loops.',
     },
     {
-      number: '3',
+      id: 3,
       title: 'Build & Scale',
       description:
         'We develop robust, scalable solutions using modern technologies that grow with your business.',
     },
   ];
 
-  const containerVariants: any = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -35,7 +41,7 @@ export default function OurApproach() {
     },
   };
 
-  const itemVariants: any = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, x: 30 },
     visible: {
       opacity: 1,
@@ -47,7 +53,7 @@ export default function OurApproach() {
     },
   };
 
-  const imageStackVariants: any = {
+  const imageStackVariants: Variants = {
     hidden: { opacity: 0, scale: 0.9 },
     visible: {
       opacity: 1,
@@ -66,14 +72,12 @@ export default function OurApproach() {
       <div className="flex items-center justify-center px-4 py-6">
         <div className="w-full">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
-            {/* Left Side - Stacked Image Cards */}
             <motion.div
               className="relative order-2 flex h-[400px] items-center justify-center md:h-[480px] lg:order-1"
               initial="hidden"
               animate="visible"
               variants={imageStackVariants}
             >
-              {/* Background Card 3 */}
               <motion.div
                 className="absolute h-80 w-[280px] rounded-3xl border border-blue-200/50 bg-blue-100/60 shadow-lg md:h-[380px] md:w-[340px]"
                 style={{
@@ -84,7 +88,6 @@ export default function OurApproach() {
                 transition={{ duration: 0.4 }}
               />
 
-              {/* Background Card 2 */}
               <motion.div
                 className="absolute h-80 w-[280px] rounded-3xl border border-blue-300/50 bg-blue-200/50 shadow-xl md:h-[380px] md:w-[340px]"
                 style={{
@@ -94,23 +97,19 @@ export default function OurApproach() {
                 transition={{ duration: 0.4 }}
               />
 
-              {/* Main Image Card */}
               <motion.div
                 whileHover={{ scale: 1.03, y: -5 }}
                 transition={{ duration: 0.4, ease: 'easeOut' }}
               >
                 <div className="group relative h-80 w-[280px] overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl md:h-[380px] md:w-[340px]">
-                  {/* Image */}
                   <img
                     src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&auto=format&fit=crop&q=80"
                     alt="Team collaboration"
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
 
-                  {/* Overlay Gradient */}
                   <div className="absolute inset-0 bg-linear-to-t from-blue-900/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
-                  {/* Decorative Corner Element */}
                   <motion.div
                     className="absolute bottom-0 left-0 h-24 w-24"
                     initial={{ pathLength: 0 }}
@@ -130,7 +129,6 @@ export default function OurApproach() {
                 </div>
               </motion.div>
 
-              {/* Floating Decorative Elements */}
               <motion.div
                 className="absolute -top-4 -right-4 h-16 w-16 rounded-2xl bg-blue-500 opacity-20"
                 animate={{
@@ -158,14 +156,12 @@ export default function OurApproach() {
               />
             </motion.div>
 
-            {/* Right Side - Content */}
             <motion.div
               className="order-1 lg:order-2"
               initial="hidden"
               animate="visible"
               variants={containerVariants}
             >
-              {/* Main Title */}
               <motion.h2
                 variants={itemVariants}
                 className="mt-4 mb-6 text-4xl leading-tight font-bold text-slate-900 md:text-5xl lg:text-6xl"
@@ -173,7 +169,6 @@ export default function OurApproach() {
                 Our <span className="text-blue-600">Approach</span>
               </motion.h2>
 
-              {/* Subtitle */}
               <motion.p
                 variants={itemVariants}
                 className="mb-6 max-w-lg text-lg leading-relaxed text-slate-600 md:text-xl"
@@ -182,21 +177,18 @@ export default function OurApproach() {
                 digital solutions that create real value for businesses.
               </motion.p>
 
-              {/* Approach Steps */}
               <div className="space-y-8">
-                {approaches.map((approach, index) => (
+                {approaches.map((approach) => (
                   <motion.div
-                    key={index}
+                    key={approach.id}
                     variants={itemVariants}
                     className="group"
                   >
                     <div className="flex gap-5">
-                      {/* Number Badge */}
                       <div className="shrink-0">
-                        <IconWrapper element={approach.number} />
+                        <IconWrapper element={approach.id} />
                       </div>
 
-                      {/* Content */}
                       <div className="">
                         <h3 className="mb-2 text-xl font-semibold text-slate-900 transition-colors duration-300 group-hover:text-blue-600">
                           {approach.title}

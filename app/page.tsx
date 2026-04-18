@@ -1,11 +1,5 @@
-import HomePage from './Home/HomePage';
-import Services from './Services/Services';
+import HomePage from './home/home';
 
 export default function Home() {
-  return (
-    <>
-      <HomePage />
-      <Services />
-    </>
-  );
+  return <HomePage />;
 }

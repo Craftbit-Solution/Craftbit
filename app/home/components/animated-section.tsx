@@ -1,13 +1,22 @@
-import { motion } from "framer-motion";
+import { motion, Variants } from 'framer-motion';
+import React from 'react';
+
+interface AnimatedSectionProps {
+  children?: React.ReactElement;
+  className?: string;
+  delay: number;
+  direction?: string;
+  duration?: number;
+}
 
 export default function AnimatedSection({
   children,
-  className = "",
+  className = '',
   delay = 0,
-  direction = "up",
+  direction = 'up',
   duration = 0.6,
-}: any) {
-  const directions: any = {
+}: Readonly<AnimatedSectionProps>) {
+  const directions: Variants = {
     up: { y: 40, x: 0 },
     down: { y: -40, x: 0 },
     left: { y: 0, x: 40 },
@@ -26,7 +35,7 @@ export default function AnimatedSection({
         y: 0,
         x: 0,
       }}
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: true, margin: '-100px' }}
       transition={{
         duration,
         delay,

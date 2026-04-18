@@ -1,7 +1,9 @@
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 
-export default function SectionLabel({ text = '' }: any) {
-  const textVariants: any = {
+export default function SectionLabel({
+  text = '',
+}: Readonly<{ text: string }>) {
+  const textVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,

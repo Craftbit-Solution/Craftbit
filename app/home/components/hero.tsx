@@ -1,35 +1,35 @@
-"use client";
-import { motion, Variants } from "framer-motion";
+'use client';
+import { motion, Variants } from 'framer-motion';
 import {
   ArrowRight,
   Monitor,
   Shield,
   Clock,
   MessageCircle,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
+} from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const guarantees = [
   {
     icon: Shield,
-    iconBg: "#eef3ff",
-    iconColor: "#0D3082",
-    title: "30-day money-back",
-    desc: "Not happy? Full refund, no questions.",
+    iconBg: '#eef3ff',
+    iconColor: '#0D3082',
+    title: '30-day money-back',
+    desc: 'Not happy? Full refund, no questions.',
   },
   {
     icon: Clock,
-    iconBg: "#f0fdf4",
-    iconColor: "#16a34a",
-    title: "On-time delivery",
-    desc: "Late? Your first revision is free.",
+    iconBg: '#f0fdf4',
+    iconColor: '#16a34a',
+    title: 'On-time delivery',
+    desc: 'Late? Your first revision is free.',
   },
   {
     icon: MessageCircle,
-    iconBg: "#fffbeb",
-    iconColor: "#b45309",
-    title: "48h response",
-    desc: "Always reachable, always responsive.",
+    iconBg: '#fffbeb',
+    iconColor: '#b45309',
+    title: '48h response',
+    desc: 'Always reachable, always responsive.',
   },
 ];
 
@@ -49,16 +49,16 @@ const fadeUp: Variants = {
 export default function HomeHero() {
   return (
     <section className="relative z-10 select-text">
-      <div className="px-6 pt-12 pb-20 relative z-10">
+      <div className="relative z-10 px-6 pt-12 pb-20">
         <div className="text-center">
           <motion.div
             variants={fadeUp}
             initial="hidden"
             animate="show"
             custom={0}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#f0f4ff] border border-[#0D3082]/12 text-[#0D3082] text-sm font-medium mb-8"
+            className="mb-8 inline-flex items-center gap-2 rounded-full border border-[#0D3082]/12 bg-[#f0f4ff] px-4 py-2 text-sm font-medium text-[#0D3082]"
           >
-            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse flex-shrink-0" />
+            <span className="h-2 w-2 shrink-0 animate-pulse rounded-full bg-green-500" />
             <span className="text-sm font-medium">
               Now taking new projects for Q2 2026
             </span>
@@ -68,7 +68,7 @@ export default function HomeHero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] font-bold text-[#0D3082] leading-[1.12] tracking-tight"
+            className="text-4xl leading-[1.12] font-bold tracking-tight text-[#0D3082] sm:text-5xl md:text-6xl lg:text-[4rem]"
           >
             Your business, built
             <br />
@@ -80,7 +80,7 @@ export default function HomeHero() {
                 initial={{ pathLength: 0, opacity: 0 }}
                 animate={{ pathLength: 1, opacity: 1 }}
                 transition={{ duration: 1.2, delay: 0.7 }}
-                className="absolute -bottom-2 left-0 w-full pointer-events-none"
+                className="pointer-events-none absolute -bottom-2 left-0 w-full"
                 viewBox="0 0 300 10"
                 fill="none"
               >
@@ -104,12 +104,12 @@ export default function HomeHero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.25 }}
-            className="mt-7 text-lg md:text-xl text-[#0D3082]/60 max-w-[560px] mx-auto leading-relaxed"
+            className="mx-auto mt-7 max-w-[560px] text-lg leading-relaxed text-[#0D3082]/60 md:text-xl"
           >
-            We build{" "}
-            <span className="text-[#0D3082] font-medium">
+            We build{' '}
+            <span className="font-medium text-[#0D3082]">
               fast, conversion-focused websites
-            </span>{" "}
+            </span>{' '}
             and digital products for growing businesses. From design to
             deployment — you get a partner, not just a vendor.
           </motion.p>
@@ -119,22 +119,22 @@ export default function HomeHero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.38 }}
-            className="mt-10 flex flex-col sm:flex-row gap-3 justify-center items-center"
+            className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
           >
             <Button
               size="lg"
-              className="bg-linear-to-r from-[#0D3082] to-[#3E92CC] hover:opacity-90 text-white px-8 py-6 rounded-full text-base font-semibold shadow-xl shadow-[#0D3082]/25 hover:shadow-2xl hover:shadow-[#0D3082]/30 transition-all duration-300 group"
+              className="group rounded-full bg-linear-to-r from-[#0D3082] to-[#3E92CC] px-8 py-6 text-base font-semibold text-white shadow-xl shadow-[#0D3082]/25 transition-all duration-300 hover:opacity-90 hover:shadow-2xl hover:shadow-[#0D3082]/30"
             >
               Get a free consultation
-              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
 
             <Button
               variant="outline"
               size="lg"
-              className="border-[1.5px] border-[#0D3082]/20 text-[#0D3082] px-8 py-6 rounded-full text-base font-medium hover:bg-[#0D3082]/5 hover:border-[#3E92CC] transition-all duration-300 group bg-white"
+              className="group rounded-full border-[1.5px] border-[#0D3082]/20 bg-white px-8 py-6 text-base font-medium text-[#0D3082] transition-all duration-300 hover:border-[#3E92CC] hover:bg-[#0D3082]/5"
             >
-              <Monitor className="mr-2 w-4 h-4 text-[#3E92CC]" />
+              <Monitor className="mr-2 h-4 w-4 text-[#3E92CC]" />
               See our work
             </Button>
           </motion.div>
@@ -144,30 +144,30 @@ export default function HomeHero() {
             initial="hidden"
             animate="show"
             custom={4}
-            className="mt-14 flex flex-col sm:flex-row gap-3 justify-center items-stretch max-w-[620px] mx-auto"
+            className="mx-auto mt-14 flex max-w-[620px] flex-col items-stretch justify-center gap-3 sm:flex-row"
           >
             {guarantees.map((g) => {
               const Icon = g.icon;
               return (
                 <div
                   key={g.title}
-                  className="flex items-start gap-3 flex-1 px-4 py-4 rounded-xl border border-[#0D3082]/12 bg-[#fafbff] text-left"
+                  className="flex flex-1 items-start gap-3 rounded-xl border border-[#0D3082]/12 bg-[#fafbff] px-4 py-4 text-left"
                 >
                   <div
-                    className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
+                    className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg"
                     style={{ background: g.iconBg }}
                   >
                     <Icon
-                      className="w-4 h-4"
+                      className="h-4 w-4"
                       style={{ color: g.iconColor }}
                       strokeWidth={2.2}
                     />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-[#0D3082] leading-snug">
+                    <p className="text-sm leading-snug font-semibold text-[#0D3082]">
                       {g.title}
                     </p>
-                    <p className="text-xs text-[#0D3082]/55 mt-0.5 leading-snug">
+                    <p className="mt-0.5 text-xs leading-snug text-[#0D3082]/55">
                       {g.desc}
                     </p>
                   </div>

@@ -64,16 +64,13 @@ export default function ServiceHero() {
             transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
             className="relative flex items-center justify-center"
           >
-            {/* Glow background */}
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="h-[420px] w-[420px] rounded-full bg-blue-500/10 blur-3xl" />
             </div>
 
-            {/* Decorative rings */}
             <div className="absolute h-[460px] w-[460px] rounded-full border border-blue-200/40" />
             <div className="absolute h-[520px] w-[520px] rounded-full border border-blue-100/30" />
 
-            {/* Image container */}
             <div className="relative z-10 flex items-center justify-center">
               <div className="relative flex aspect-square w-64 items-center justify-center sm:w-80 lg:w-[400px]">
                 <div className="pointer-events-none absolute inset-0 rounded-full border-2 border-blue-400 shadow-2xl shadow-blue-300/40" />
@@ -86,7 +83,6 @@ export default function ServiceHero() {
                 />
               </div>
 
-              {/* Floating badge */}
               <motion.div
                 animate={{ y: [0, 8, 0] }}
                 transition={{

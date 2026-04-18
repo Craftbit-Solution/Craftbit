@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import {
   Code2,
   ShoppingCart,
@@ -10,14 +10,27 @@ import {
   Wrench,
   ArrowRight,
   Check,
+  LucideIcon,
 } from 'lucide-react';
-import ServiceCard from './ServiceCard';
+import ServiceCard from './service-card';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import SectionLabel from './SectionLabel';
-import IconWrapper from './IconWrapper';
+import SectionLabel from './section-label';
+import IconWrapper from './icon-wrapper';
 
-const services: any[] = [
+export type Service = {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  features: string[];
+  priceRange: string;
+  targetAudience: string;
+  color: string;
+  bgColor: string;
+  popular?: boolean;
+};
+
+const services: Service[] = [
   {
     icon: Code2,
     title: 'Custom Web Applications',
@@ -127,7 +140,7 @@ const maintenance = {
 };
 
 export default function ServicesLists() {
-  const titleVariants: any = {
+  const titleVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
@@ -172,7 +185,6 @@ export default function ServicesLists() {
             ))}
           </div>
 
-          {/* Maintenance  Card */}
           <Card className="group mt-4 gap-0 space-y-4 overflow-hidden p-4 transition-all duration-300 hover:shadow-xl lg:p-6">
             <div className="flex items-start gap-4">
               <IconWrapper
@@ -190,9 +202,9 @@ export default function ServicesLists() {
             </div>
 
             <ul className="mt-2 flex flex-wrap gap-4">
-              {maintenance.features.map((feature, idx) => (
+              {maintenance.features.map((feature) => (
                 <li
-                  key={idx}
+                  key={feature}
                   className="flex items-center gap-2 rounded-(--radius) px-3 py-1"
                 >
                   <div className="flex h-5 w-5 items-center justify-center rounded-(--radius) bg-green-100">

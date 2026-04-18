@@ -1,44 +1,44 @@
-"use client";
+'use client';
 
-import { motion, Variants } from "framer-motion";
-import { Shield, Clock, Users, Activity, CheckCircle } from "lucide-react";
-import AnimatedSection from "./AnimatedSection";
-import SectionHeader from "./SectionHeader";
+import { motion, Variants } from 'framer-motion';
+import { Shield, Clock, Users, Activity, CheckCircle } from 'lucide-react';
+import AnimatedSection from './animated-section';
+import SectionHeader from './header';
 
 const features = [
   {
     icon: Shield,
-    title: "On-time delivery",
+    title: 'On-time delivery',
     description:
-      "We set realistic timelines and stick to them. Late delivery means your next revision is on us.",
+      'We set realistic timelines and stick to them. Late delivery means your next revision is on us.',
   },
   {
     icon: Clock,
-    title: "48h response",
+    title: '48h response',
     description:
-      "Every message gets a reply within 48 hours — usually much faster during business hours.",
+      'Every message gets a reply within 48 hours — usually much faster during business hours.',
   },
   {
     icon: Users,
-    title: "Direct access",
+    title: 'Direct access',
     description:
-      "You talk to the designer and developer directly — no middlemen, no lost-in-translation moments.",
+      'You talk to the designer and developer directly — no middlemen, no lost-in-translation moments.',
   },
   {
     icon: Activity,
-    title: "Performance-first",
+    title: 'Performance-first',
     description:
-      "Every site we ship is optimized for speed, SEO, and Core Web Vitals out of the box.",
+      'Every site we ship is optimized for speed, SEO, and Core Web Vitals out of the box.',
   },
 ];
 
 const checkItems = [
-  "Custom-tailored solutions",
-  "Transparent pricing",
-  "Fixed-scope contracts",
-  "Post-launch support",
-  "SEO-ready builds",
-  "You own everything",
+  'Custom-tailored solutions',
+  'Transparent pricing',
+  'Fixed-scope contracts',
+  'Post-launch support',
+  'SEO-ready builds',
+  'You own everything',
 ];
 
 const fadeUp: Variants = {
@@ -55,23 +55,23 @@ const fadeUp: Variants = {
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-0 mb-8">
+    <section className="mb-8 py-0">
       <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={fadeUp}
-        className="flex items-center justify-center gap-3 mb-12"
+        className="mb-12 flex items-center justify-center gap-3"
       >
         <div className="h-px w-10 bg-linear-to-r from-transparent to-[#3E92CC]" />
-        <span className="text-[#3E92CC] font-medium text-xs tracking-widest uppercase">
+        <span className="text-xs font-medium tracking-widest text-[#3E92CC] uppercase">
           Why CraftBit
         </span>
         <div className="h-px w-10 bg-linear-to-l from-transparent to-[#3E92CC]" />
       </motion.div>
 
-      <div className="px-6 relative">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+      <div className="relative px-6">
+        <div className="grid items-start gap-16 lg:grid-cols-2">
           <div>
             <SectionHeader
               label=""
@@ -84,10 +84,10 @@ export default function WhyChooseUs() {
               {checkItems.map((item, index) => (
                 <AnimatedSection key={item} delay={index * 0.05}>
                   <div className="flex items-center gap-3">
-                    <div className="w-5 h-5 rounded-full bg-[#3E92CC]/10 flex items-center justify-center shrink-0">
-                      <CheckCircle className="w-3 h-3 text-[#3E92CC]" />
+                    <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#3E92CC]/10">
+                      <CheckCircle className="h-3 w-3 text-[#3E92CC]" />
                     </div>
-                    <span className="text-[#0D3082]/70 text-sm font-medium">
+                    <span className="text-sm font-medium text-[#0D3082]/70">
                       {item}
                     </span>
                   </div>
@@ -96,28 +96,28 @@ export default function WhyChooseUs() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 grid-rows-2 gap-4">
+          <div className="grid grid-cols-1 grid-rows-2 gap-4 sm:grid-cols-2">
             {features.map((feature, index) => (
               <AnimatedSection
                 key={feature.title}
                 delay={index * 0.1}
-                direction={index % 2 === 0 ? "left" : "right"}
+                direction={index % 2 === 0 ? 'left' : 'right'}
                 className="h-full"
               >
                 <motion.div
                   whileHover={{ scale: 1.02 }}
-                  className="h-full p-6 rounded-2xl border border-[#0D3082]/08 bg-[#fafbff] hover:shadow-lg hover:shadow-[#0D3082]/08 transition-all duration-300"
+                  className="border-[#0D3082]/08 hover:shadow-[#0D3082]/08 h-full rounded-2xl border bg-[#fafbff] p-6 transition-all duration-300 hover:shadow-lg"
                 >
-                  <div className="w-11 h-11 rounded-xl bg-[#3E92CC]/10 flex items-center justify-center mb-4">
+                  <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-[#3E92CC]/10">
                     <feature.icon
-                      className="w-5 h-5 text-[#3E92CC]"
+                      className="h-5 w-5 text-[#3E92CC]"
                       strokeWidth={2}
                     />
                   </div>
-                  <h3 className="text-base font-semibold text-[#0D3082] mb-2">
+                  <h3 className="mb-2 text-base font-semibold text-[#0D3082]">
                     {feature.title}
                   </h3>
-                  <p className="text-sm text-[#0D3082]/60 leading-relaxed">
+                  <p className="text-sm leading-relaxed text-[#0D3082]/60">
                     {feature.description}
                   </p>
                 </motion.div>

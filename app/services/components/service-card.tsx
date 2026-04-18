@@ -6,9 +6,16 @@ import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Card } from '@/components/ui/card';
-import IconWrapper from './IconWrapper';
+import IconWrapper from './icon-wrapper';
+import { Service } from './service-list';
 
-export default function ServiceCard({ service, index }: any) {
+export default function ServiceCard({
+  service,
+  index,
+}: Readonly<{
+  service: Service;
+  index: number;
+}>) {
   const {
     icon: Icon,
     title,
@@ -16,8 +23,6 @@ export default function ServiceCard({ service, index }: any) {
     features,
     priceRange,
     targetAudience,
-    color = 'from-blue-500 to-blue-600',
-    bgColor = 'bg-blue-50',
   } = service;
 
   const [open, setOpen] = useState(false);
@@ -31,13 +36,10 @@ export default function ServiceCard({ service, index }: any) {
       className={`group relative`}
     >
       <Card className="mt-4 gap-0 space-y-4 overflow-hidden p-4 transition-all duration-300 hover:shadow-xl lg:p-6">
-        {/* Icon */}
-
         <IconWrapper
           element={<Icon className="h-5 w-5 text-white" strokeWidth={2} />}
         />
 
-        {/* Title & Description */}
         <h3 className="mb-2 text-xl font-bold text-slate-900 transition-colors duration-300 group-hover:text-blue-600">
           {title}
         </h3>
@@ -45,7 +47,6 @@ export default function ServiceCard({ service, index }: any) {
           {description}
         </p>
 
-        {/* Price */}
         <div className="mb-6 border-b border-slate-100 pb-6">
           <span className="text-sm text-slate-500">Starting from</span>
           <div className="text-xl font-bold text-slate-900">{priceRange}</div>
@@ -61,10 +62,9 @@ export default function ServiceCard({ service, index }: any) {
 
         {open && (
           <div className="animate-in fade-in slide-in-from-top-2 duration-300">
-            {/* Features */}
             <ul className="mb-6 space-y-3">
-              {features.map((feature: any, i: number) => (
-                <li key={i} className="flex items-start gap-3">
+              {features.map((feature) => (
+                <li key={feature} className="flex items-start gap-3">
                   <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-(--radius) bg-green-100">
                     <Check className="h-3 w-3 text-green-600" />
                   </div>
@@ -73,7 +73,6 @@ export default function ServiceCard({ service, index }: any) {
               ))}
             </ul>
 
-            {/* Target Audience */}
             <div className="mb-6 rounded-(--radius) bg-slate-50 px-4 py-2">
               <span className="text-xs font-medium tracking-wider text-slate-500 uppercase">
                 Perfect for
@@ -83,7 +82,6 @@ export default function ServiceCard({ service, index }: any) {
           </div>
         )}
 
-        {/* CTA */}
         <Button
           className={`group/btn h-10 w-full rounded-(--radius) bg-slate-900 font-medium text-white hover:bg-slate-800`}
         >
