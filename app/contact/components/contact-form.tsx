@@ -1,0 +1,257 @@
+'use client';
+import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { Label } from '@/components/ui/label';
+import { Send, Loader2, CheckCircle2, Clock } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Card } from '@/components/ui/card';
+
+export default function ContactForm() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    service: '',
+    budget: '',
+    message: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+
+    setIsSubmitting(false);
+    setIsSubmitted(true);
+  };
+
+  if (isSubmitted) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="py-12 text-center"
+      >
+        <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
+          <CheckCircle2 className="h-8 w-8 text-green-600" />
+        </div>
+        <h3 className="mb-3 text-2xl font-bold text-slate-900">Thank you!</h3>
+        <p className="mb-6 text-slate-600">
+          We&apos;ve received your message and will get back to you within 24
+          hours.
+        </p>
+        <Button
+          variant="outline"
+          onClick={() => {
+            setIsSubmitted(false);
+            setFormData({
+              name: '',
+              email: '',
+              phone: '',
+              company: '',
+              service: '',
+              budget: '',
+              message: '',
+            });
+          }}
+          className="rounded-full"
+        >
+          Send another message
+        </Button>
+      </motion.div>
+    );
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 30 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay: 0.2 }}
+    >
+      <Card className="mt-4 gap-0 space-y-4 overflow-hidden p-4 transition-all duration-300 hover:shadow-xl lg:p-6">
+        <div className="mb-6 flex items-center gap-2">
+          <Clock className="h-5 w-5 text-green-500" />
+          <span className="text-sm text-slate-600">
+            Average response time: 4 hours
+          </span>
+        </div>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="grid gap-6 sm:grid-cols-2">
+            <div className="space-y-2">
+              <Label htmlFor="name">Full Name *</Label>
+              <Input
+                id="name"
+                placeholder="John Doe"
+                value={formData.name}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
+                required
+                className="h-10 rounded-(--radius) border-slate-200 py-2 focus:border-orange-500 focus:ring-orange-500"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="email">Email Address *</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="john@company.com"
+                value={formData.email}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
+                required
+                className="h-10 rounded-(--radius) border-slate-200 py-2 focus:border-orange-500 focus:ring-orange-500"
+              />
+            </div>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2">
+            <div className="space-y-2">
+              <Label htmlFor="phone">Phone Number</Label>
+              <Input
+                id="phone"
+                type="tel"
+                placeholder="+91 98765 43210"
+                value={formData.phone}
+                onChange={(e) =>
+                  setFormData({ ...formData, phone: e.target.value })
+                }
+                className="h-10 rounded-(--radius) border-slate-200 py-2 focus:border-orange-500 focus:ring-orange-500"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="company">Company Name</Label>
+              <Input
+                id="company"
+                placeholder="Your Company"
+                value={formData.company}
+                onChange={(e) =>
+                  setFormData({ ...formData, company: e.target.value })
+                }
+                className="h-10 rounded-(--radius) border-slate-200 py-2 focus:border-orange-500 focus:ring-orange-500"
+              />
+            </div>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2">
+            <div className="space-y-2">
+              <Label>Service Interested In *</Label>
+              <Select
+                value={formData.service}
+                onValueChange={(value) =>
+                  setFormData({ ...formData, service: value })
+                }
+                required
+              >
+                <SelectTrigger className="h-10 w-full min-w-0 rounded-(--radius) border-slate-200">
+                  <SelectValue placeholder="Select a service" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="custom-web-app">
+                    Custom Web Application
+                  </SelectItem>
+                  <SelectItem value="ecommerce">E-commerce Platform</SelectItem>
+                  <SelectItem value="business-website">
+                    Business Website
+                  </SelectItem>
+                  <SelectItem value="saas">SaaS Development</SelectItem>
+                  <SelectItem value="redesign">Website Redesign</SelectItem>
+                  <SelectItem value="maintenance">
+                    Maintenance & Support
+                  </SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="space-y-2">
+              <Label>Budget Range *</Label>
+              <Select
+                value={formData.budget}
+                onValueChange={(value) =>
+                  setFormData({ ...formData, budget: value })
+                }
+                required
+              >
+                <SelectTrigger className="h-10 w-full min-w-0 rounded-(--radius) border-slate-200">
+                  <SelectValue placeholder="Select budget range" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="50k-1l">₹50,000 - ₹1,00,000</SelectItem>
+                  <SelectItem value="1l-2l">₹1,00,000 - ₹2,00,000</SelectItem>
+                  <SelectItem value="2l-5l">₹2,00,000 - ₹5,00,000</SelectItem>
+                  <SelectItem value="5l+">₹5,00,000+</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="message">Project Details *</Label>
+            <Textarea
+              id="message"
+              placeholder="Tell us about your project, goals, and timeline..."
+              value={formData.message}
+              onChange={(e) =>
+                setFormData({ ...formData, message: e.target.value })
+              }
+              required
+              rows={5}
+              className="h-16 resize-none rounded-(--radius) border-slate-200 focus:border-orange-500 focus:ring-orange-500"
+            />
+          </div>
+
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            className="mt-2 h-12 w-full rounded-(--radius) bg-slate-900 text-base font-medium text-white hover:bg-slate-800"
+          >
+            {isSubmitting ? (
+              <>
+                <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                Sending...
+              </>
+            ) : (
+              <>
+                <Send className="mr-2 h-5 w-5" />
+                Send Message
+              </>
+            )}
+          </Button>
+
+          <p className="mt-2 text-center text-sm text-slate-500">
+            By submitting this form, you agree to our privacy policy.
+          </p>
+
+          <div className="mt-12 rounded-(--radius) bg-slate-900 p-6">
+            <div className="mb-4 flex items-center gap-4">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500">
+                <Clock className="h-6 w-6 text-white" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-white">
+                  Fast & reliable response
+                </h3>
+                <p className="text-sm text-slate-400">
+                  We&apos;ll respond within 24 hours. No spam, guaranteed.
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </Card>
+    </motion.div>
+  );
+}
