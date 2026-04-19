@@ -1,6 +1,7 @@
+'use client';
+
 import { motion, Variants } from 'framer-motion';
-import SectionLabel from './section-label';
-import IconWrapper from './icon-wrapper';
+import SectionWrapper from '@/components/shared/section-wrapper';
 
 type Approach = {
   id: number;
@@ -8,203 +9,135 @@ type Approach = {
   description: string;
 };
 
+const approaches: Approach[] = [
+  {
+    id: 1,
+    title: 'Understand First',
+    description:
+      'We start by deeply understanding your goals, users, and challenges to ensure the solution fits your needs perfectly.',
+  },
+  {
+    id: 2,
+    title: 'Design & Iterate',
+    description:
+      'We craft elegant, user-centered designs through rapid prototyping and continuous feedback loops.',
+  },
+  {
+    id: 3,
+    title: 'Build & Scale',
+    description:
+      'We develop robust, scalable solutions using modern technologies that grow with your business.',
+  },
+];
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] },
+  }),
+};
+
 export default function OurApproach() {
-  const approaches: Approach[] = [
-    {
-      id: 1,
-      title: 'Understand First',
-      description:
-        'We start by deeply understanding your goals, users, and challenges to ensure the solution fits your needs perfectly.',
-    },
-    {
-      id: 2,
-      title: 'Design & Iterate',
-      description:
-        'We craft elegant, user-centered designs through rapid prototyping and continuous feedback loops.',
-    },
-    {
-      id: 3,
-      title: 'Build & Scale',
-      description:
-        'We develop robust, scalable solutions using modern technologies that grow with your business.',
-    },
-  ];
-
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, x: 30 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.6,
-        ease: [0.25, 0.46, 0.45, 0.94],
-      },
-    },
-  };
-
-  const imageStackVariants: Variants = {
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.8,
-        ease: [0.25, 0.46, 0.45, 0.94],
-      },
-    },
-  };
-
   return (
-    <>
-      <SectionLabel text={'How We Work'} />
+    <SectionWrapper className="py-16">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeUp}
+        custom={0}
+        className="mb-6 flex items-center justify-center gap-3"
+      >
+        <div className="h-px w-10 bg-linear-to-r from-transparent to-[#3E92CC]" />
+        <span className="text-xs font-medium tracking-widest text-[#3E92CC] uppercase">
+          How We Work
+        </span>
+        <div className="h-px w-10 bg-linear-to-l from-transparent to-[#3E92CC]" />
+      </motion.div>
 
-      <div className="flex items-center justify-center px-4 py-6">
-        <div className="w-full">
-          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
-            <motion.div
-              className="relative order-2 flex h-[400px] items-center justify-center md:h-[480px] lg:order-1"
-              initial="hidden"
-              animate="visible"
-              variants={imageStackVariants}
-            >
-              <motion.div
-                className="absolute h-80 w-[280px] rounded-3xl border border-blue-200/50 bg-blue-100/60 shadow-lg md:h-[380px] md:w-[340px]"
-                style={{
-                  transform:
-                    'rotate(-6deg) translateX(-20px) translateY(-15px)',
-                }}
-                whileHover={{ rotate: -8, scale: 1.02 }}
-                transition={{ duration: 0.4 }}
-              />
+      <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+          custom={1}
+          className="relative order-2 lg:order-1"
+        >
+          <div className="shadow-[#0D3082]/08 overflow-hidden rounded-3xl border border-[#0D3082]/10 shadow-xl">
+            <img
+              src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&auto=format&fit=crop&q=80"
+              alt="Team collaboration"
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <motion.div
+            animate={{ y: [0, -6, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+            className="border-[#0D3082]/08 absolute -right-4 -bottom-4 flex items-center gap-3 rounded-2xl border bg-white px-4 py-3 shadow-lg"
+          >
+            <span className="h-2 w-2 animate-pulse rounded-full bg-green-500" />
+            <p className="text-xs font-semibold text-[#0D3082]">
+              3-step process, zero surprises
+            </p>
+          </motion.div>
+        </motion.div>
+        <div className="order-1 lg:order-2">
+          <motion.h2
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            custom={1}
+            className="mb-4 text-3xl leading-tight font-bold tracking-tight text-[#0D3082] sm:text-4xl"
+          >
+            Our{' '}
+            <span className="bg-linear-to-r from-[#0D3082] to-[#3E92CC] bg-clip-text text-transparent">
+              approach
+            </span>
+          </motion.h2>
 
-              <motion.div
-                className="absolute h-80 w-[280px] rounded-3xl border border-blue-300/50 bg-blue-200/50 shadow-xl md:h-[380px] md:w-[340px]"
-                style={{
-                  transform: 'rotate(-3deg) translateX(-10px) translateY(-8px)',
-                }}
-                whileHover={{ rotate: -4, scale: 1.02 }}
-                transition={{ duration: 0.4 }}
-              />
+          <motion.p
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            custom={2}
+            className="mb-10 text-lg leading-relaxed text-[#0D3082]/60"
+          >
+            We focus on delivering simple, scalable, and user-centric digital
+            solutions that create real value for businesses.
+          </motion.p>
 
+          <div className="space-y-8">
+            {approaches.map((approach, index) => (
               <motion.div
-                whileHover={{ scale: 1.03, y: -5 }}
-                transition={{ duration: 0.4, ease: 'easeOut' }}
+                key={approach.id}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeUp}
+                custom={index + 3}
+                className="flex gap-5"
               >
-                <div className="group relative h-80 w-[280px] overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl md:h-[380px] md:w-[340px]">
-                  <img
-                    src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&auto=format&fit=crop&q=80"
-                    alt="Team collaboration"
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-
-                  <div className="absolute inset-0 bg-linear-to-t from-blue-900/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-
-                  <motion.div
-                    className="absolute bottom-0 left-0 h-24 w-24"
-                    initial={{ pathLength: 0 }}
-                  >
-                    <svg viewBox="0 0 100 100" className="h-full w-full">
-                      <motion.path
-                        d="M 0 100 Q 0 50 50 50 Q 100 50 100 0"
-                        fill="none"
-                        stroke="#3B82F6"
-                        strokeWidth="3"
-                        initial={{ pathLength: 0 }}
-                        animate={{ pathLength: 1 }}
-                        transition={{ duration: 1.5, delay: 0.8 }}
-                      />
-                    </svg>
-                  </motion.div>
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-[#0D3082] to-[#3E92CC] text-sm font-bold text-white shadow-md shadow-[#0D3082]/20">
+                  {approach.id}
+                </div>
+                <div>
+                  <h3 className="mb-1.5 text-base font-semibold text-[#0D3082]">
+                    {approach.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-[#0D3082]/60">
+                    {approach.description}
+                  </p>
                 </div>
               </motion.div>
-
-              <motion.div
-                className="absolute -top-4 -right-4 h-16 w-16 rounded-2xl bg-blue-500 opacity-20"
-                animate={{
-                  y: [0, -10, 0],
-                  rotate: [0, 5, 0],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              />
-              <motion.div
-                className="absolute -bottom-6 left-10 h-12 w-12 rounded-xl bg-blue-400 opacity-30"
-                animate={{
-                  y: [0, 10, 0],
-                  rotate: [0, -5, 0],
-                }}
-                transition={{
-                  duration: 3.5,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                  delay: 0.5,
-                }}
-              />
-            </motion.div>
-
-            <motion.div
-              className="order-1 lg:order-2"
-              initial="hidden"
-              animate="visible"
-              variants={containerVariants}
-            >
-              <motion.h2
-                variants={itemVariants}
-                className="mt-4 mb-6 text-4xl leading-tight font-bold text-slate-900 md:text-5xl lg:text-6xl"
-              >
-                Our <span className="text-blue-600">Approach</span>
-              </motion.h2>
-
-              <motion.p
-                variants={itemVariants}
-                className="mb-6 max-w-lg text-lg leading-relaxed text-slate-600 md:text-xl"
-              >
-                We focus on delivering simple, scalable, and user-centric
-                digital solutions that create real value for businesses.
-              </motion.p>
-
-              <div className="space-y-8">
-                {approaches.map((approach) => (
-                  <motion.div
-                    key={approach.id}
-                    variants={itemVariants}
-                    className="group"
-                  >
-                    <div className="flex gap-5">
-                      <div className="shrink-0">
-                        <IconWrapper element={approach.id} />
-                      </div>
-
-                      <div className="">
-                        <h3 className="mb-2 text-xl font-semibold text-slate-900 transition-colors duration-300 group-hover:text-blue-600">
-                          {approach.title}
-                        </h3>
-                        <p className="leading-relaxed text-slate-500">
-                          {approach.description}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+            ))}
           </div>
         </div>
       </div>
-    </>
+    </SectionWrapper>
   );
 }

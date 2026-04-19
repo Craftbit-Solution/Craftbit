@@ -1,3 +1,5 @@
+'use client';
+
 import { motion, Variants } from 'framer-motion';
 import {
   Lightbulb,
@@ -7,10 +9,8 @@ import {
   ArrowRight,
   LucideIcon,
 } from 'lucide-react';
-import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import SectionLabel from './section-label';
-import IconWrapper from './icon-wrapper';
+import SectionWrapper from '@/components/shared/section-wrapper';
 
 type Step = {
   icon: LucideIcon;
@@ -18,154 +18,130 @@ type Step = {
   description: string;
 };
 
+const steps: Step[] = [
+  {
+    icon: Lightbulb,
+    title: 'Discovery',
+    description:
+      'We dive deep into your business goals, target audience, and competition to create a strategic roadmap.',
+  },
+  {
+    icon: Palette,
+    title: 'Design',
+    description:
+      'We craft intuitive designs that align with your brand and resonate with your users.',
+  },
+  {
+    icon: Code,
+    title: 'Development',
+    description:
+      'We build robust, scalable solutions using modern technologies and best practices.',
+  },
+  {
+    icon: Rocket,
+    title: 'Launch',
+    description:
+      'We deploy with precision, ensuring a smooth launch and providing ongoing support.',
+  },
+];
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] },
+  }),
+};
+
 export default function ProcessSection() {
-  const steps: Step[] = [
-    {
-      icon: Lightbulb,
-      title: 'Discovery',
-      description:
-        'We dive deep into your business goals, target audience, and competition to create a strategic roadmap.',
-    },
-    {
-      icon: Palette,
-      title: 'Design',
-      description:
-        'We craft beautiful, intuitive designs that align with your brand and resonate with your users.',
-    },
-    {
-      icon: Code,
-      title: 'Development',
-      description:
-        'We build robust, scalable solutions using cutting-edge technologies and best practices.',
-    },
-    {
-      icon: Rocket,
-      title: 'Launch',
-      description:
-        'We deploy your solution with precision, ensuring a smooth launch and ongoing support.',
-    },
-  ];
-
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const cardVariants: Variants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.7,
-        ease: [0.25, 0.46, 0.45, 0.94],
-      },
-    },
-  };
-
-  const titleVariants: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: 'easeOut',
-      },
-    },
-  };
-
   return (
-    <div className="px-6 py-12">
-      <SectionLabel text={'Our Process'} />
+    <SectionWrapper className="py-16">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeUp}
+        custom={0}
+        className="mb-6 flex items-center justify-center gap-3"
+      >
+        <div className="h-px w-10 bg-linear-to-r from-transparent to-[#3E92CC]" />
+        <span className="text-xs font-medium tracking-widest text-[#3E92CC] uppercase">
+          Our Process
+        </span>
+        <div className="h-px w-10 bg-linear-to-l from-transparent to-[#3E92CC]" />
+      </motion.div>
 
-      <div className="">
-        <motion.div
-          className="mb-16 text-center"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={titleVariants}
-        >
-          <motion.h2
-            variants={titleVariants}
-            className="mb-6 text-4xl font-bold text-slate-900 md:text-5xl lg:text-6xl"
-          >
-            From idea to launch in{' '}
-            <span className="bg-linear-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-              4 simple steps
-            </span>
-          </motion.h2>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeUp}
+        custom={1}
+        className="mb-12 text-center"
+      >
+        <h2 className="mb-4 text-3xl leading-tight font-bold tracking-tight text-[#0D3082] sm:text-4xl lg:text-5xl">
+          From idea to launch in{' '}
+          <span className="bg-linear-to-r from-[#0D3082] to-[#3E92CC] bg-clip-text text-transparent">
+            4 simple steps
+          </span>
+        </h2>
+        <p className="mx-auto max-w-xl text-lg leading-relaxed text-[#0D3082]/60">
+          A transparent, collaborative process that keeps you informed and
+          involved every step of the way.
+        </p>
+      </motion.div>
 
-          <motion.p
-            variants={titleVariants}
-            className="mx-auto max-w-3xl text-lg leading-relaxed text-slate-600 md:text-xl"
-          >
-            A transparent, collaborative process that keeps you informed and
-            involved every step of the way.
-          </motion.p>
-        </motion.div>
-        <motion.div
-          className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-8"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={containerVariants}
-        >
-          {steps.map((step, index) => {
-            const Icon = step.icon;
-            return (
-              <motion.div
-                key={step.title}
-                variants={cardVariants}
-                className="group relative"
-              >
-                {index < steps.length - 1 && (
-                  <div className="absolute top-24 left-full z-0 hidden h-px w-8 bg-linear-to-r from-blue-300 to-transparent lg:block" />
-                )}
+      <div className="relative grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+        {steps.map((step, index) => {
+          const Icon = step.icon;
+          return (
+            <motion.div
+              key={step.title}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+              custom={index + 2}
+              className="group border-[#0D3082]/08 hover:shadow-[#0D3082]/08 relative rounded-2xl border bg-[#fafbff] p-6 transition-all duration-300 hover:shadow-lg"
+            >
+              {index < steps.length - 1 && (
+                <div className="absolute top-10 left-full z-10 hidden h-px w-4 bg-linear-to-r from-[#3E92CC]/40 to-transparent lg:block" />
+              )}
 
-                <Card className="mt-4 h-[270px] gap-0 space-y-4 overflow-hidden p-4 transition-all duration-300 hover:shadow-xl lg:p-6">
-                  <div className="shrink-0">
-                    <IconWrapper
-                      element={
-                        <Icon className="h-6 w-6 text-white" strokeWidth={2} />
-                      }
-                    />
-                  </div>
+              <div className="mb-4 flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#3E92CC]/10">
+                  <Icon className="h-5 w-5 text-[#3E92CC]" strokeWidth={2} />
+                </div>
+                <span className="text-2xl font-bold text-[#0D3082]/10">
+                  0{index + 1}
+                </span>
+              </div>
 
-                  <h3 className="mb-4 text-2xl font-bold text-slate-900 transition-colors duration-300 group-hover:text-blue-600">
-                    {step.title}
-                  </h3>
-
-                  <p className="leading-relaxed text-slate-600 transition-colors duration-300 group-hover:text-slate-700">
-                    {step.description}
-                  </p>
-                </Card>
-              </motion.div>
-            );
-          })}
-        </motion.div>
-        <motion.div
-          className="mt-16 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-        >
-          <Button
-            className={`group/btn h-14 w-[250px] rounded-(--radius) bg-slate-900 font-medium text-white hover:bg-slate-800`}
-          >
-            Let&apos;s Get Started
-            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
-          </Button>
-        </motion.div>
+              <h3 className="mb-2 text-base font-semibold text-[#0D3082]">
+                {step.title}
+              </h3>
+              <p className="text-sm leading-relaxed text-[#0D3082]/60">
+                {step.description}
+              </p>
+            </motion.div>
+          );
+        })}
       </div>
-    </div>
+
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeUp}
+        custom={7}
+        className="mt-12 text-center"
+      >
+        <Button className="group h-12 rounded-full bg-linear-to-r from-[#0D3082] to-[#3E92CC] px-8 text-base font-semibold text-white shadow-xl shadow-[#0D3082]/25 transition-all duration-300 hover:opacity-90 hover:shadow-2xl hover:shadow-[#0D3082]/30">
+          Let&apos;s get started
+          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+        </Button>
+      </motion.div>
+    </SectionWrapper>
   );
 }
