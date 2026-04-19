@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import SectionWrapper from '@/components/shared/section-wrapper';
+import Link from 'next/link';
 
 type Guarantee = {
   icon: LucideIcon;
@@ -127,21 +128,25 @@ export default function HomeHero() {
           transition={{ duration: 0.5, delay: 0.38 }}
           className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
         >
-          <Button
-            size="lg"
-            className="group rounded-full bg-linear-to-r from-[#0D3082] to-[#3E92CC] px-8 py-6 text-base font-semibold text-white shadow-xl shadow-[#0D3082]/25 transition-all duration-300 hover:opacity-90 hover:shadow-2xl hover:shadow-[#0D3082]/30"
-          >
-            Get a free consultation
-            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            className="rounded-full border-[1.5px] border-[#0D3082]/20 bg-white px-8 py-6 text-base font-medium text-[#0D3082] transition-all duration-300 hover:border-[#3E92CC] hover:bg-[#0D3082]/5"
-          >
-            <Monitor className="mr-2 h-4 w-4 text-[#3E92CC]" />
-            See our work
-          </Button>
+          <Link href="/contact">
+            <Button
+              size="lg"
+              className="group rounded-full bg-linear-to-r from-[#0D3082] to-[#3E92CC] px-8 py-6 text-base font-semibold text-white shadow-xl shadow-[#0D3082]/25 transition-all duration-300 hover:opacity-90 hover:shadow-2xl hover:shadow-[#0D3082]/30"
+            >
+              Get a free consultation
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </Link>
+          <Link href="/portfolio">
+            <Button
+              variant="outline"
+              size="lg"
+              className="rounded-full border-[1.5px] border-[#0D3082]/20 bg-white px-8 py-6 text-base font-medium text-[#0D3082] transition-all duration-300 hover:border-[#3E92CC] hover:bg-[#0D3082]/5"
+            >
+              <Monitor className="mr-2 h-4 w-4 text-[#3E92CC]" />
+              See our work
+            </Button>
+          </Link>
         </motion.div>
 
         <motion.div

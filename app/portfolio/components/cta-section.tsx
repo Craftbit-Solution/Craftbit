@@ -3,6 +3,7 @@ import { motion, Variants } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import SectionWrapper from '@/components/shared/section-wrapper';
+import Link from 'next/link';
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -67,20 +68,24 @@ export default function CTASection() {
           custom={3}
           className="flex flex-col items-center justify-center gap-3 sm:flex-row"
         >
-          <Button
-            size="lg"
-            className="group rounded-full bg-white px-8 py-6 text-base font-semibold text-[#0D3082] shadow-xl transition-all duration-300 hover:bg-white/90 hover:shadow-2xl"
-          >
-            Start your project
-            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            className="rounded-full border-[1.5px] border-white/25 bg-transparent px-8 py-6 text-base font-medium text-white transition-all duration-300 hover:border-white/50 hover:bg-white/10"
-          >
-            See our services
-          </Button>
+          <Link href="/contact">
+            <Button
+              size="lg"
+              className="group rounded-full bg-white px-8 py-6 text-base font-semibold text-[#0D3082] shadow-xl transition-all duration-300 hover:bg-white/90 hover:shadow-2xl"
+            >
+              Start your project
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </Link>
+          <Link href="/services">
+            <Button
+              variant="outline"
+              size="lg"
+              className="rounded-full border-[1.5px] border-white/25 bg-transparent px-8 py-6 text-base font-medium text-white transition-all duration-300 hover:border-white/50 hover:bg-white/10"
+            >
+              See our services
+            </Button>
+          </Link>
         </motion.div>
 
         <motion.p

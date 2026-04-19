@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import SectionWrapper from '@/components/shared/section-wrapper';
+import Link from 'next/link';
 
 type Step = {
   icon: LucideIcon;
@@ -137,10 +138,12 @@ export default function ProcessSection() {
         custom={7}
         className="mt-12 text-center"
       >
-        <Button className="group h-12 rounded-full bg-linear-to-r from-[#0D3082] to-[#3E92CC] px-8 text-base font-semibold text-white shadow-xl shadow-[#0D3082]/25 transition-all duration-300 hover:opacity-90 hover:shadow-2xl hover:shadow-[#0D3082]/30">
-          Let&apos;s get started
-          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-        </Button>
+        <Link href="/contact">
+          <Button className="group h-12 rounded-full bg-linear-to-r from-[#0D3082] to-[#3E92CC] px-8 text-base font-semibold text-white shadow-xl shadow-[#0D3082]/25 transition-all duration-300 hover:opacity-90 hover:shadow-2xl hover:shadow-[#0D3082]/30">
+            Let&apos;s get started
+            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Button>
+        </Link>
       </motion.div>
     </SectionWrapper>
   );

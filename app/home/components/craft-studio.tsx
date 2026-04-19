@@ -10,6 +10,7 @@ import {
   CheckCircle2,
   LucideIcon,
 } from 'lucide-react';
+import Link from 'next/link';
 
 type Reason = {
   icon: LucideIcon;
@@ -193,9 +194,12 @@ export default function CraftStudio() {
 
       <p className="mt-3 text-center text-xs text-[#0D3082]/50">
         Pricing varies by project scope.{' '}
-        <span className="cursor-pointer font-medium text-[#0D3082] transition-colors hover:text-[#3E92CC]">
+        <Link
+          href="/contact"
+          className="cursor-pointer font-medium text-[#0D3082] transition-colors hover:text-[#3E92CC]"
+        >
           Get a free quote →
-        </span>
+        </Link>
       </p>
     </SectionWrapper>
   );

@@ -4,6 +4,7 @@ import { ArrowRight, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { Service } from './service-list';
+import Link from 'next/link';
 
 export default function ServiceCard({
   service,
@@ -87,10 +88,12 @@ export default function ServiceCard({
           </div>
         </div>
 
-        <Button className="group/btn w-full rounded-full bg-linear-to-r from-[#0D3082] to-[#3E92CC] font-medium text-white shadow-md shadow-[#0D3082]/20 transition-opacity hover:opacity-90">
-          Get started
-          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
-        </Button>
+        <Link href="/contact">
+          <Button className="group/btn w-full rounded-full bg-linear-to-r from-[#0D3082] to-[#3E92CC] font-medium text-white shadow-md shadow-[#0D3082]/20 transition-opacity hover:opacity-90">
+            Get started
+            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+          </Button>
+        </Link>
       </div>
     </motion.div>
   );

@@ -4,6 +4,7 @@ import { ArrowRight, Workflow } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion, Variants } from 'framer-motion';
 import SectionWrapper from '@/components/shared/section-wrapper';
+import Link from 'next/link';
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -67,20 +68,24 @@ export default function ServiceHero() {
             custom={3}
             className="flex flex-col gap-3 sm:flex-row"
           >
-            <Button
-              size="lg"
-              className="group rounded-full bg-linear-to-r from-[#0D3082] to-[#3E92CC] px-8 py-6 text-base font-semibold text-white shadow-xl shadow-[#0D3082]/25 transition-all duration-300 hover:opacity-90 hover:shadow-2xl hover:shadow-[#0D3082]/30"
-            >
-              Get a free quote
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="rounded-full border-[1.5px] border-[#0D3082]/20 bg-white px-8 py-6 text-base font-medium text-[#0D3082] transition-all duration-300 hover:border-[#3E92CC] hover:bg-[#0D3082]/5"
-            >
-              See our work
-            </Button>
+            <Link href="/contact">
+              <Button
+                size="lg"
+                className="group rounded-full bg-linear-to-r from-[#0D3082] to-[#3E92CC] px-8 py-6 text-base font-semibold text-white shadow-xl shadow-[#0D3082]/25 transition-all duration-300 hover:opacity-90 hover:shadow-2xl hover:shadow-[#0D3082]/30"
+              >
+                Get a free quote
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </Link>
+            <Link href="/portfolio">
+              <Button
+                variant="outline"
+                size="lg"
+                className="rounded-full border-[1.5px] border-[#0D3082]/20 bg-white px-8 py-6 text-base font-medium text-[#0D3082] transition-all duration-300 hover:border-[#3E92CC] hover:bg-[#0D3082]/5"
+              >
+                See our work
+              </Button>
+            </Link>
           </motion.div>
         </div>
 
