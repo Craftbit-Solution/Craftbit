@@ -1,23 +1,21 @@
 'use client';
 
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Sparkles, Code2, Palette, Zap } from 'lucide-react';
 
 export default function AboutHero() {
   const floatingIcons = [
-    { icon: Code2, delay: 0, x: '10%', y: '20%' },
-    { icon: Palette, delay: 0.2, x: '85%', y: '15%' },
-    { icon: Zap, delay: 0.4, x: '75%', y: '75%' },
-    { icon: Sparkles, delay: 0.6, x: '15%', y: '70%' },
+    { id: 1, icon: Code2, delay: 0, x: '10%', y: '20%' },
+    { id: 2, icon: Palette, delay: 0.2, x: '85%', y: '15%' },
+    { id: 3, icon: Zap, delay: 0.4, x: '75%', y: '75%' },
+    { id: 4, icon: Sparkles, delay: 0.6, x: '15%', y: '70%' },
   ];
 
   return (
     <section className="relative flex items-center justify-center overflow-hidden">
-      {/* Floating icons */}
       {floatingIcons.map((item, index) => (
         <motion.div
-          key={index}
+          key={item.id}
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: item.delay + 0.8, duration: 0.5 }}
@@ -39,7 +37,6 @@ export default function AboutHero() {
       ))}
 
       <div className="relative py-12 text-center">
-        {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -57,7 +54,6 @@ export default function AboutHero() {
           </span>
         </motion.div>
 
-        {/* Main Heading */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -73,7 +69,6 @@ export default function AboutHero() {
           </span>
         </motion.h1>
 
-        {/* Subtitle */}
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -85,7 +80,6 @@ export default function AboutHero() {
           scalable websites that grow with your business from day one.
         </motion.p>
 
-        {/* Stats */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -96,8 +90,8 @@ export default function AboutHero() {
             { value: '50+', label: 'Projects Delivered' },
             { value: '98%', label: 'Client Satisfaction' },
             { value: '3x', label: 'Faster Launch Time' },
-          ].map((stat, index) => (
-            <div key={index} className="text-center">
+          ].map((stat) => (
+            <div key={stat.label} className="text-center">
               <div className="bg-linear-to-r from-blue-600 to-blue-500 bg-clip-text text-3xl font-bold text-transparent lg:text-4xl">
                 {stat.value}
               </div>

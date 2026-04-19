@@ -32,23 +32,23 @@ export default function OurStory() {
                 taking chances with unreliable freelancers.
               </p>
               <p>
-                We started Webcraft Studio to offer something different: the
-                expertise and reliability of an agency, with the personal
-                attention and fair pricing of a boutique team.
+                We started Craftbit to offer something different: the expertise
+                and reliability of an agency, with the personal attention and
+                fair pricing of a boutique team.
               </p>
               <p>
-                Today, we're a tight-knit team of three developers who genuinely
-                care about the success of every project we take on. We're
-                selective about the work we accept because we believe in doing
-                fewer things, but doing them exceptionally well.
+                Today, we&apos;re a tight-knit team of three developers who
+                genuinely care about the success of every project we take on.
+                We&apos;re selective about the work we accept because we believe
+                in doing fewer things, but doing them exceptionally well.
               </p>
             </div>
 
             <div className="mt-10 rounded-2xl border border-slate-100 bg-slate-50 p-6">
               <h4 className="mb-4 font-semibold text-slate-900">Our Values</h4>
               <ul className="space-y-3">
-                {values.map((value, index) => (
-                  <li key={index} className="flex items-center gap-3">
+                {values.map((value) => (
+                  <li key={value} className="flex items-center gap-3">
                     <CheckCircle2 className="h-5 w-5 shrink-0 text-blue-500" />
                     <span className="text-slate-700">{value}</span>
                   </li>

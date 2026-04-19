@@ -1,11 +1,18 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Cpu, Brain, Palette, Handshake } from 'lucide-react';
+import { Cpu, Brain, Palette, Handshake, LucideIcon } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 
+type Feature = {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  color: string;
+};
+
 export default function FeaturesSection() {
-  const features: any[] = [
+  const features: Feature[] = [
     {
       icon: Cpu,
       title: 'Modern Technology',
@@ -39,7 +46,6 @@ export default function FeaturesSection() {
   return (
     <section className="relative py-12">
       <div className="px-6">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -57,30 +63,26 @@ export default function FeaturesSection() {
           </p>
         </motion.div>
 
-        {/* Features grid */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {features.map((feature, index) => (
             <motion.div
-              key={index}
+              key={feature.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
               <Card className="mt-4 h-[250px] gap-0 space-y-4 overflow-hidden p-4 transition-all duration-300 hover:shadow-xl lg:p-6">
-                {/* Top accent line */}
                 <div
                   className={`absolute top-0 right-8 left-8 h-1 rounded-b-full opacity-0 transition-opacity group-hover:opacity-100`}
                 />
 
-                {/* Icon */}
                 <div
                   className={`mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border bg-blue-400 text-white transition-transform duration-500 group-hover:scale-110`}
                 >
                   <feature.icon className="h-7 w-7" />
                 </div>
 
-                {/* Content */}
                 <h3 className="mb-3 text-lg font-bold text-slate-900">
                   {feature.title}
                 </h3>

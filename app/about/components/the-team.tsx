@@ -1,11 +1,20 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Code2, Database, Palette } from 'lucide-react';
+import { Code2, Database, LucideIcon, Palette } from 'lucide-react';
 
+type Team = {
+  id: number;
+  role: string;
+  icon: LucideIcon;
+  experience: string;
+  skills: string[];
+  description: string;
+};
 export default function TheTeam() {
-  const team: any[] = [
+  const team: Team[] = [
     {
+      id: 1,
       role: 'Full-Stack Developer',
       icon: Code2,
       experience: '8+ years',
@@ -14,6 +23,7 @@ export default function TheTeam() {
         'Architecting robust, scalable solutions that power your business',
     },
     {
+      id: 2,
       role: 'Frontend Specialist',
       icon: Palette,
       experience: '6+ years',
@@ -21,6 +31,7 @@ export default function TheTeam() {
       description: 'Crafting pixel-perfect interfaces that users love',
     },
     {
+      id: 3,
       role: 'Backend Engineer',
       icon: Database,
       experience: '7+ years',
@@ -28,6 +39,7 @@ export default function TheTeam() {
       description: 'Building reliable infrastructure that scales with you',
     },
   ];
+
   return (
     <section className="py-8">
       <div className="px-6">
@@ -50,7 +62,7 @@ export default function TheTeam() {
         <div className="grid gap-8 md:grid-cols-3">
           {team.map((member, index) => (
             <motion.div
-              key={index}
+              key={member.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -71,7 +83,7 @@ export default function TheTeam() {
                 <p className="mb-6 text-slate-400">{member.description}</p>
 
                 <div className="flex flex-wrap gap-2">
-                  {member.skills.map((skill: any) => (
+                  {member.skills.map((skill) => (
                     <span
                       key={skill}
                       className="rounded-full bg-slate-700 px-3 py-1 text-sm text-slate-300"

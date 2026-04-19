@@ -9,15 +9,26 @@ import {
   Zap,
   Layers,
   CheckCircle2,
+  LucideIcon,
 } from 'lucide-react';
 
+type CraftPoint = {
+  id: number;
+  icon: LucideIcon;
+  text: string;
+};
+
 export default function CraftSection() {
-  const craftPoints: any[] = [
-    { icon: MessageSquare, text: 'Clear Communication' },
-    { icon: Clock, text: 'On-Time Delivery' },
-    { icon: Code, text: 'Clean and maintainable code' },
-    { icon: Zap, text: 'Performance and responsiveness' },
-    { icon: Layers, text: 'Thoughtful UI that feels intuitive and modern' },
+  const craftPoints: CraftPoint[] = [
+    { id: 1, icon: MessageSquare, text: 'Clear Communication' },
+    { id: 2, icon: Clock, text: 'On-Time Delivery' },
+    { id: 3, icon: Code, text: 'Clean and maintainable code' },
+    { id: 4, icon: Zap, text: 'Performance and responsiveness' },
+    {
+      id: 5,
+      icon: Layers,
+      text: 'Thoughtful UI that feels intuitive and modern',
+    },
   ];
 
   return (
@@ -33,13 +44,12 @@ export default function CraftSection() {
           Our Guarantee
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-xl text-slate-600">
-          We're committed to your success at every step of the journey
+          We&apos;re committed to your success at every step of the journey
         </p>
       </motion.div>
 
       <div className="px-6">
         <div className="grid items-center gap-16 lg:grid-cols-2">
-          {/* Left visual */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -52,7 +62,7 @@ export default function CraftSection() {
                 <div className="space-y-6">
                   {craftPoints.map((point, index) => (
                     <motion.div
-                      key={index}
+                      key={point.id}
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
@@ -70,7 +80,6 @@ export default function CraftSection() {
                   ))}
                 </div>
 
-                {/* Decorative code lines */}
                 <div className="mt-8 border-t border-slate-700 pt-8">
                   <div className="space-y-2">
                     <div className="h-3 w-3/4 rounded-full bg-slate-700" />
@@ -80,7 +89,6 @@ export default function CraftSection() {
                 </div>
               </div>
 
-              {/* Floating accent card */}
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{
@@ -98,7 +106,6 @@ export default function CraftSection() {
             </div>
           </motion.div>
 
-          {/* Right content */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -118,7 +125,7 @@ export default function CraftSection() {
             </h2>
 
             <p className="mb-6 text-lg leading-relaxed text-slate-600">
-              We don't just build websites — we help startups establish
+              We don&apos;t just build websites — we help startups establish
               credibility, communicate value, and convert users.
             </p>
 

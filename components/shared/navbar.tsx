@@ -63,10 +63,13 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden shrink-0 items-center gap-2 md:flex">
-          <button className="flex items-center gap-1.5 rounded-full bg-linear-to-r from-[#0D3082] to-[#3E92CC] px-4 py-2 text-[13.5px] font-semibold text-white shadow-md shadow-[#0D3082]/25 transition-all duration-150 hover:-translate-y-px hover:opacity-90">
+          <Link
+            href="/contact"
+            className="flex items-center gap-1.5 rounded-full bg-linear-to-r from-[#0D3082] to-[#3E92CC] px-4 py-2 text-[13.5px] font-semibold text-white shadow-md shadow-[#0D3082]/25 transition-all duration-150 hover:-translate-y-px hover:opacity-90"
+          >
             Get a free quote
             <ArrowRight className="h-3.5 w-3.5" strokeWidth={2.5} />
-          </button>
+          </Link>
         </div>
 
         <button
@@ -97,9 +100,12 @@ export default function Navbar() {
                 </Link>
               ))}
               <div className="bg-[#0D3082]/08 my-2 h-px" />
-              <button className="mt-1 w-full rounded-xl bg-linear-to-r from-[#0D3082] to-[#3E92CC] py-3 text-[15px] font-semibold text-white shadow-md shadow-[#0D3082]/20">
+              <Link
+                href="/contact"
+                className="mt-1 w-full rounded-xl bg-linear-to-r from-[#0D3082] to-[#3E92CC] py-3 text-[15px] font-semibold text-white shadow-md shadow-[#0D3082]/20"
+              >
                 Get a free quote →
-              </button>
+              </Link>
             </motion.div>
           )}
         </AnimatePresence>
