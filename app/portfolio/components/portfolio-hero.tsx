@@ -1,65 +1,58 @@
 'use client';
-import { motion } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
+import { motion, Variants } from 'framer-motion';
+import SectionWrapper from '@/components/shared/section-wrapper';
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  show: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      delay: i * 0.12,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
+  }),
+};
 
 export default function PortfolioHero() {
   return (
-    <section className="relative overflow-hidden py-12">
-      <div className="absolute inset-0">
-        <motion.div
-          animate={{ scale: [1, 1.2, 1], rotate: [0, 10, 0] }}
-          transition={{ duration: 15, repeat: Infinity }}
-          className="absolute top-0 left-1/2 h-[800px] w-[800px] -translate-x-1/2 rounded-full blur-3xl"
-        />
-      </div>
+    <SectionWrapper className="pt-28 pb-12 text-center">
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        animate="show"
+        custom={0}
+        className="mb-7 inline-flex items-center gap-2 rounded-full border border-[#0D3082]/12 bg-[#f0f4ff] px-4 py-2 text-sm font-medium text-[#0D3082]"
+      >
+        <span className="h-2 w-2 shrink-0 rounded-full bg-[#3E92CC]" />
+        Our Work
+      </motion.div>
 
-      <div className="relative mx-auto max-w-7xl px-6 text-center lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="mb-8 inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-600"
-        >
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
-          >
-            <Sparkles className="h-4 w-4" />
-          </motion.div>
-          <span className="text-sm font-semibold">Our Portfolio</span>
-        </motion.div>
+      <motion.h1
+        variants={fadeUp}
+        initial="hidden"
+        animate="show"
+        custom={1}
+        className="mb-5 text-4xl leading-[1.12] font-bold tracking-tight text-[#0D3082] sm:text-5xl lg:text-[3.5rem]"
+      >
+        Projects that
+        <br />
+        <span className="bg-linear-to-r from-[#0D3082] to-[#3E92CC] bg-clip-text text-transparent">
+          speak for themselves
+        </span>
+      </motion.h1>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="mb-6 text-4xl leading-[1.1] font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl"
-        >
-          Projects That
-          <br />
-          <motion.span
-            className="bg-linear-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent"
-            animate={{ backgroundPosition: ['0%', '100%'] }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              repeatType: 'reverse',
-            }}
-            style={{ backgroundSize: '200%' }}
-          >
-            Speak For Themselves
-          </motion.span>
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="mx-auto max-w-3xl text-lg text-slate-400 md:text-xl"
-        >
-          Explore our collection of successful projects that showcase our
-          expertise in creating exceptional digital experiences.
-        </motion.p>
-      </div>
-    </section>
+      <motion.p
+        variants={fadeUp}
+        initial="hidden"
+        animate="show"
+        custom={2}
+        className="mx-auto max-w-xl text-lg leading-relaxed text-[#0D3082]/60"
+      >
+        A selection of work we&apos;re proud of — from business websites to
+        full-scale web applications.
+      </motion.p>
+    </SectionWrapper>
   );
 }
