@@ -1,159 +1,128 @@
 'use client';
-import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import {
-  Clock,
+  Cpu,
+  Brain,
+  Palette,
+  Handshake,
   MessageSquare,
-  Hammer,
-  Code,
-  Zap,
-  Layers,
-  CheckCircle2,
-  LucideIcon,
+  Clock,
 } from 'lucide-react';
+import SectionWrapper from '@/components/shared/section-wrapper';
 
-type CraftPoint = {
-  id: number;
-  icon: LucideIcon;
-  text: string;
+const features = [
+  {
+    icon: Cpu,
+    title: 'Modern technology',
+    description:
+      'Fast, scalable, future-ready builds using the right tools for the job — not whatever is trendy.',
+  },
+  {
+    icon: Brain,
+    title: 'Strategic thinking',
+    description:
+      'Design and structure guided by user behavior and business goals, not just aesthetics.',
+  },
+  {
+    icon: Palette,
+    title: 'Clean design',
+    description:
+      "Minimal, intentional UI that looks professional and gets out of the user's way.",
+  },
+  {
+    icon: Handshake,
+    title: 'Real partnership',
+    description:
+      'We work closely with you throughout — not just at kickoff and delivery.',
+  },
+  {
+    icon: MessageSquare,
+    title: 'Clear communication',
+    description:
+      'You talk directly to the people building your product. No account managers in between.',
+  },
+  {
+    icon: Clock,
+    title: 'On-time delivery',
+    description:
+      'We set realistic timelines and stick to them. Late means your next revision is free.',
+  },
+];
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] },
+  }),
 };
 
 export default function CraftSection() {
-  const craftPoints: CraftPoint[] = [
-    { id: 1, icon: MessageSquare, text: 'Clear Communication' },
-    { id: 2, icon: Clock, text: 'On-Time Delivery' },
-    { id: 3, icon: Code, text: 'Clean and maintainable code' },
-    { id: 4, icon: Zap, text: 'Performance and responsiveness' },
-    {
-      id: 5,
-      icon: Layers,
-      text: 'Thoughtful UI that feels intuitive and modern',
-    },
-  ];
-
   return (
-    <section className="relative py-12">
+    <SectionWrapper className="py-16">
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial="hidden"
+        whileInView="visible"
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="mb-16 text-center"
+        variants={fadeUp}
+        custom={0}
+        className="mb-6 flex items-center justify-center gap-3"
       >
-        <h2 className="text-4xl font-bold text-blue-900 md:text-5xl">
-          Our Guarantee
+        <div className="h-px w-10 bg-linear-to-r from-transparent to-[#3E92CC]" />
+        <span className="text-xs font-medium tracking-widest text-[#3E92CC] uppercase">
+          What we bring
+        </span>
+        <div className="h-px w-10 bg-linear-to-l from-transparent to-[#3E92CC]" />
+      </motion.div>
+
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeUp}
+        custom={1}
+        className="mb-12 text-center"
+      >
+        <h2 className="mb-4 text-3xl leading-tight font-bold tracking-tight text-[#0D3082] sm:text-4xl">
+          More than just
+          <span className="bg-linear-to-r from-[#0D3082] to-[#3E92CC] bg-clip-text text-transparent">
+            {' '}
+            building websites
+          </span>
         </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-xl text-slate-600">
-          We&apos;re committed to your success at every step of the journey
+        <p className="mx-auto max-w-lg text-lg leading-relaxed text-[#0D3082]/60">
+          Everything you need to launch and grow your digital product — handled
+          by people who actually care about the outcome.
         </p>
       </motion.div>
 
-      <div className="px-6">
-        <div className="grid items-center gap-16 lg:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {features.map((feature, index) => (
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            key={feature.title}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
-            className="relative order-2 lg:order-1"
+            variants={fadeUp}
+            custom={index + 2}
+            className="border-[#0D3082]/08 hover:shadow-[#0D3082]/08 rounded-2xl border bg-[#fafbff] p-6 transition-all duration-300 hover:shadow-lg"
           >
-            <div className="relative">
-              {/* Main card */}
-              <div className="rounded-3xl bg-linear-to-br from-slate-900 to-slate-800 p-8">
-                <div className="space-y-6">
-                  {craftPoints.map((point, index) => (
-                    <motion.div
-                      key={point.id}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 }}
-                      className="group flex items-center gap-4"
-                    >
-                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/20 transition-colors group-hover:bg-blue-500/30">
-                        <point.icon className="h-6 w-6 text-blue-400" />
-                      </div>
-                      <span className="font-medium text-white">
-                        {point.text}
-                      </span>
-                      <CheckCircle2 className="ml-auto h-5 w-5 text-green-400 opacity-0 transition-opacity group-hover:opacity-100" />
-                    </motion.div>
-                  ))}
-                </div>
-
-                <div className="mt-8 border-t border-slate-700 pt-8">
-                  <div className="space-y-2">
-                    <div className="h-3 w-3/4 rounded-full bg-slate-700" />
-                    <div className="h-3 w-1/2 rounded-full bg-slate-700/50" />
-                    <div className="h-3 w-2/3 rounded-full bg-blue-500/30" />
-                  </div>
-                </div>
-              </div>
-
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{
-                  repeat: Infinity,
-                  duration: 4,
-                  ease: 'easeInOut',
-                }}
-                className="absolute -right-6 -bottom-6 rounded-2xl bg-blue-500 p-6 shadow-xl shadow-blue-500/30"
-              >
-                <div className="text-white">
-                  <div className="text-3xl font-bold">100%</div>
-                  <div className="text-sm text-blue-100">Satisfaction Rate</div>
-                </div>
-              </motion.div>
+            <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-[#3E92CC]/10">
+              <feature.icon
+                className="h-5 w-5 text-[#3E92CC]"
+                strokeWidth={2}
+              />
             </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="order-1 lg:order-2"
-          >
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-4 py-2">
-              <Hammer className="h-4 w-4 text-blue-500" />
-              <span className="text-sm font-medium text-blue-700">
-                Our Digital Craft
-              </span>
-            </div>
-
-            <h2 className="mb-6 text-3xl leading-tight font-bold text-slate-900 lg:text-5xl">
-              More Than Just
-              <span className="block text-blue-500">Building Websites</span>
-            </h2>
-
-            <p className="mb-6 text-lg leading-relaxed text-slate-600">
-              We don&apos;t just build websites — we help startups establish
-              credibility, communicate value, and convert users.
+            <h3 className="mb-2 text-base font-semibold text-[#0D3082]">
+              {feature.title}
+            </h3>
+            <p className="text-sm leading-relaxed text-[#0D3082]/60">
+              {feature.description}
             </p>
-
-            <p className="mb-8 leading-relaxed text-slate-500">
-              From the first wireframe to the final deployment, we focus on
-              creating digital experiences your users trust and your team can
-              confidently grow on.
-            </p>
-
-            <div className="rounded-2xl border border-slate-100 bg-slate-50 p-6">
-              <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-100">
-                  <CheckCircle2 className="h-5 w-5 text-blue-500" />
-                </div>
-                <div>
-                  <div className="mb-1 font-semibold text-slate-900">
-                    Our Goal Is Simple
-                  </div>
-                  <p className="text-sm text-slate-600">
-                    Build digital experiences your users trust and your team can
-                    confidently grow on.
-                  </p>
-                </div>
-              </div>
-            </div>
           </motion.div>
-        </div>
+        ))}
       </div>
-    </section>
+    </SectionWrapper>
   );
 }
