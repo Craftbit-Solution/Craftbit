@@ -1,6 +1,9 @@
-"use client";
-import Contact from "./Contact/Contact";
+import HomePage from './home/home';
 
 export default function Home() {
-  return <Contact />;
+  return (
+    <main className="bg-white">
+      <HomePage />
+    </main>
+  );
 }
