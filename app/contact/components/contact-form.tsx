@@ -1,38 +1,37 @@
-"use client";
-import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+'use client';
+import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Label } from "@/components/ui/label";
-import { Send, Loader2, CheckCircle2, Clock } from "lucide-react";
-import { motion } from "framer-motion";
-import { Card } from "@/components/ui/card";
+} from '@/components/ui/select';
+import { Label } from '@/components/ui/label';
+import { Send, Loader2, CheckCircle2, Clock } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Card } from '@/components/ui/card';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    company: "",
-    service: "",
-    budget: "",
-    message: "",
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    service: '',
+    budget: '',
+    message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
     setIsSubmitting(false);
@@ -44,27 +43,28 @@ export default function ContactForm() {
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="text-center py-12"
+        className="py-12 text-center"
       >
-        <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-6">
+        <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
           <CheckCircle2 className="h-8 w-8 text-green-600" />
         </div>
-        <h3 className="text-2xl font-bold text-slate-900 mb-3">Thank you!</h3>
-        <p className="text-slate-600 mb-6">
-          We've received your message and will get back to you within 24 hours.
+        <h3 className="mb-3 text-2xl font-bold text-slate-900">Thank you!</h3>
+        <p className="mb-6 text-slate-600">
+          We&apos;ve received your message and will get back to you within 24
+          hours.
         </p>
         <Button
           variant="outline"
           onClick={() => {
             setIsSubmitted(false);
             setFormData({
-              name: "",
-              email: "",
-              phone: "",
-              company: "",
-              service: "",
-              budget: "",
-              message: "",
+              name: '',
+              email: '',
+              phone: '',
+              company: '',
+              service: '',
+              budget: '',
+              message: '',
             });
           }}
           className="rounded-full"
@@ -81,15 +81,15 @@ export default function ContactForm() {
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: 0.2 }}
     >
-      <Card className="overflow-hidden p-4 lg:p-6 mt-4 gap-0 space-y-4 hover:shadow-xl transition-all duration-300">
-        <div className="flex items-center gap-2 mb-6">
+      <Card className="mt-4 gap-0 space-y-4 overflow-hidden p-4 transition-all duration-300 hover:shadow-xl lg:p-6">
+        <div className="mb-6 flex items-center gap-2">
           <Clock className="h-5 w-5 text-green-500" />
           <span className="text-sm text-slate-600">
             Average response time: 4 hours
           </span>
         </div>
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid gap-6 sm:grid-cols-2">
             <div className="space-y-2">
               <Label htmlFor="name">Full Name *</Label>
               <Input
@@ -100,7 +100,7 @@ export default function ContactForm() {
                   setFormData({ ...formData, name: e.target.value })
                 }
                 required
-                className="h-10 py-2 rounded-(--radius) border-slate-200 focus:border-orange-500 focus:ring-orange-500"
+                className="h-10 rounded-(--radius) border-slate-200 py-2 focus:border-orange-500 focus:ring-orange-500"
               />
             </div>
             <div className="space-y-2">
@@ -114,12 +114,12 @@ export default function ContactForm() {
                   setFormData({ ...formData, email: e.target.value })
                 }
                 required
-                className="h-10 py-2 rounded-(--radius) border-slate-200 focus:border-orange-500 focus:ring-orange-500"
+                className="h-10 rounded-(--radius) border-slate-200 py-2 focus:border-orange-500 focus:ring-orange-500"
               />
             </div>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid gap-6 sm:grid-cols-2">
             <div className="space-y-2">
               <Label htmlFor="phone">Phone Number</Label>
               <Input
@@ -130,7 +130,7 @@ export default function ContactForm() {
                 onChange={(e) =>
                   setFormData({ ...formData, phone: e.target.value })
                 }
-                className="h-10 py-2 rounded-(--radius) border-slate-200 focus:border-orange-500 focus:ring-orange-500"
+                className="h-10 rounded-(--radius) border-slate-200 py-2 focus:border-orange-500 focus:ring-orange-500"
               />
             </div>
             <div className="space-y-2">
@@ -142,12 +142,12 @@ export default function ContactForm() {
                 onChange={(e) =>
                   setFormData({ ...formData, company: e.target.value })
                 }
-                className="h-10 py-2 rounded-(--radius) border-slate-200 focus:border-orange-500 focus:ring-orange-500"
+                className="h-10 rounded-(--radius) border-slate-200 py-2 focus:border-orange-500 focus:ring-orange-500"
               />
             </div>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid gap-6 sm:grid-cols-2">
             <div className="space-y-2">
               <Label>Service Interested In *</Label>
               <Select
@@ -209,14 +209,14 @@ export default function ContactForm() {
               }
               required
               rows={5}
-              className="rounded-(--radius) h-16 border-slate-200 focus:border-orange-500 focus:ring-orange-500 resize-none"
+              className="h-16 resize-none rounded-(--radius) border-slate-200 focus:border-orange-500 focus:ring-orange-500"
             />
           </div>
 
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-full h-12 mt-2 rounded-(--radius) bg-slate-900 hover:bg-slate-800 text-white font-medium text-base"
+            className="mt-2 h-12 w-full rounded-(--radius) bg-slate-900 text-base font-medium text-white hover:bg-slate-800"
           >
             {isSubmitting ? (
               <>
@@ -231,13 +231,13 @@ export default function ContactForm() {
             )}
           </Button>
 
-          <p className="text-center text-sm text-slate-500 mt-2">
+          <p className="mt-2 text-center text-sm text-slate-500">
             By submitting this form, you agree to our privacy policy.
           </p>
 
-          <div className="p-6 bg-slate-900 rounded-(--radius) mt-12">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="w-12 h-12 rounded-xl bg-blue-500 flex items-center justify-center">
+          <div className="mt-12 rounded-(--radius) bg-slate-900 p-6">
+            <div className="mb-4 flex items-center gap-4">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500">
                 <Clock className="h-6 w-6 text-white" />
               </div>
               <div>
@@ -245,7 +245,7 @@ export default function ContactForm() {
                   Fast & reliable response
                 </h3>
                 <p className="text-sm text-slate-400">
-                  We'll respond within 24 hours. No spam, guaranteed.
+                  We&apos;ll respond within 24 hours. No spam, guaranteed.
                 </p>
               </div>
             </div>
