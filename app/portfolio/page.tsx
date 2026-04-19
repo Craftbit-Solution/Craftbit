@@ -1,10 +1,10 @@
 'use client';
 
-import PortfolioHero from './components/PortfolioHero';
-import WhatWeCreate from './components/WhatWeCreate';
-import WhyChooseUs from './components/WhyChooseUs';
-import CTASection from './components/CTASection';
-import ProjectSection from './components/ProjectSection';
+import PortfolioHero from './components/portfolio-hero';
+import WhatWeCreate from './components/what-we-create';
+import WhyChooseUs from './components/why-choose-us';
+import CTASection from './components/cta-section';
+import ProjectSection from './components/project-section';
 
 export default function PortfolioPage() {
   return (
