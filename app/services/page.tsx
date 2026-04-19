@@ -8,13 +8,12 @@ import ServicesLists from './components/service-list';
 
 export default function ServicesPage() {
   return (
-    <div>
+    <main className="bg-white">
       <ServiceHero />
-      {/* <div className="w-[100%] mx-auto border-t border-grey-400" /> */}
       <ServicesLists />
       <IncludedWithProject />
       <OurApproach />
       <ProcessSection />
-    </div>
+    </main>
   );
 }
