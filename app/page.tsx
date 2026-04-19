@@ -1,5 +1,9 @@
-import Portfolio from "./Portfolio/Portfolio";
+import HomePage from './home/home';
 
 export default function Home() {
-  return <Portfolio />;
+  return (
+    <main className="bg-white">
+      <HomePage />
+    </main>
+  );
 }
