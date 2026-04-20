@@ -21,7 +21,7 @@ const fadeUp: Variants = {
 
 export default function ServiceHero() {
   return (
-    <SectionWrapper className="pt-28 pb-16">
+    <SectionWrapper className="pt-12 pb-16">
       <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <div>
           <motion.div
