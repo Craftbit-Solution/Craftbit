@@ -67,11 +67,11 @@ export default function Footer() {
             <ul className="space-y-4">
               <li>
                 <a
-                  href="mailto:hello@webcraft.studio"
+                  href="mailto:faizan.md9735@gmail.com"
                   className="flex items-center gap-3 text-sm text-slate-400 transition-colors hover:text-white"
                 >
                   <Mail className="h-4 w-4 text-blue-500" />
-                  hello@webcraft.studio
+                  faizan.md9735@gmail.com
                 </a>
               </li>
               <li>
@@ -80,13 +80,13 @@ export default function Footer() {
                   className="flex items-center gap-3 text-sm text-slate-400 transition-colors hover:text-white"
                 >
                   <Phone className="h-4 w-4 text-blue-500" />
-                  +91 98765 43210
+                  +91 6201855200
                 </a>
               </li>
               <li>
                 <span className="flex items-start gap-3 text-sm text-slate-400">
                   <MapPin className="mt-0.5 h-4 w-4 text-blue-500" />
-                  Bangalore, India
+                  Jharkhand, India
                 </span>
               </li>
             </ul>
