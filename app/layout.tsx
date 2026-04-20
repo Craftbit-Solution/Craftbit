@@ -4,6 +4,7 @@ import './globals.css';
 import Navbar from '../components/shared/navbar';
 import Footer from '@/components/shared/footer';
 import Notice from '@/components/shared/notice';
+import WhatsAppFloat from '@/components/shared/whatsapp-float';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -41,6 +42,7 @@ export default function RootLayout({
         <Notice />
         <div className="mx-auto min-h-screen max-w-7xl pt-20">{children}</div>
         <Footer />
+        <WhatsAppFloat />
       </body>
     </html>
   );
