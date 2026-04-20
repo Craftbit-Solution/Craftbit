@@ -17,7 +17,7 @@ const fadeUp: Variants = {
 
 export default function AboutHero() {
   return (
-    <SectionWrapper className="pt-28 pb-16 text-center">
+    <SectionWrapper className="pt-12 pb-16 text-center">
       <motion.div
         variants={fadeUp}
         initial="hidden"
