@@ -139,48 +139,39 @@ export default function ContactForm() {
               className={inputClass}
             />
           </div>
-          <div className="space-y-1.5">
-            <Label htmlFor="company" className={labelClass}>
-              Company
-            </Label>
-            <Input
-              id="company"
-              placeholder="Your company"
-              value={formData.company}
-              onChange={set('company')}
-              className={inputClass}
-            />
-          </div>
-        </div>
 
-        <div className="grid gap-4 sm:grid-cols-2">
           <div className="space-y-1.5">
             <Label className={labelClass}>Service *</Label>
             <Select
               value={formData.service}
               onValueChange={(v) => setFormData((p) => ({ ...p, service: v }))}
-              required
             >
               <SelectTrigger className="h-10 w-full rounded-xl border-[#0D3082]/15 bg-white text-[#0D3082] focus:border-[#3E92CC]">
                 <SelectValue placeholder="Select a service" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="custom-web-app">
-                  Custom Web Application
-                </SelectItem>
+                <SelectItem value="custom-web-app">Custom Web Application</SelectItem>
                 <SelectItem value="ecommerce">E-commerce Platform</SelectItem>
-                <SelectItem value="business-website">
-                  Business Website
-                </SelectItem>
+                <SelectItem value="business-website">Business Website</SelectItem>
                 <SelectItem value="saas">SaaS Development</SelectItem>
                 <SelectItem value="redesign">Website Redesign</SelectItem>
-                <SelectItem value="maintenance">
-                  Maintenance & Support
-                </SelectItem>
+                <SelectItem value="maintenance">Maintenance & Support</SelectItem>
               </SelectContent>
             </Select>
-          </div>
 
+            <input
+              type="text"
+              required
+              value={formData.service}
+              onChange={() => { }}
+              className="sr-only"
+              tabIndex={-1}
+              aria-hidden="true"
+            />
+          </div>
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-2">
           <div className="space-y-1.5">
             <Label htmlFor="location" className={labelClass}>
               Location
@@ -191,6 +182,19 @@ export default function ContactForm() {
               placeholder="Mumbai, India"
               value={formData.location}
               onChange={set('location')}
+              className={inputClass}
+            />
+          </div>
+
+          <div className="space-y-1.5">
+            <Label htmlFor="company" className={labelClass}>
+              Company
+            </Label>
+            <Input
+              id="company"
+              placeholder="Your company"
+              value={formData.company}
+              onChange={set('company')}
               className={inputClass}
             />
           </div>
