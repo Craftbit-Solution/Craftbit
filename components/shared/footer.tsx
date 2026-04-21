@@ -20,13 +20,14 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-12 py-16 md:grid-cols-2 lg:grid-cols-4 lg:gap-8 lg:py-24">
           <div className="lg:col-span-1">
-            <div className="mb-6 flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-br from-blue-500 to-blue-600">
-                <span className="text-lg font-bold text-white">CB</span>
+            <div className="mb-6">
+              <div className="inline-flex items-center rounded-lg bg-white/5 ring-1 ring-white/10 backdrop-blur-sm">
+                <img
+                  src="./images/craftbit-logo.png"
+                  alt="CraftBit"
+                  className="h-12 w-auto rounded-md object-contain"
+                />
               </div>
-              <span className="text-xl font-semibold tracking-tight">
-                CraftBit<span className="text-blue-500">.</span>
-              </span>
             </div>
             <p className="mb-6 text-sm leading-relaxed text-slate-400">
               A dedicated team of developers delivering premium web solutions
@@ -67,11 +68,11 @@ export default function Footer() {
             <ul className="space-y-4">
               <li>
                 <a
-                  href="mailto:hello@webcraft.studio"
+                  href="mailto:faizan.md9735@gmail.com"
                   className="flex items-center gap-3 text-sm text-slate-400 transition-colors hover:text-white"
                 >
                   <Mail className="h-4 w-4 text-blue-500" />
-                  hello@webcraft.studio
+                  faizan.md9735@gmail.com
                 </a>
               </li>
               <li>
@@ -80,13 +81,13 @@ export default function Footer() {
                   className="flex items-center gap-3 text-sm text-slate-400 transition-colors hover:text-white"
                 >
                   <Phone className="h-4 w-4 text-blue-500" />
-                  +91 98765 43210
+                  +91 6201855200
                 </a>
               </li>
               <li>
                 <span className="flex items-start gap-3 text-sm text-slate-400">
                   <MapPin className="mt-0.5 h-4 w-4 text-blue-500" />
-                  Bangalore, India
+                  Jharkhand, India
                 </span>
               </li>
             </ul>

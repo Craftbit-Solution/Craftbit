@@ -6,7 +6,7 @@ import SectionWrapper from '@/components/shared/section-wrapper';
 export default function Contact() {
   return (
     <main className="bg-white">
-      <SectionWrapper className="pt-28 pb-20">
+      <SectionWrapper className="pt-12 pb-20">
         <div className="mx-auto mb-14 max-w-xl text-center">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#0D3082]/12 bg-[#f0f4ff] px-4 py-2 text-sm font-medium text-[#0D3082]">
             <span className="h-2 w-2 shrink-0 rounded-full bg-[#3E92CC]" />

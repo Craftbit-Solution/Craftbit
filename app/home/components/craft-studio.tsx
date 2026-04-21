@@ -46,20 +46,20 @@ const reasons: Reason[] = [
 const comparisons = [
   {
     label: 'Large Agencies',
-    price: '₹5L+',
-    desc: 'High cost, slow turnaround, multiple middlemen',
+    price: '₹2L – ₹10L+',
+    desc: 'High cost, slow turnaround, multiple layers of communication',
     featured: false,
   },
   {
     label: 'CraftBit',
-    price: 'Starting ₹50K',
-    desc: 'Quality work, direct team, honest timelines',
+    price: '₹8K – ₹1L+',
+    desc: 'Affordable pricing, direct communication, fast delivery, scalable solutions',
     featured: true,
   },
   {
     label: 'Freelancers',
-    price: '₹10K–₹40K',
-    desc: 'Lower cost, but inconsistent and limited in scope',
+    price: '₹3K – ₹30K',
+    desc: 'Lower cost, but limited scalability and inconsistent quality',
     featured: false,
   },
 ];

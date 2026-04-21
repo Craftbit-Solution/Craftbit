@@ -59,7 +59,7 @@ const fadeUp: Variants = {
 
 export default function HomeHero() {
   return (
-    <SectionWrapper className="pt-28 pb-20">
+    <SectionWrapper className="pt-12 pb-20">
       <div className="text-center">
         <motion.div
           variants={fadeUp}

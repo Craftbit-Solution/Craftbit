@@ -37,7 +37,7 @@ const services: Service[] = [
       'Admin dashboard included',
       'Mobile responsive',
     ],
-    priceRange: '₹1,50,000 – ₹5,00,000',
+    priceRange: '₹25,000 – ₹80,000',
     targetAudience:
       'Growing businesses, startups, companies with specific workflows',
     popular: true,
@@ -54,7 +54,7 @@ const services: Service[] = [
       'Inventory management',
       'SEO optimized',
     ],
-    priceRange: '₹1,00,000 – ₹2,50,000',
+    priceRange: '₹30,000 – ₹1,00,000',
     targetAudience:
       'D2C brands, retail businesses going online, established shops',
   },
@@ -70,7 +70,7 @@ const services: Service[] = [
       'SEO foundation',
       'Fast loading speed',
     ],
-    priceRange: '₹60,000 – ₹1,20,000',
+    priceRange: '₹8,000 – ₹25,000',
     targetAudience: 'Service businesses, local companies, professionals',
   },
   {
@@ -85,7 +85,7 @@ const services: Service[] = [
       'API development',
       'Analytics dashboard',
     ],
-    priceRange: '₹3,00,000 – ₹10,00,000+',
+    priceRange: '₹80,000 – ₹2,50,000+',
     targetAudience: 'Funded startups, entrepreneurs with validated ideas',
   },
   {
@@ -100,7 +100,7 @@ const services: Service[] = [
       'Content migration',
       'SEO preservation',
     ],
-    priceRange: '₹50,000 – ₹1,50,000',
+    priceRange: '₹10,000 – ₹40,000',
     targetAudience: 'Established businesses with outdated websites',
   },
   {
@@ -115,7 +115,7 @@ const services: Service[] = [
       'Content updates',
       'Priority support',
     ],
-    priceRange: '₹10,000 – ₹30,000/month',
+    priceRange: '₹2,000 – ₹10,000 / month',
     targetAudience: 'All businesses needing ongoing website care',
   },
 ];
