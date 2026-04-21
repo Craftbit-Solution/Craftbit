@@ -20,13 +20,14 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-12 py-16 md:grid-cols-2 lg:grid-cols-4 lg:gap-8 lg:py-24">
           <div className="lg:col-span-1">
-            <div className="mb-6 flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-br from-blue-500 to-blue-600">
-                <span className="text-lg font-bold text-white">CB</span>
+            <div className="mb-6">
+              <div className="inline-flex items-center rounded-lg bg-white/5 ring-1 ring-white/10 backdrop-blur-sm">
+                <img
+                  src="./images/craftbit-logo.png"
+                  alt="CraftBit"
+                  className="h-12 w-auto rounded-md object-contain"
+                />
               </div>
-              <span className="text-xl font-semibold tracking-tight">
-                CraftBit<span className="text-blue-500">.</span>
-              </span>
             </div>
             <p className="mb-6 text-sm leading-relaxed text-slate-400">
               A dedicated team of developers delivering premium web solutions

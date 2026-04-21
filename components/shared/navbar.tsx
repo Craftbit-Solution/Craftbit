@@ -43,13 +43,19 @@ export default function Navbar() {
           } flex h-[60px] items-center justify-between rounded-2xl border px-6 backdrop-blur-xl`}
       >
         {/* Logo */}
-        <Link href="/" className="flex shrink-0 items-center gap-2.5">
-          <div className="flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-[9px] bg-linear-to-br from-[#0D3082] to-[#3E92CC]">
-            <Code2 className="h-[18px] w-[18px] text-white" strokeWidth={2.2} />
-          </div>
-          <span className="font-display text-[1.05rem] font-bold tracking-tight text-[#0D3082]">
-            Craft<span className="text-[#3E92CC]">Bit</span>
-          </span>
+        <Link href="/" className="flex shrink-0 items-center">
+          {/* Symbol only on mobile */}
+          <img
+            src="./images/craftbit-symbol.png"
+            alt="CraftBit"
+            className="h-9 w-auto rounded-lg object-contain sm:hidden"
+          />
+          {/* Full logo on sm+ */}
+          <img
+            src="./images/craftbit-logo.png"
+            alt="CraftBit"
+            className="hidden h-10 w-auto rounded-lg object-contain sm:block sm:h-12"
+          />
         </Link>
 
         {/* Desktop Nav */}
