@@ -4,6 +4,7 @@ import './globals.css';
 import Navbar from '../components/shared/navbar';
 import Footer from '@/components/shared/footer';
 import Notice from '@/components/shared/notice';
+import { Analytics } from '@vercel/analytics/next';
 import WhatsAppFloat from '@/components/shared/whatsapp-float';
 
 const geistSans = Geist({
@@ -39,8 +40,12 @@ export default function RootLayout({
           }}
         />
         <Navbar />
-        {/* <Notice />  */}
         <div className="mx-auto min-h-screen max-w-7xl pt-20">{children}</div>
+        <Notice />
+        <div className="mx-auto min-h-screen max-w-7xl pt-20">
+          {children}
+          <Analytics />
+        </div>
         <Footer />
         <WhatsAppFloat />
       </body>
