@@ -7,14 +7,14 @@ const contactMethods = [
     icon: Mail,
     title: 'Email',
     description: 'For detailed inquiries or proposals',
-    value: 'faizan.md9735@gmail.com',
+    value: 'faizan.md9735@gmail.com / mdalqma786@gmail.com',
     href: 'https://mail.google.com/mail/?view=cm&fs=1&to=faizan.md9735@gmail.com&su=Project-Inquiry',
   },
   {
     icon: Phone,
     title: 'Phone',
     description: 'Mon–Sat, 10 AM – 7 PM IST',
-    value: '+91 62018 55200',
+    value: '+91 62018 55200 / +91 7870402553',
     href: 'tel:+916201855200',
   },
   {
@@ -28,7 +28,7 @@ const contactMethods = [
     icon: MapPin,
     title: 'Location',
     description: 'Remote-first, based in',
-    value: 'Jharkhand, India',
+    value: 'Remote',
     href: null,
   },
 ];
