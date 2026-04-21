@@ -187,7 +187,7 @@ export default function ContactForm() {
             </Label>
             <Input
               id="location"
-              type="tel"
+              type="text"
               placeholder="Mumbai, India"
               value={formData.location}
               onChange={set('location')}
