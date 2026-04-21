@@ -1,5 +1,6 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import emailjs from 'emailjs-com';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -34,17 +35,82 @@ const empty: FormData = {
   message: '',
 };
 
+const COOLDOWN_SECONDS = 45;
+const STORAGE_KEY = 'contact_countdown_end';
+
 export default function ContactForm() {
   const [formData, setFormData] = useState<FormData>(empty);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [countDown, setCountdown] = useState(0);
+
+  useEffect(() => {
+    const storedEndTime = localStorage.getItem(STORAGE_KEY);
+    if (!storedEndTime) return;
+
+    const remaining = Math.ceil((Number(storedEndTime) - Date.now()) / 1000);
+    if (remaining > 0) {
+      setCountdown(remaining);
+    } else {
+      localStorage.removeItem(STORAGE_KEY);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (countDown <= 0) return;
+    const timer = setInterval(() => {
+      setCountdown((prev) => {
+        if (prev <= 1) {
+          clearInterval(timer);
+          localStorage.removeItem(STORAGE_KEY);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [countDown]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (countDown > 0 || isSubmitting) return;
+
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+
+    const emailParams = {
+      message: formData.message,
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      company: formData.company,
+      service: formData.service,
+      location: formData.location,
+      budget: formData.location,
+      title: formData.service,
+    };
+
+    emailjs
+      .send(
+        'service_qg0lsin',
+        'template_runly1g',
+        { ...emailParams },
+        'nofDJb3u1FkZQ7btt'
+      )
+      .then(
+        () => {
+          setIsSubmitting(false);
+          setIsSubmitted(true);
+          setFormData(empty);
+          const endTime = Date.now() + COOLDOWN_SECONDS * 1000;
+          localStorage.setItem(STORAGE_KEY, endTime.toString());
+          setCountdown(COOLDOWN_SECONDS);
+        },
+        (error: any) => {
+          console.error('EmailJS Error:', error);
+          alert('Failed to send message');
+          setIsSubmitting(false);
+        }
+      );
   };
 
   const set =
@@ -73,7 +139,7 @@ export default function ContactForm() {
             setIsSubmitted(false);
             setFormData(empty);
           }}
-          className="hover:bg-[#0D3082]/05 rounded-full border-[#0D3082]/20 text-[#0D3082]"
+          className="hover:bg-[#0D3082]/05 cursor-pointer rounded-full border-[#0D3082]/20 text-[#0D3082]"
         >
           Send another message
         </Button>
@@ -158,7 +224,6 @@ export default function ContactForm() {
                 <SelectItem value="maintenance">Maintenance & Support</SelectItem>
               </SelectContent>
             </Select>
-
             <input
               type="text"
               required
@@ -198,24 +263,6 @@ export default function ContactForm() {
               className={inputClass}
             />
           </div>
-          {/* <div className="space-y-1.5">
-            <Label className={labelClass}>Budget range *</Label>
-            <Select
-              value={formData.budget}
-              onValueChange={(v) => setFormData((p) => ({ ...p, budget: v }))}
-              required
-            >
-              <SelectTrigger className="h-10 w-full rounded-xl border-[#0D3082]/15 bg-white text-[#0D3082] focus:border-[#3E92CC]">
-                <SelectValue placeholder="Select budget" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="50k-1l">₹50,000 – ₹1,00,000</SelectItem>
-                <SelectItem value="1l-2l">₹1,00,000 – ₹2,00,000</SelectItem>
-                <SelectItem value="2l-5l">₹2,00,000 – ₹5,00,000</SelectItem>
-                <SelectItem value="5l+">₹5,00,000+</SelectItem>
-              </SelectContent>
-            </Select>
-          </div> */}
         </div>
 
         <div className="space-y-1.5">
@@ -235,13 +282,18 @@ export default function ContactForm() {
 
         <Button
           type="submit"
-          disabled={isSubmitting}
-          className="h-12 w-full rounded-full bg-linear-to-r from-[#0D3082] to-[#3E92CC] text-base font-semibold text-white shadow-md shadow-[#0D3082]/20 transition-opacity hover:opacity-90 disabled:opacity-60"
+          disabled={isSubmitting || countDown > 0}
+          className="h-12 w-full rounded-full cursor-pointer bg-linear-to-r from-[#0D3082] to-[#3E92CC] text-base font-semibold text-white shadow-md shadow-[#0D3082]/20 transition-opacity hover:opacity-90 disabled:opacity-60"
         >
           {isSubmitting ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               Sending...
+            </>
+          ) : countDown > 0 ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4" />
+              Wait {countDown}s before resending
             </>
           ) : (
             <>

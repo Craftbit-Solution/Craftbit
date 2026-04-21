@@ -68,11 +68,11 @@ export default function Footer() {
             <ul className="space-y-4">
               <li>
                 <a
-                  href="mailto:faizan.md9735@gmail.com"
+                  href="mailto:mdalqma786@gmail.com"
                   className="flex items-center gap-3 text-sm text-slate-400 transition-colors hover:text-white"
                 >
                   <Mail className="h-4 w-4 text-blue-500" />
-                  faizan.md9735@gmail.com
+                  faizan.md9735@gmail.com <br /> mdalqma786@gmail.com
                 </a>
               </li>
               <li>
@@ -81,13 +81,14 @@ export default function Footer() {
                   className="flex items-center gap-3 text-sm text-slate-400 transition-colors hover:text-white"
                 >
                   <Phone className="h-4 w-4 text-blue-500" />
-                  +91 6201855200
+                  +91 6201855200 <br />
+                  +91 7870402553
                 </a>
               </li>
               <li>
                 <span className="flex items-start gap-3 text-sm text-slate-400">
                   <MapPin className="mt-0.5 h-4 w-4 text-blue-500" />
-                  Jharkhand, India
+                  Remote
                 </span>
               </li>
             </ul>

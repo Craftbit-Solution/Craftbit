@@ -40,6 +40,7 @@ export default function RootLayout({
           }}
         />
         <Navbar />
+        <div className="mx-auto min-h-screen max-w-7xl pt-20">{children}</div>
         <Notice />
         <div className="mx-auto min-h-screen max-w-7xl pt-20">
           {children}
