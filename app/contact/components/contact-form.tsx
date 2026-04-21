@@ -20,7 +20,7 @@ type FormData = {
   phone: string;
   company: string;
   service: string;
-  budget: string;
+  location: string;
   message: string;
 };
 
@@ -30,7 +30,7 @@ const empty: FormData = {
   phone: '',
   company: '',
   service: '',
-  budget: '',
+  location: '',
   message: '',
 };
 
@@ -49,8 +49,8 @@ export default function ContactForm() {
 
   const set =
     (field: keyof FormData) =>
-    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
-      setFormData((prev) => ({ ...prev, [field]: e.target.value }));
+      (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+        setFormData((prev) => ({ ...prev, [field]: e.target.value }));
 
   if (isSubmitted) {
     return (
@@ -180,7 +180,21 @@ export default function ContactForm() {
               </SelectContent>
             </Select>
           </div>
+
           <div className="space-y-1.5">
+            <Label htmlFor="location" className={labelClass}>
+              Location
+            </Label>
+            <Input
+              id="location"
+              type="tel"
+              placeholder="Mumbai, India"
+              value={formData.location}
+              onChange={set('location')}
+              className={inputClass}
+            />
+          </div>
+          {/* <div className="space-y-1.5">
             <Label className={labelClass}>Budget range *</Label>
             <Select
               value={formData.budget}
@@ -197,7 +211,7 @@ export default function ContactForm() {
                 <SelectItem value="5l+">₹5,00,000+</SelectItem>
               </SelectContent>
             </Select>
-          </div>
+          </div> */}
         </div>
 
         <div className="space-y-1.5">
