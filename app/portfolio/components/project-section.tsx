@@ -8,6 +8,7 @@ import SectionWrapper from '@/components/shared/section-wrapper';
 const categories: string[] = [
   'All',
   'Web Development',
+  'Business Website',
   'E-Commerce',
   'UI/UX Design',
   'Branding',
@@ -31,12 +32,22 @@ const projects: Project[] = [
     description:
       'An organic products store where customers can browse and buy natural food products.',
     image:
-      'https://user-images.githubusercontent.com/106812942/278866276-08e3e6cb-0648-4adb-a9fa-891a98e27d33.png',
-    tags: ['React', 'Node.js', 'MongoDB'],
+      './images/organic-store.png',
+    tags: ['React', 'Tailwind CSS', 'Node.js', 'MongoDB'],
     live_url: 'https://organicstore.vercel.app/',
   },
   {
     id: 2,
+    title: 'Varsha Farm House',
+    category: 'Business Website',
+    description:
+      'Experience the charm of countryside living with modern amenities and delicious farm-to-table cuisine.',
+    image: './images/varsha-farm-house.png',
+    tags: ['React', 'Tailwind CSS'],
+    live_url: 'https://www.varshafarmhouse.com/',
+  },
+  {
+    id: 3,
     title: 'Luxe Fashion Store',
     category: 'E-Commerce',
     description:
@@ -47,7 +58,7 @@ const projects: Project[] = [
     live_url: '',
   },
   {
-    id: 3,
+    id: 4,
     title: 'HealthHub App',
     category: 'UI/UX Design',
     description:
@@ -58,7 +69,7 @@ const projects: Project[] = [
     live_url: '',
   },
   {
-    id: 4,
+    id: 5,
     title: 'Finova Banking',
     category: 'Web Development',
     description:
@@ -69,7 +80,7 @@ const projects: Project[] = [
     live_url: '',
   },
   {
-    id: 5,
+    id: 6,
     title: 'Artisan Marketplace',
     category: 'E-Commerce',
     description:
@@ -80,7 +91,7 @@ const projects: Project[] = [
     live_url: '',
   },
   {
-    id: 6,
+    id: 7,
     title: 'Zenith Branding',
     category: 'Branding',
     description:
@@ -113,11 +124,10 @@ export default function ProjectSection() {
           <button
             key={category}
             onClick={() => setActiveCategory(category)}
-            className={`rounded-full px-5 py-2 text-sm font-medium transition-all duration-200 ${
-              activeCategory === category
-                ? 'bg-linear-to-r from-[#0D3082] to-[#3E92CC] text-white shadow-md shadow-[#0D3082]/20'
-                : 'border border-[#0D3082]/12 bg-white text-[#0D3082]/70 hover:bg-[#0D3082]/5'
-            }`}
+            className={`rounded-full px-5 py-2 text-sm font-medium transition-all duration-200 ${activeCategory === category
+              ? 'bg-linear-to-r from-[#0D3082] to-[#3E92CC] text-white shadow-md shadow-[#0D3082]/20'
+              : 'border border-[#0D3082]/12 bg-white text-[#0D3082]/70 hover:bg-[#0D3082]/5'
+              }`}
           >
             {category}
           </button>
@@ -150,7 +160,7 @@ export default function ProjectSection() {
                   {project.live_url && (
                     <Button
                       onClick={() => window.open(project.live_url, '_blank')}
-                      className="rounded-full bg-white px-5 text-sm font-semibold text-[#0D3082] hover:bg-white/90"
+                      className="rounded-full cursor-pointer bg-white px-5 text-sm font-semibold text-[#0D3082] hover:bg-white/90"
                     >
                       <ExternalLink className="mr-2 h-4 w-4" />
                       View live
