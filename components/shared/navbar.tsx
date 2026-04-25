@@ -12,6 +12,7 @@ const navLinks = [
   { label: 'Work', href: '/portfolio' },
   { label: 'About', href: '/about' },
   { label: 'Pricing', href: '/pricing' },
+  { label: 'Refer & Earn', href: '/refer-and-earn' }
 ];
 
 export default function Navbar() {
@@ -38,8 +39,8 @@ export default function Navbar() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         className={`relative w-full max-w-5xl transition-all duration-300 ${scrolled
-            ? 'border-[#0D3082]/15 bg-white/95 shadow-lg shadow-[#0D3082]/10'
-            : 'border-[#0D3082]/08 shadow-[#0D3082]/06 bg-white/90 shadow-md'
+          ? 'border-[#0D3082]/15 bg-white/95 shadow-lg shadow-[#0D3082]/10'
+          : 'border-[#0D3082]/08 shadow-[#0D3082]/06 bg-white/90 shadow-md'
           } flex h-[60px] items-center justify-between rounded-2xl border px-6 backdrop-blur-xl`}
       >
         {/* Logo */}
