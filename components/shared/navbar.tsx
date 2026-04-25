@@ -12,7 +12,8 @@ const navLinks = [
   { label: 'Work', href: '/portfolio' },
   { label: 'About', href: '/about' },
   { label: 'Pricing', href: '/pricing' },
-  { label: 'Refer & Earn', href: '/refer-and-earn' }
+  { label: 'Refer & Earn', href: '/refer-and-earn' },
+  // { label: 'Get Website', href: '/get-a-website' }
 ];
 
 export default function Navbar() {
