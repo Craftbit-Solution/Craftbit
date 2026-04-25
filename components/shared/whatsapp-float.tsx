@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Trash2, MessageSquare, Mail } from 'lucide-react';
+import { MessageCircle, X, Send, Trash2, MessageSquare, Mail, Maximize2 } from 'lucide-react';
 
 const WHATSAPP_NUMBER = "916201855200";
 
@@ -236,17 +236,60 @@ export default function WhatsAppFloat() {
 
             {/* HEADER */}
             <div className="flex items-center justify-between bg-gradient-to-r from-[#0D3082] to-[#3E92CC] text-white px-4 py-3">
-              <span>CraftBit Assistant</span>
 
-              {showClearButton && (
-                <button
-                  onClick={clearChat}
-                  className="flex items-center gap-1 text-xs bg-white/20 px-2 py-1 rounded hover:bg-white/30 cursor-pointer"
-                >
-                  <Trash2 className="w-3 h-3" />
-                  Clear
+              {/* LEFT SIDE */}
+              <div className="flex items-center gap-3">
+
+                {/* LOGO */}
+                <div className="relative">
+                  <img
+                    src="./images/craftbit-symbol.png"
+                    alt="CraftBit"
+                    className="w-9 h-9 rounded-full object-cover border-2 border-white/40 shadow-md"
+                  />
+
+                  <span className="absolute inset-0 rounded-full bg-white/20 blur-md opacity-40" />
+                </div>
+
+                {/* TITLE */}
+                <div className="leading-tight">
+                  <p className="text-sm font-semibold tracking-wide">
+                    CraftBit Assistant
+                  </p>
+                  <p className="text-[10px] text-white/70">
+                    Online • Ready to help
+                  </p>
+                </div>
+              </div>
+
+              {/* RIGHT ACTIONS */}
+              <div className="flex items-center gap-2">
+
+                {/* EXPAND */}
+                <button className="relative group w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition cursor-pointer">
+
+                  <Maximize2 className="w-4 h-4" />
+
+                  <span className="absolute -bottom-8 right-0 text-[10px] bg-black/80 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap">
+                    Expand chat
+                  </span>
                 </button>
-              )}
+
+                {/* CLEAR CHAT */}
+                {showClearButton && (
+                  <button
+                    onClick={clearChat}
+                    className="relative group w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition cursor-pointer"
+                  >
+                    <Trash2 className="w-4 h-4" />
+
+                    <span className="absolute -bottom-8 right-0 text-[10px] bg-black/80 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap">
+                      Clear chat
+                    </span>
+                  </button>
+                )}
+
+              </div>
             </div>
 
             {/* MESSAGES */}
@@ -308,7 +351,7 @@ export default function WhatsAppFloat() {
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
-                className="flex items-center justify-center gap-2 py-3 text-sm font-semibold bg-green-500 text-white hover:bg-green-600 transition cursor-pointer"
+                className="flex items-center justify-center gap-2 py-2 text-sm font-semibold bg-green-500 text-white hover:bg-green-600 transition cursor-pointer"
               >
                 <MessageSquare className="w-4 h-4" />
                 WhatsApp
@@ -319,7 +362,7 @@ export default function WhatsAppFloat() {
                 href={`https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 py-3 text-sm font-semibold bg-[#0D3082] text-white hover:bg-[#102a6d] transition cursor-pointer"
+                className="flex items-center justify-center gap-2 py-2 text-sm font-semibold bg-[#0D3082] text-white hover:bg-[#102a6d] transition cursor-pointer"
               >
                 <Mail className="w-4 h-4" />
                 Email
