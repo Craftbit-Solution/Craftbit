@@ -101,6 +101,7 @@ export default function WhatsAppFloat() {
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
+  const [expanded, setExpanded] = useState(false);
 
   const bottomRef = useRef<HTMLDivElement | null>(null);
 
@@ -216,7 +217,10 @@ export default function WhatsAppFloat() {
         )}
 
         <button
-          onClick={() => setOpen((prev) => !prev)}
+          onClick={() => {
+            if (expanded) return;
+            setOpen((prev) => !prev);
+          }}
           className="relative w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center shadow-lg hover:scale-110 transition cursor-pointer"
         >
           <span className="absolute inset-0 border border-green-400/30 rounded-full animate-ping" />
@@ -268,7 +272,12 @@ export default function WhatsAppFloat() {
                 {/* EXPAND */}
                 <button className="relative group w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition cursor-pointer">
 
-                  <Maximize2 className="w-4 h-4" />
+                  <Maximize2
+                    className="w-4 h-4"
+                    onClick={() => {
+                      setExpanded(true);
+                      setOpen(false);
+                    }} />
 
                   <span className="absolute -bottom-8 right-0 text-[10px] bg-black/80 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap">
                     Expand chat
@@ -370,6 +379,124 @@ export default function WhatsAppFloat() {
 
             </div>
           </div>
+        </div>
+      )}
+
+
+      {expanded && (
+        <div className="fixed inset-0 z-[99999] flex items-center justify-center bg-black/40 p-3">
+
+          <div className="w-full max-w-[420px] sm:w-[420px] bg-white rounded-2xl shadow-2xl overflow-hidden">
+
+            {/* HEADER */}
+            <div className="flex items-center justify-between bg-gradient-to-r from-[#0D3082] to-[#3E92CC] text-white px-4 py-3">
+
+              {/* LEFT SIDE */}
+              <div className="flex items-center gap-3">
+
+                {/* LOGO */}
+                <img
+                  src="./images/craftbit-symbol.png"
+                  alt="craftbit"
+                  className="w-9 h-9 rounded-full object-cover border border-white/40 shadow-md"
+                />
+
+                <div className="leading-tight">
+                  <p className="text-sm font-semibold">
+                    CraftBit Assistant
+                  </p>
+                  <p className="text-[10px] text-white/70">
+                    Online • Ready to help
+                  </p>
+                </div>
+
+              </div>
+
+              {/* RIGHT SIDE ACTIONS */}
+              <div className="flex items-center gap-3">
+
+                {/* CLEAR CHAT */}
+                <button
+                  onClick={() => {
+                    setMessages([
+                      {
+                        text: 'Hi 👋 How can I help you today?',
+                        sender: 'bot',
+                      },
+                    ]);
+                    localStorage.removeItem(STORAGE_KEY);
+                  }}
+                  className="text-white/80 hover:text-white cursor-pointer"
+                  title="Clear chat"
+                >
+                  <Trash2 className="w-4 h-4" />
+                </button>
+
+                {/* CLOSE + COLLAPSE */}
+                <button
+                  onClick={() => {
+                    setExpanded(false);
+                    setOpen(true);
+                  }}
+                  className="text-white cursor-pointer"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+
+              </div>
+            </div>
+
+            {/* CHAT AREA */}
+            <div className="h-[70vh] sm:h-[400px] flex flex-col">
+
+              {/* MESSAGES */}
+              <div className="flex-1 overflow-y-auto p-3 space-y-3 bg-[#f9fbff]">
+
+                {messages.map((msg, i) => (
+                  <div
+                    key={i}
+                    className={`text-sm px-3 py-2 rounded-2xl max-w-[75%] break-words ${msg.sender === 'user'
+                      ? 'ml-auto bg-[#3E92CC] text-white'
+                      : 'bg-[#f0f4ff] text-[#0D3082]'
+                      }`}
+                  >
+                    {msg.text}
+                  </div>
+                ))}
+
+                {isTyping && (
+                  <div className="text-xs text-gray-500 px-2">
+                    typing...
+                  </div>
+                )}
+
+                <div ref={bottomRef} />
+              </div>
+
+              {/* INPUT */}
+              <div className="border-t p-2 flex items-center gap-2 bg-white">
+
+                <input
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') sendMessage();
+                  }}
+                  placeholder="Type your message..."
+                  className="flex-1 text-sm outline-none bg-[#f5f7fb] px-3 py-2 rounded-full"
+                />
+
+                <button
+                  onClick={sendMessage}
+                  className="bg-[#0D3082] text-white p-2 rounded-full hover:scale-105 transition cursor-pointer"
+                >
+                  <Send className="w-4 h-4" />
+                </button>
+
+              </div>
+            </div>
+          </div>
+
         </div>
       )}
     </>
