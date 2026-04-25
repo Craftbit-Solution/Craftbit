@@ -18,8 +18,28 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Craftbit',
-  description: 'A web development company focused on quality and performance.',
+  title: 'CraftBit | Web Development & Portfolio Websites',
+  description:
+    'CraftBit builds fast, modern personal websites, portfolios, and business pages. Affordable web development starting at ₹2,500.',
+  keywords: [
+    'Website Starting at ₹2,500/- - Website in Just 24 Hours',
+    'personal website India',
+    'portfolio website developer',
+    'web development company India',
+    'Next.js development',
+    'CraftBit',
+    'unique website development',
+    'professional website in 24 hours',
+    'affordable website development India',
+    'freelance web developer India',
+    'personal portfolio website for developers',
+    'business website starting ₹2500',
+    'fast website development service',
+    'responsive website design India',
+    'hire web developer for portfolio website',
+    'custom website for freelancers',
+    'startup website development India',
+  ],
 };
 
 export default function RootLayout({
