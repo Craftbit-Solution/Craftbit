@@ -17,7 +17,7 @@ type Plan = {
 const plans: Plan[] = [
   {
     name: 'Starter',
-    price: '₹60,000',
+    price: '₹8,000',
     description:
       'A clean, fast business website to establish your online presence and start converting visitors.',
     features: [
@@ -32,7 +32,7 @@ const plans: Plan[] = [
   },
   {
     name: 'Growth',
-    price: '₹1,00,000',
+    price: '₹60,000',
     description:
       'A conversion-focused website or e-commerce store built to grow your business.',
     features: [
@@ -48,7 +48,7 @@ const plans: Plan[] = [
   },
   {
     name: 'Custom',
-    price: '₹3,00,000',
+    price: '₹30,000',
     description:
       'Full-scale web applications, SaaS products, or complex platforms built to scale.',
     features: [
@@ -187,7 +187,8 @@ export default function PricingPlans() {
                 Starting from
               </p>
               <p className="text-xl font-bold text-[#0D3082]">
-                ₹10,000 / month
+                6 months free then <br />
+                ₹6,000 / month
               </p>
             </div>
             <Link href="/contact">

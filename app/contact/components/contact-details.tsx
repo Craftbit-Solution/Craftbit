@@ -7,8 +7,8 @@ const contactMethods = [
     icon: Mail,
     title: 'Email',
     description: 'For detailed inquiries or proposals',
-    value: 'faizan.md9735@gmail.com / mdalqma786@gmail.com',
-    href: 'https://mail.google.com/mail/?view=cm&fs=1&to=faizan.md9735@gmail.com&su=Project-Inquiry',
+    value: 'hello@craftbit.in',
+    href: 'https://mail.google.com/mail/?view=cm&fs=1&to=hello@craftbit.in&su=Inquiry: Project',
   },
   {
     icon: Phone,

@@ -52,7 +52,7 @@ const comparisons = [
   },
   {
     label: 'CraftBit',
-    price: '₹8K – ₹1L+',
+    price: '₹5K – ₹60K+',
     desc: 'Affordable pricing, direct communication, fast delivery, scalable solutions',
     featured: true,
   },

@@ -68,11 +68,11 @@ export default function Footer() {
             <ul className="space-y-4">
               <li>
                 <a
-                  href="mailto:mdalqma786@gmail.com"
+                  href="mailto:hello@craftbit.in"
                   className="flex items-center gap-3 text-sm text-slate-400 transition-colors hover:text-white"
                 >
                   <Mail className="h-4 w-4 text-blue-500" />
-                  faizan.md9735@gmail.com <br /> mdalqma786@gmail.com
+                  hello@craftbit.in
                 </a>
               </li>
               <li>
@@ -98,7 +98,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="flex flex-col items-center justify-between gap-4 border-t border-slate-800 py-6 md:flex-row">
           <p className="text-sm text-slate-500">
-            © 2025 Webcraft Studio. All rights reserved.
+            © 2025 Craftbit. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <a

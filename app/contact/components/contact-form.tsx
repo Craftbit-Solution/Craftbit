@@ -94,7 +94,7 @@ export default function ContactForm() {
         'service_qg0lsin',
         'template_runly1g',
         { ...emailParams },
-        'nofDJb3u1FkZQ7btt'
+        'nofDJb3u1FkZQ7btt',
       )
       .then(
         () => {
@@ -109,14 +109,14 @@ export default function ContactForm() {
           console.error('EmailJS Error:', error);
           alert('Failed to send message');
           setIsSubmitting(false);
-        }
+        },
       );
   };
 
   const set =
     (field: keyof FormData) =>
-      (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
-        setFormData((prev) => ({ ...prev, [field]: e.target.value }));
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+      setFormData((prev) => ({ ...prev, [field]: e.target.value }));
 
   if (isSubmitted) {
     return (
@@ -216,19 +216,25 @@ export default function ContactForm() {
                 <SelectValue placeholder="Select a service" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="custom-web-app">Custom Web Application</SelectItem>
+                <SelectItem value="custom-web-app">
+                  Custom Web Application
+                </SelectItem>
                 <SelectItem value="ecommerce">E-commerce Platform</SelectItem>
-                <SelectItem value="business-website">Business Website</SelectItem>
+                <SelectItem value="business-website">
+                  Business Website
+                </SelectItem>
                 <SelectItem value="saas">SaaS Development</SelectItem>
                 <SelectItem value="redesign">Website Redesign</SelectItem>
-                <SelectItem value="maintenance">Maintenance & Support</SelectItem>
+                <SelectItem value="maintenance">
+                  Maintenance & Support
+                </SelectItem>
               </SelectContent>
             </Select>
             <input
               type="text"
               required
               value={formData.service}
-              onChange={() => { }}
+              onChange={() => {}}
               className="sr-only"
               tabIndex={-1}
               aria-hidden="true"
@@ -283,7 +289,7 @@ export default function ContactForm() {
         <Button
           type="submit"
           disabled={isSubmitting || countDown > 0}
-          className="h-12 w-full rounded-full cursor-pointer bg-linear-to-r from-[#0D3082] to-[#3E92CC] text-base font-semibold text-white shadow-md shadow-[#0D3082]/20 transition-opacity hover:opacity-90 disabled:opacity-60"
+          className="h-12 w-full cursor-pointer rounded-full bg-linear-to-r from-[#0D3082] to-[#3E92CC] text-base font-semibold text-white shadow-md shadow-[#0D3082]/20 transition-opacity hover:opacity-90 disabled:opacity-60"
         >
           {isSubmitting ? (
             <>

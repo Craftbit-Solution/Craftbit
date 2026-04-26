@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Navbar from '../components/shared/navbar';
 import Footer from '@/components/shared/footer';
-import Notice from '@/components/shared/notice';
 import { Analytics } from '@vercel/analytics/next';
 import WhatsAppFloat from '@/components/shared/whatsapp-float';
 
