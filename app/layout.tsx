@@ -51,15 +51,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={{
-            backgroundImage: `linear-gradient(rgba(112, 135, 189, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(136, 152, 181, 0.08) 1px, transparent 1px)`,
-            backgroundSize: '60px 60px',
-          }}
-        />
         <Navbar />
-        <div className="mx-auto min-h-screen max-w-7xl pt-20">
+        <div className="mx-auto min-h-screen max-w-7xl px-4 pt-[68px] sm:px-6 lg:px-8">
           {children}
           <Analytics />
         </div>
