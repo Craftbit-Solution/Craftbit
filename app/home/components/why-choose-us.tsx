@@ -28,9 +28,9 @@ const features: Feature[] = [
   },
   {
     icon: Clock,
-    title: '48h response',
+    title: '24h response',
     description:
-      'Every message gets a reply within 48 hours — usually much faster during business hours.',
+      'Every message gets a reply within 24 hours — usually much faster during business hours.',
   },
   {
     icon: Users,
