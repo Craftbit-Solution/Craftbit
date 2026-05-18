@@ -1,6 +1,7 @@
 import { ArrowUpRight, Mail, Phone, MapPin, Linkedin } from 'lucide-react';
 
 export default function Footer() {
+  
   const links = {
     services: [
       { name: 'Custom Web Apps', path: 'Services' },
