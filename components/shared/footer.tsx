@@ -1,4 +1,5 @@
 import { ArrowUpRight, Mail, Phone, MapPin, Linkedin } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Footer() {
   
@@ -10,9 +11,11 @@ export default function Footer() {
       { name: 'SaaS Development', path: 'Services' },
     ],
     company: [
-      { name: 'About Us', path: 'About' },
-      { name: 'Portfolio', path: 'Portfolio' },
-      { name: 'Contact', path: 'Contact' },
+      { name: 'About Us', path: 'About', href: '/about' },
+      { name: 'Portfolio', path: 'Portfolio', href: '/portfolio' },
+      { name: 'Contact', path: 'Contact', href: '/contact' },
+      { name: 'Pricing', path: 'Pricing', href: '/pricing' },
+      { name: 'Refer & Earn', path: 'Refer & Earn', href: '/refer-and-earn' },
     ],
   };
 
@@ -55,10 +58,12 @@ export default function Footer() {
             <ul className="space-y-3">
               {links.company.map((link) => (
                 <li key={link.name}>
+                  <Link href={link.href}>
                   <div className="group flex items-center text-sm text-slate-400 transition-colors hover:text-white">
                     {link.name}
                     <ArrowUpRight className="ml-1 h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100" />
                   </div>
+                  </Link>
                 </li>
               ))}
             </ul>
