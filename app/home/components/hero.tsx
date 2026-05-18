@@ -39,7 +39,7 @@ const guarantees: Guarantee[] = [
     icon: MessageCircle,
     iconBg: '#fffbeb',
     iconColor: '#b45309',
-    title: '48h response',
+    title: '24h response',
     desc: 'Always reachable, always responsive.',
   },
 ];
