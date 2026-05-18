@@ -1,4 +1,4 @@
-import { ArrowUpRight, Mail, Phone, MapPin } from 'lucide-react';
+import { ArrowUpRight, Mail, Phone, MapPin, Linkedin } from 'lucide-react';
 
 export default function Footer() {
   const links = {
@@ -83,6 +83,17 @@ export default function Footer() {
                   <Phone className="h-4 w-4 text-blue-500" />
                   +91 6201855200 <br />
                   +91 7870402553
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/company/craftbit-digital-solution/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-3 text-sm text-slate-400 hover:text-blue-400 transition-colors"
+                >
+                  <Linkedin className="mt-0.5 h-4 w-4 text-blue-500" />
+                  CraftBit Digital Solution
                 </a>
               </li>
               <li>
