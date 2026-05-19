@@ -91,14 +91,14 @@ function BrowserMockup() {
             <div className="h-3 w-3 rounded-full bg-green-400" />
           </div>
           <div className="mx-auto flex h-6 w-48 items-center rounded-md bg-white px-3 text-[10px] text-gray-400 shadow-sm">
-            modernliving.com
+            organic-store.com
           </div>
         </div>
 
         <div className="bg-white p-0">
           <div className="flex items-center justify-between border-b border-gray-100 px-5 py-3">
             <span className="text-[11px] font-bold tracking-wide text-gray-800">
-              MODERN LIVING
+              Organic Store
             </span>
             <div className="flex gap-4">
               {['Home', 'Shop', 'About', 'Contact'].map((item) => (
@@ -115,17 +115,17 @@ function BrowserMockup() {
           <div className="flex items-center gap-4 p-5">
             <div className="flex-1">
               <h3 className="text-[16px] leading-tight font-bold text-gray-900">
-                Luxury furniture,
+                Organic Foods,
                 <br />
-                designed for life.
+                for healthy life.
               </h3>
               <p className="mt-2 text-[9px] leading-relaxed text-gray-500">
-                Modern pieces. Timeless comfort.
+                Natural farms, veggies, fruits
                 <br />
-                Made for your space.
+                grown for you table.
               </p>
               <div className="mt-3 inline-block rounded-lg bg-gray-900 px-3 py-1.5 text-[9px] font-semibold text-white">
-                Explore Collection
+                Explore Foods
               </div>
             </div>
             <div className="flex h-32 w-32 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-gray-100 to-gray-200">
@@ -355,44 +355,6 @@ export default function HomeHero() {
             <span className="text-gray-300">↳</span>
             No pressure. 15-min call. Get clear next steps.
           </motion.p>
-
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            custom={5}
-            className="mt-8 flex items-center gap-4"
-          >
-            <div className="flex -space-x-2">
-              {avatarColors.map((color, i) => (
-                <div
-                  key={i}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-white text-xs font-semibold text-white"
-                  style={{ background: color, zIndex: 4 - i }}
-                >
-                  {['A', 'B', 'C', 'D'][i]}
-                </div>
-              ))}
-            </div>
-            <div className="h-8 w-px bg-gray-200" />
-            <div>
-              <div className="flex items-center gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <svg
-                    key={i}
-                    className="h-4 w-4 text-yellow-400"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-              <p className="text-sm font-medium text-gray-600">
-                Trusted by 25+ businesses
-              </p>
-            </div>
-          </motion.div>
         </div>
 
         <motion.div
