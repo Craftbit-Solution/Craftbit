@@ -9,9 +9,9 @@ const categories: string[] = [
   'All',
   'Web Development',
   'Business Website',
+  'Portfolio/Profile',
   'E-Commerce',
   'UI/UX Design',
-  'Branding',
 ];
 
 type Project = {
@@ -42,12 +42,22 @@ const projects: Project[] = [
     category: 'Business Website',
     description:
       'Experience the charm of countryside living with modern amenities and delicious farm-to-table cuisine.',
-    image: './images/varsha-farm-house.png',
+    image: './images/varsha-farm-house1.png',
     tags: ['React', 'Tailwind CSS'],
     live_url: 'https://www.varshafarmhouse.com/',
   },
   {
     id: 3,
+    title: 'Anurag Pandey Portfolio',
+    category: 'Portfolio/Profile',
+    description:
+      'A modern developer portfolio showcasing projects, skills, and experience with smooth animations and 3D elements.',
+    image: './images/anurag-pandey-ap001-portfolio.png',
+    tags: ['Next.js', 'Tailwind CSS', 'Three.js'],
+    live_url: 'https://demo-anurag-p.vercel.app/',
+  },
+  {
+    id: 32,
     title: 'Luxe Fashion Store',
     category: 'E-Commerce',
     description:
@@ -88,17 +98,6 @@ const projects: Project[] = [
     image:
       'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop',
     tags: ['WooCommerce', 'Multi-vendor', 'Payments'],
-    live_url: '',
-  },
-  {
-    id: 7,
-    title: 'Zenith Branding',
-    category: 'Branding',
-    description:
-      'Complete brand identity for a tech startup — logo, guidelines, and asset library.',
-    image:
-      'https://images.unsplash.com/photo-1634942537034-2531766767d1?w=800&h=600&fit=crop',
-    tags: ['Logo Design', 'Brand Guide', 'Identity'],
     live_url: '',
   },
 ];
