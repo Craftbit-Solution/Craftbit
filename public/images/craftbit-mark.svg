@@ -1,0 +1,18 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 32 32"
+  fill="none"
+  role="img"
+  aria-labelledby="craftbit-mark-title"
+>
+  <title id="craftbit-mark-title">Craftbit</title>
+  <text
+    x="16"
+    y="23"
+    text-anchor="middle"
+    fill="currentColor"
+    style="font-family: Georgia, 'Times New Roman', serif; font-size: 26px; letter-spacing: -0.03em"
+  >
+    C
+  </text>
+</svg>

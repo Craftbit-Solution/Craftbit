@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Trash2, MessageSquare, Mail, Maximize2 } from 'lucide-react';
+import { Logo } from '@/components/shared/logo';
 
 const WHATSAPP_NUMBER = "916201855200";
 
@@ -206,7 +207,7 @@ export default function WhatsAppFloat() {
         onMouseLeave={() => setHovered(false)}
       >
         {hovered && !open && (
-          <span className="flex items-center gap-2 bg-gray-900/90 text-white text-sm px-4 py-2 rounded-full shadow-lg">
+          <span className="flex items-center gap-2 bg-ink/90 text-paper text-sm px-4 py-2 rounded-full shadow-lg">
             <span className="flex gap-1">
               <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-bounce" />
               <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-bounce [animation-delay:150ms]" />
@@ -236,23 +237,18 @@ export default function WhatsAppFloat() {
       {/* CHAT PANEL */}
       {open && (
         <div className="fixed bottom-24 right-8 w-[320px] z-[9999]">
-          <div className="rounded-3xl bg-white/90 backdrop-blur shadow-2xl overflow-hidden flex flex-col">
+          <div className="rounded-3xl bg-paper/90 backdrop-blur shadow-2xl overflow-hidden flex flex-col border border-rule">
 
             {/* HEADER */}
-            <div className="flex items-center justify-between bg-gradient-to-r from-[#0D3082] to-[#3E92CC] text-white px-4 py-3">
+            <div className="flex items-center justify-between bg-ink text-paper px-4 py-3">
 
               {/* LEFT SIDE */}
               <div className="flex items-center gap-3">
 
                 {/* LOGO */}
-                <div className="relative">
-                  <img
-                    src="./images/craftbit-symbol.png"
-                    alt="CraftBit"
-                    className="w-9 h-9 rounded-full object-cover border-2 border-white/40 shadow-md"
-                  />
-
-                  <span className="absolute inset-0 rounded-full bg-white/20 blur-md opacity-40" />
+                <div className="relative flex size-9 items-center justify-center rounded-full border-2 border-paper/40 bg-paper/10 text-paper shadow-md">
+                  <Logo variant="mark" className="size-6" />
+                  <span className="absolute inset-0 rounded-full bg-paper/20 blur-md opacity-40" />
                 </div>
 
                 {/* TITLE */}
@@ -260,7 +256,7 @@ export default function WhatsAppFloat() {
                   <p className="text-sm font-semibold tracking-wide">
                     CraftBit Assistant
                   </p>
-                  <p className="text-[10px] text-white/70">
+                  <p className="text-[10px] text-paper/70">
                     Online • Ready to help
                   </p>
                 </div>
@@ -270,7 +266,7 @@ export default function WhatsAppFloat() {
               <div className="flex items-center gap-2">
 
                 {/* EXPAND */}
-                <button className="relative group w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition cursor-pointer">
+                <button className="relative group w-8 h-8 flex items-center justify-center rounded-full bg-paper/10 hover:bg-paper/20 transition cursor-pointer">
 
                   <Maximize2
                     className="w-4 h-4"
@@ -279,7 +275,7 @@ export default function WhatsAppFloat() {
                       setOpen(false);
                     }} />
 
-                  <span className="absolute -bottom-8 right-0 text-[10px] bg-black/80 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap">
+                  <span className="absolute -bottom-8 right-0 text-[10px] bg-ink/80 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap">
                     Expand chat
                   </span>
                 </button>
@@ -288,11 +284,11 @@ export default function WhatsAppFloat() {
                 {showClearButton && (
                   <button
                     onClick={clearChat}
-                    className="relative group w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition cursor-pointer"
+                    className="relative group w-8 h-8 flex items-center justify-center rounded-full bg-paper/10 hover:bg-paper/20 transition cursor-pointer"
                   >
                     <Trash2 className="w-4 h-4" />
 
-                    <span className="absolute -bottom-8 right-0 text-[10px] bg-black/80 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap">
+                    <span className="absolute -bottom-8 right-0 text-[10px] bg-ink/80 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap">
                       Clear chat
                     </span>
                   </button>
@@ -302,13 +298,13 @@ export default function WhatsAppFloat() {
             </div>
 
             {/* MESSAGES */}
-            <div className="h-64 overflow-y-auto p-3 space-y-3">
+            <div className="h-64 overflow-y-auto p-3 space-y-3 bg-paper">
               {messages.map((msg, index) => (
                 <div
                   key={index}
                   className={`text-sm px-3 py-2 rounded-2xl max-w-[75%] ${msg.sender === 'user'
-                    ? 'ml-auto bg-[#3E92CC] text-white'
-                    : 'bg-[#f0f4ff] text-[#0D3082]'
+                    ? 'ml-auto bg-ember text-paper'
+                    : 'bg-ink/5 text-ink'
                     }`}
                 >
                   {msg.text}
@@ -316,11 +312,11 @@ export default function WhatsAppFloat() {
               ))}
 
               {isTyping && (
-                <div className="bg-[#f0f4ff] px-3 py-2 rounded-2xl w-fit">
+                <div className="bg-ink/5 px-3 py-2 rounded-2xl w-fit">
                   <div className="flex gap-1">
-                    <span className="w-1.5 h-1.5 bg-[#3E92CC] rounded-full animate-bounce" />
-                    <span className="w-1.5 h-1.5 bg-[#3E92CC] rounded-full animate-bounce [animation-delay:150ms]" />
-                    <span className="w-1.5 h-1.5 bg-[#3E92CC] rounded-full animate-bounce [animation-delay:300ms]" />
+                    <span className="w-1.5 h-1.5 bg-ember rounded-full animate-bounce" />
+                    <span className="w-1.5 h-1.5 bg-ember rounded-full animate-bounce [animation-delay:150ms]" />
+                    <span className="w-1.5 h-1.5 bg-ember rounded-full animate-bounce [animation-delay:300ms]" />
                   </div>
                 </div>
               )}
@@ -329,8 +325,8 @@ export default function WhatsAppFloat() {
             </div>
 
             {/* INPUT */}
-            <div className="border-t p-2">
-              <div className="flex items-center bg-[#f5f7fb] rounded-full px-3">
+            <div className="border-t border-rule p-2">
+              <div className="flex items-center bg-ink/5 rounded-full px-3">
                 <input
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
@@ -340,12 +336,12 @@ export default function WhatsAppFloat() {
                     }
                   }}
                   placeholder="Type your message..."
-                  className="flex-1 bg-transparent outline-none text-sm"
+                  className="flex-1 bg-transparent outline-none text-sm text-ink placeholder:text-ink-muted"
                 />
 
                 <button
                   onClick={sendMessage}
-                  className="w-8 h-8 flex items-center justify-center bg-[#0D3082] text-white rounded-full hover:scale-110 transition cursor-pointer"
+                  className="w-8 h-8 flex items-center justify-center bg-ink text-paper rounded-full hover:scale-110 transition cursor-pointer"
                 >
                   <Send className="w-4 h-4" />
                 </button>
@@ -354,7 +350,7 @@ export default function WhatsAppFloat() {
 
             {/* WHATSAPP/EMAIL CTA */}
 
-            <div className="grid grid-cols-2 border-t">
+            <div className="grid grid-cols-2 border-t border-rule">
 
               {/* WHATSAPP */}
               <a
@@ -371,7 +367,7 @@ export default function WhatsAppFloat() {
                 href={`https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 py-2 text-sm font-semibold bg-[#0D3082] text-white hover:bg-[#102a6d] transition cursor-pointer"
+                className="flex items-center justify-center gap-2 py-2 text-sm font-semibold bg-ink text-paper hover:bg-ink/90 transition cursor-pointer"
               >
                 <Mail className="w-4 h-4" />
                 Email
@@ -384,28 +380,26 @@ export default function WhatsAppFloat() {
 
 
       {expanded && (
-        <div className="fixed inset-0 z-[99999] flex items-center justify-center bg-black/40 p-3">
+        <div className="fixed inset-0 z-[99999] flex items-center justify-center bg-ink/40 p-3">
 
-          <div className="w-full max-w-[420px] sm:w-[420px] bg-white rounded-2xl shadow-2xl overflow-hidden">
+          <div className="w-full max-w-[420px] sm:w-[420px] bg-paper rounded-2xl shadow-2xl overflow-hidden border border-rule">
 
             {/* HEADER */}
-            <div className="flex items-center justify-between bg-gradient-to-r from-[#0D3082] to-[#3E92CC] text-white px-4 py-3">
+            <div className="flex items-center justify-between bg-ink text-paper px-4 py-3">
 
               {/* LEFT SIDE */}
               <div className="flex items-center gap-3">
 
                 {/* LOGO */}
-                <img
-                  src="./images/craftbit-symbol.png"
-                  alt="craftbit"
-                  className="w-9 h-9 rounded-full object-cover border border-white/40 shadow-md"
-                />
+                <div className="flex size-9 items-center justify-center rounded-full border border-paper/40 bg-paper/10 text-paper shadow-md">
+                  <Logo variant="mark" className="size-6" />
+                </div>
 
                 <div className="leading-tight">
                   <p className="text-sm font-semibold">
                     CraftBit Assistant
                   </p>
-                  <p className="text-[10px] text-white/70">
+                  <p className="text-[10px] text-paper/70">
                     Online • Ready to help
                   </p>
                 </div>
@@ -426,7 +420,7 @@ export default function WhatsAppFloat() {
                     ]);
                     localStorage.removeItem(STORAGE_KEY);
                   }}
-                  className="text-white/80 hover:text-white cursor-pointer"
+                  className="text-paper/80 hover:text-paper cursor-pointer"
                   title="Clear chat"
                 >
                   <Trash2 className="w-4 h-4" />
@@ -438,7 +432,7 @@ export default function WhatsAppFloat() {
                     setExpanded(false);
                     setOpen(true);
                   }}
-                  className="text-white cursor-pointer"
+                  className="text-paper cursor-pointer"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -450,14 +444,14 @@ export default function WhatsAppFloat() {
             <div className="h-[70vh] sm:h-[400px] flex flex-col">
 
               {/* MESSAGES */}
-              <div className="flex-1 overflow-y-auto p-3 space-y-3 bg-[#f9fbff]">
+              <div className="flex-1 overflow-y-auto p-3 space-y-3 bg-paper">
 
                 {messages.map((msg, i) => (
                   <div
                     key={i}
                     className={`text-sm px-3 py-2 rounded-2xl max-w-[75%] break-words ${msg.sender === 'user'
-                      ? 'ml-auto bg-[#3E92CC] text-white'
-                      : 'bg-[#f0f4ff] text-[#0D3082]'
+                      ? 'ml-auto bg-ember text-paper'
+                      : 'bg-ink/5 text-ink'
                       }`}
                   >
                     {msg.text}
@@ -465,7 +459,7 @@ export default function WhatsAppFloat() {
                 ))}
 
                 {isTyping && (
-                  <div className="text-xs text-gray-500 px-2">
+                  <div className="text-xs text-ink-muted px-2">
                     typing...
                   </div>
                 )}
@@ -474,7 +468,7 @@ export default function WhatsAppFloat() {
               </div>
 
               {/* INPUT */}
-              <div className="border-t p-2 flex items-center gap-2 bg-white">
+              <div className="border-t border-rule p-2 flex items-center gap-2 bg-paper">
 
                 <input
                   value={input}
@@ -483,12 +477,12 @@ export default function WhatsAppFloat() {
                     if (e.key === 'Enter') sendMessage();
                   }}
                   placeholder="Type your message..."
-                  className="flex-1 text-sm outline-none bg-[#f5f7fb] px-3 py-2 rounded-full"
+                  className="flex-1 text-sm outline-none bg-ink/5 text-ink placeholder:text-ink-muted px-3 py-2 rounded-full"
                 />
 
                 <button
                   onClick={sendMessage}
-                  className="bg-[#0D3082] text-white p-2 rounded-full hover:scale-105 transition cursor-pointer"
+                  className="bg-ink text-paper p-2 rounded-full hover:scale-105 transition cursor-pointer"
                 >
                   <Send className="w-4 h-4" />
                 </button>

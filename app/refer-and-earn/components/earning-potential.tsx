@@ -1,62 +1,96 @@
 'use client';
-import { motion } from 'framer-motion';
+
+import { motion, type Variants } from 'framer-motion';
+import { Eyebrow, Stat } from '@/components/design';
 import SectionWrapper from '@/components/shared/section-wrapper';
 
-const data = [
-  { label: '1 Refer', value: '₹500' },
-  { label: '5 Refers', value: '₹2,500' },
-  { label: '10 Refers', value: '₹5,000' },
+const tiers = [
+  {
+    label: '1 referral',
+    value: '₹500',
+    description: 'Earn on your first successful intro.',
+  },
+  {
+    label: '5 referrals',
+    value: '₹2,500',
+    description: 'A solid side payout from a few intros.',
+  },
+  {
+    label: '10 referrals',
+    value: '₹5,000',
+    description: 'Keep referring — rewards scale with you.',
+  },
 ];
 
-export function EarningPotential() {
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  show: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      delay: 0.06 + i * 0.07,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
+  }),
+};
+
+export default function EarningPotential() {
   return (
-    <SectionWrapper className="py-10">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl font-bold text-[#0D3082]">
-          Your earning potential
-        </h2>
-        <p className="text-[#0D3082]/60 mt-2">
-          The more you refer, the more you earn.
-        </p>
+    <SectionWrapper className="section-y">
+      <div className="mx-auto max-w-2xl text-center">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-40px' }}
+          custom={0}
+        >
+          <Eyebrow>Earning potential</Eyebrow>
+        </motion.div>
+
+        <motion.h2
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-40px' }}
+          custom={1}
+          className="mt-4 text-heading font-medium tracking-tight text-ink"
+        >
+          ₹500 for every successful referral
+        </motion.h2>
+
+        <motion.p
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-40px' }}
+          custom={2}
+          className="mx-auto mt-4 max-w-[65ch] text-subhead text-ink-muted"
+        >
+          Paid when the referred client starts a project with us. No caps, no
+          complicated tiers — the more you refer, the more you earn.
+        </motion.p>
       </div>
 
-      <div className="grid gap-5 sm:grid-cols-3">
-        {data.map((item, i) => (
-          <motion.div
-            key={item.label}
-            initial={{ opacity: 0, y: 30, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ delay: i * 0.1, duration: 0.5 }}
-            whileHover={{ y: -4, scale: 1.02 }}
-            className="group rounded-2xl border border-[#0D3082]/08 bg-[#fafbff] p-6 text-left transition-all duration-300 hover:shadow-lg hover:shadow-[#0D3082]/10"
+      <ul className="mt-12 grid gap-4 sm:grid-cols-3">
+        {tiers.map(({ label, value, description }, index) => (
+          <motion.li
+            key={label}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: '-40px' }}
+            custom={index + 3}
+            className="flex h-full flex-col rounded-lg border border-rule bg-paper/60 p-6 text-left"
           >
-            {/* Top Row */}
-            <div className="flex items-center gap-4">
-              {/* Coin Emoji */}
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#3E92CC]/10 text-2xl transition-transform duration-300 group-hover:scale-110">
-                💰
-              </div>
-
-              <div>
-                <p className="text-sm text-[#0D3082]/60">
-                  {item.label}
-                </p>
-                <h3 className="text-xl font-bold text-[#0D3082]">
-                  {item.value}
-                </h3>
-              </div>
-            </div>
-
-            {/* Bottom subtle line */}
-            <div className="h-px w-full bg-[#0D3082]/06" />
-
-            {/* Extra hint */}
-            <p className="mt-2 text-xs text-[#0D3082]/50">
-              Instant reward on successful referral
+            <Stat value={value} label={label} />
+            <p className="mt-4 text-sm leading-relaxed text-ink-muted">
+              {description}
             </p>
-          </motion.div>
+          </motion.li>
         ))}
-      </div>
+      </ul>
     </SectionWrapper>
   );
 }

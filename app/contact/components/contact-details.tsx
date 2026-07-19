@@ -1,6 +1,9 @@
 'use client';
-import { motion, Variants } from 'framer-motion';
+
+import { motion, type Variants } from 'framer-motion';
 import { Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
+import { Eyebrow } from '@/components/design';
+import { cn } from '@/lib/utils';
 
 const contactMethods = [
   {
@@ -14,7 +17,8 @@ const contactMethods = [
     icon: Phone,
     title: 'Phone',
     description: 'Mon–Sat, 10 AM – 7 PM IST',
-    value: '+91 62018 55200 / +91 7870402553',
+    value: '+91 62018 55200',
+    secondary: '+91 78704 02553',
     href: 'tel:+916201855200',
   },
   {
@@ -27,107 +31,118 @@ const contactMethods = [
   {
     icon: MapPin,
     title: 'Location',
-    description: 'Remote-first, based in',
+    description: 'Remote-first studio',
     value: 'Remote',
     href: null,
   },
-];
+] as const;
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({
+  hidden: { opacity: 0, y: 16 },
+  show: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] },
+    transition: {
+      duration: 0.5,
+      delay: 0.06 + i * 0.07,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
   }),
 };
 
 export default function ContactDetails() {
   return (
-    <div>
+    <aside className="lg:sticky lg:top-28 lg:self-start">
       <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
         variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: '-40px' }}
         custom={0}
-        className="mb-8"
       >
-        <h2 className="mb-3 text-2xl font-bold tracking-tight text-[#0D3082]">
-          Reach us directly
+        <Eyebrow>Reach us directly</Eyebrow>
+        <h2 className="mt-3 text-heading font-medium tracking-tight text-ink">
+          Prefer to skip the form?
         </h2>
-        <p className="leading-relaxed text-[#0D3082]/60">
-          Prefer to skip the form? Any of these work fine. We respond to all
-          messages within 24 hours — usually faster.
+        <p className="mt-3 max-w-[40ch] text-body text-ink-muted">
+          Email or call works fine. We respond to all messages within 24 hours
+          — usually faster.
         </p>
       </motion.div>
 
-      <div className="mb-8 flex flex-col gap-3">
+      <ul className="mt-8 flex flex-col gap-1">
         {contactMethods.map((method, index) => {
           const Icon = method.icon;
-          const card = (
+          const content = (
             <motion.div
-              key={method.title}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
               variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: '-40px' }}
               custom={index + 1}
-              className="border-[#0D3082]/08 hover:shadow-[#0D3082]/06 flex items-start gap-4 rounded-2xl border bg-[#fafbff] px-5 py-4 transition-all duration-200 hover:shadow-md"
+              className={cn(
+                'group flex items-start gap-4 rounded-md border border-transparent px-3 py-3 transition-colors',
+                method.href && 'hover:border-rule hover:bg-ink/2',
+              )}
             >
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#3E92CC]/10">
-                <Icon className="h-5 w-5 text-[#3E92CC]" strokeWidth={2} />
+              <div className="flex size-10 shrink-0 items-center justify-center rounded-md border border-rule bg-paper">
+                <Icon className="size-4 text-ember" strokeWidth={2} />
               </div>
-              <div>
-                <p className="text-sm font-semibold text-[#0D3082]">
-                  {method.title}
-                </p>
-                <p className="mb-0.5 text-xs text-[#0D3082]/45">
+              <div className="min-w-0">
+                <p className="text-sm font-medium text-ink">{method.title}</p>
+                <p className="mt-0.5 text-caption text-ink-muted">
                   {method.description}
                 </p>
-                <p className="text-sm font-medium text-[#3E92CC]">
+                <p className="mt-1 text-sm font-medium text-ember transition-colors group-hover:text-ink">
                   {method.value}
                 </p>
+                {'secondary' in method && method.secondary ? (
+                  <p className="text-sm font-medium text-ember/80 transition-colors group-hover:text-ink">
+                    {method.secondary}
+                  </p>
+                ) : null}
               </div>
             </motion.div>
           );
 
-          return method.href ? (
-            <a
-              key={method.title}
-              href={method.href}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {card}
-            </a>
-          ) : (
-            <div key={method.title}>{card}</div>
+          return (
+            <li key={method.title}>
+              {method.href ? (
+                <a
+                  href={method.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block outline-none focus-visible:rounded-md focus-visible:ring-[3px] focus-visible:ring-ring/50"
+                >
+                  {content}
+                </a>
+              ) : (
+                content
+              )}
+            </li>
           );
         })}
-      </div>
+      </ul>
 
       <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
         variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: '-40px' }}
         custom={6}
-        className="border-[#0D3082]/08 rounded-2xl border bg-[#f0f4ff] px-5 py-4"
+        className="mt-6 flex items-start gap-3 border-t border-rule pt-6"
       >
-        <div className="flex items-start gap-3">
-          <span className="mt-1 h-2 w-2 shrink-0 animate-pulse rounded-full bg-green-500" />
-          <div>
-            <p className="text-sm font-semibold text-[#0D3082]">
-              Currently available for new projects
-            </p>
-            <p className="mt-0.5 text-xs leading-relaxed text-[#0D3082]/55">
-              We have capacity for 1–2 new projects this quarter. Reach out
-              early to secure your spot.
-            </p>
-          </div>
+        <span className="mt-1.5 size-2 shrink-0 animate-pulse rounded-full bg-success" />
+        <div>
+          <p className="text-sm font-medium text-ink">
+            Available for new projects
+          </p>
+          <p className="mt-1 text-caption leading-relaxed text-ink-muted">
+            Capacity for 1–2 new projects this quarter. Reach out early to
+            secure your spot.
+          </p>
         </div>
       </motion.div>
-    </div>
+    </aside>
   );
 }

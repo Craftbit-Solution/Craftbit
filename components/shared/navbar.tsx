@@ -6,6 +6,7 @@ import { ArrowRight, Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import { Logo } from '@/components/shared/logo';
 
 const navLinks = [
   { label: 'Services', href: '/services' },
@@ -63,22 +64,12 @@ export default function Navbar() {
         )}
       >
         <div className="section-x mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 lg:h-16">
-          {/* Logo */}
           <Link
             href="/"
-            className="relative z-10 flex shrink-0 items-center"
+            className="relative z-10 flex shrink-0 items-center text-ink"
             onClick={() => setMenuOpen(false)}
           >
-            <img
-              src="/images/craftbit-symbol.png"
-              alt="CraftBit"
-              className="h-8 w-auto object-contain lg:hidden"
-            />
-            <img
-              src="/images/craftbit-logo.png"
-              alt="CraftBit"
-              className="hidden h-9 w-auto object-contain lg:block"
-            />
+            <Logo className="h-6 md:h-7" />
           </Link>
 
           {/* Desktop / tablet nav — centered via absolute */}

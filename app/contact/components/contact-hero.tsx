@@ -1,44 +1,59 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
+import { motion, type Variants } from 'framer-motion';
+import { Eyebrow } from '@/components/design';
+import SectionWrapper from '@/components/shared/section-wrapper';
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  show: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.55,
+      delay: 0.08 + i * 0.1,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
+  }),
+};
 
 export default function ContactHero() {
   return (
-    <section className="mb-12 pt-4">
-      <div className="">
+    <SectionWrapper className="pt-16 pb-10 md:pt-20 md:pb-12">
+      <div className="max-w-2xl">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          variants={fadeUp}
+          initial="hidden"
+          animate="show"
+          custom={0}
         >
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mb-8 inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-4 py-2 text-blue-600"
-          >
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
-            >
-              <Sparkles className="h-4 w-4" />
-            </motion.div>
-            <span className="text-sm font-medium text-blue-700">
-              Digital Web-Crafting Studio
-            </span>
-          </motion.div>
-          <h1 className="text-5xl leading-tight font-bold text-slate-900 md:text-6xl">
-            Let’s Create Something{' '}
-            <span className="text-blue-500">Thoughtful</span>
-          </h1>
-          <p className="mt-6 text-xl text-slate-600">
-            From early concepts to growing platforms, we partner with startups
-            to build digital experiences that feel intentional, perform
-            reliably, and grow alongside the business behind them.{' '}
-          </p>
+          <Eyebrow>Get in touch</Eyebrow>
         </motion.div>
+
+        <motion.h1
+          variants={fadeUp}
+          initial="hidden"
+          animate="show"
+          custom={1}
+          className="mt-5 text-display font-medium tracking-tight text-ink"
+        >
+          Let&apos;s build something{' '}
+          <span className="font-serif text-[1.05em] font-normal italic">
+            you&apos;re proud of
+          </span>
+        </motion.h1>
+
+        <motion.p
+          variants={fadeUp}
+          initial="hidden"
+          animate="show"
+          custom={2}
+          className="mt-6 max-w-[55ch] text-subhead text-ink-muted"
+        >
+          Tell us about your project and we&apos;ll get back within 24 hours.
+          No commitment required.
+        </motion.p>
       </div>
-    </section>
+    </SectionWrapper>
   );
 }
