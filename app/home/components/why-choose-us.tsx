@@ -1,33 +1,33 @@
 'use client';
 
-import { motion, Variants } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import {
-  Shield,
-  Clock,
-  Users,
   Activity,
-  CheckCircle,
-  LucideIcon,
+  Clock,
+  FileCheck2,
+  Headphones,
+  MessageCircle,
+  Users,
+  type LucideIcon,
 } from 'lucide-react';
-import AnimatedSection from './animated-section';
-import SectionHeader from './header';
+import { Eyebrow } from '@/components/design';
 import SectionWrapper from '@/components/shared/section-wrapper';
 
-type Feature = {
+type Differentiator = {
   icon: LucideIcon;
   title: string;
   description: string;
 };
 
-const features: Feature[] = [
+const differentiators: Differentiator[] = [
   {
-    icon: Shield,
+    icon: Clock,
     title: 'On-time delivery',
     description:
       'We set realistic timelines and stick to them. Late delivery means your next revision is on us.',
   },
   {
-    icon: Clock,
+    icon: MessageCircle,
     title: '24h response',
     description:
       'Every message gets a reply within 24 hours — usually much faster during business hours.',
@@ -44,114 +44,92 @@ const features: Feature[] = [
     description:
       'Every site we ship is optimized for speed, SEO, and Core Web Vitals out of the box.',
   },
-];
-
-const checkItems = [
-  'Custom-tailored solutions',
-  'Transparent pricing',
-  'Fixed-scope contracts',
-  'Post-launch support',
-  'SEO-ready builds',
-  'You own everything',
+  {
+    icon: Headphones,
+    title: 'Post-launch support',
+    description:
+      "30 days of support after every launch. We don't hand over and disappear.",
+  },
+  {
+    icon: FileCheck2,
+    title: 'Fixed-scope contracts',
+    description:
+      "Fixed-scope projects with clear deliverables. You know exactly what you're getting and what it costs before we start.",
+  },
 ];
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
+  hidden: { opacity: 0, y: 16 },
+  show: (i: number) => ({
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
-      ease: [0.22, 1, 0.36, 1],
+      duration: 0.5,
+      delay: 0.06 + i * 0.07,
+      ease: [0.22, 1, 0.36, 1] as const,
     },
-  },
+  }),
 };
 
 export default function WhyChooseUs() {
   return (
-    <SectionWrapper className="py-16">
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeUp}
-        className="mb-12 flex items-center justify-center gap-3"
-      >
-        <div className="h-px w-10 bg-linear-to-r from-transparent to-[#3E92CC]" />
-        <span className="text-xs font-medium tracking-widest text-[#3E92CC] uppercase">
-          Why CraftBit
-        </span>
-        <div className="h-px w-10 bg-linear-to-l from-transparent to-[#3E92CC]" />
-      </motion.div>
+    <SectionWrapper className="section-y">
+      <div className="mx-auto max-w-2xl text-center">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-40px' }}
+          custom={0}
+        >
+          <Eyebrow>Why CraftBit</Eyebrow>
+        </motion.div>
 
-      <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
-        <div>
-          <motion.h2
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="text-3xl leading-tight font-bold tracking-tight text-[#0D3082] md:text-4xl"
-          >
-            What makes working with us different
-          </motion.h2>
-          <motion.p
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="mt-4 text-lg text-[#0D3082]/60"
-          >
-            We&apos;re a small team — you get direct access to the people
-            actually building your product, not account managers passing
-            messages around.
-          </motion.p>
+        <motion.h2
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-40px' }}
+          custom={1}
+          className="mt-4 text-heading font-medium tracking-tight text-ink"
+        >
+          What makes working with us different
+        </motion.h2>
 
-          <div className="mt-10 grid grid-cols-2 gap-3">
-            {checkItems.map((item, index) => (
-              <AnimatedSection key={item} delay={index * 0.05}>
-                <div className="flex items-center gap-3">
-                  <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#3E92CC]/10">
-                    <CheckCircle className="h-3 w-3 text-[#3E92CC]" />
-                  </div>
-                  <span className="text-sm font-medium text-[#0D3082]/70">
-                    {item}
-                  </span>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {features.map((feature, index) => (
-            <AnimatedSection
-              key={feature.title}
-              delay={index * 0.1}
-              direction={index % 2 === 0 ? 'left' : 'right'}
-              className="h-full"
-            >
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                className="border-[#0D3082]/08 hover:shadow-[#0D3082]/08 h-full rounded-2xl border bg-[#fafbff] p-6 transition-all duration-300 hover:shadow-lg"
-              >
-                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-[#3E92CC]/10">
-                  <feature.icon
-                    className="h-5 w-5 text-[#3E92CC]"
-                    strokeWidth={2}
-                  />
-                </div>
-                <h3 className="mb-2 text-base font-semibold text-[#0D3082]">
-                  {feature.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-[#0D3082]/60">
-                  {feature.description}
-                </p>
-              </motion.div>
-            </AnimatedSection>
-          ))}
-        </div>
+        <motion.p
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-40px' }}
+          custom={2}
+          className="mx-auto mt-4 max-w-[65ch] text-subhead text-ink-muted"
+        >
+          We&apos;re a small team — you get direct access to the people actually
+          building your product, not account managers passing messages around.
+        </motion.p>
       </div>
+
+      <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {differentiators.map(({ icon: Icon, title, description }, index) => (
+          <motion.li
+            key={title}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: '-40px' }}
+            custom={index + 3}
+            className="flex h-full flex-col rounded-lg border border-rule bg-paper/60 p-6 text-left"
+          >
+            <div className="mb-4 flex size-9 items-center justify-center rounded-md border border-rule text-ink">
+              <Icon className="size-4" strokeWidth={1.75} aria-hidden />
+            </div>
+            <h3 className="text-body font-medium text-ink">{title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+              {description}
+            </p>
+          </motion.li>
+        ))}
+      </ul>
     </SectionWrapper>
   );
 }
