@@ -1,18 +1,17 @@
 'use client';
 
-import { motion, Variants } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import {
   Code2,
   ShoppingCart,
   Globe,
   Rocket,
   RefreshCw,
-  LucideIcon,
   Settings,
+  type LucideIcon,
 } from 'lucide-react';
-import SectionWrapper from '@/components/shared/section-wrapper';
+import { Eyebrow, Section } from '@/components/design';
 import ServiceCard from './service-card';
-import { useState } from 'react';
 
 export type Service = {
   icon: LucideIcon;
@@ -121,57 +120,61 @@ const services: Service[] = [
 ];
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({
+  hidden: { opacity: 0, y: 16 },
+  show: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] },
+    transition: {
+      duration: 0.5,
+      delay: 0.06 + i * 0.07,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
   }),
 };
 
 export default function ServicesLists() {
   return (
-    <SectionWrapper className="py-16">
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeUp}
-        custom={0}
-        className="mb-6 flex items-center justify-center gap-3"
-      >
-        <div className="h-px w-10 bg-linear-to-r from-transparent to-[#3E92CC]" />
-        <span className="text-xs font-medium tracking-widest text-[#3E92CC] uppercase">
-          What We Offer
-        </span>
-        <div className="h-px w-10 bg-linear-to-l from-transparent to-[#3E92CC]" />
-      </motion.div>
+    <Section>
+      <div className="mx-auto max-w-2xl text-center">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-40px' }}
+          custom={0}
+        >
+          <Eyebrow>What We Offer</Eyebrow>
+        </motion.div>
 
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeUp}
-        custom={1}
-        className="mb-12 text-center"
-      >
-        <h2 className="mb-4 text-3xl leading-tight font-bold tracking-tight text-[#0D3082] sm:text-4xl lg:text-5xl">
-          Services built around{' '}
-          <span className="bg-linear-to-r from-[#0D3082] to-[#3E92CC] bg-clip-text text-transparent">
-            what you actually need
-          </span>
-        </h2>
-        <p className="mx-auto max-w-xl text-lg leading-relaxed text-[#0D3082]/60">
+        <motion.h2
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-40px' }}
+          custom={1}
+          className="mt-4 text-heading font-medium tracking-tight text-ink"
+        >
+          Services built around what you actually need
+        </motion.h2>
+
+        <motion.p
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-40px' }}
+          custom={2}
+          className="mx-auto mt-4 max-w-[65ch] text-subhead text-ink-muted"
+        >
           No bloated packages or unnecessary upsells — just the right scope for
           where your business is now.
-        </p>
-      </motion.div>
+        </motion.p>
+      </div>
 
-      <div className="mb-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+      <div className="mt-12 grid gap-5 sm:grid-cols-2">
         {services.map((service, index) => (
           <ServiceCard key={service.title} service={service} index={index} />
         ))}
       </div>
-    </SectionWrapper>
+    </Section>
   );
 }

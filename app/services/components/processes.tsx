@@ -1,17 +1,16 @@
 'use client';
 
-import { motion, Variants } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import {
   Lightbulb,
   Palette,
   Code,
   Rocket,
   ArrowRight,
-  LucideIcon,
+  type LucideIcon,
 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import SectionWrapper from '@/components/shared/section-wrapper';
 import Link from 'next/link';
+import { Eyebrow, Section } from '@/components/design';
 
 type Step = {
   icon: LucideIcon;
@@ -24,127 +23,123 @@ const steps: Step[] = [
     icon: Lightbulb,
     title: 'Discovery',
     description:
-      'We dive deep into your business goals, target audience, and competition to create a strategic roadmap.',
+      'We start by deeply understanding your goals, users, and challenges — then dive into your audience and competition to create a strategic roadmap that fits your needs.',
   },
   {
     icon: Palette,
     title: 'Design',
     description:
-      'We craft intuitive designs that align with your brand and resonate with your users.',
+      'We craft elegant, user-centered designs that align with your brand and resonate with your users — through rapid prototyping and continuous feedback loops.',
   },
   {
     icon: Code,
     title: 'Development',
     description:
-      'We build robust, scalable solutions using modern technologies and best practices.',
+      'We develop robust, scalable solutions using modern technologies and best practices that grow with your business.',
   },
   {
     icon: Rocket,
     title: 'Launch',
     description:
-      'We deploy with precision, ensuring a smooth launch and providing ongoing support.',
+      'We deploy with precision, ensuring a smooth launch and providing ongoing support as your product scales.',
   },
 ];
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (i: number) => ({
+  hidden: { opacity: 0, y: 16 },
+  show: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] },
+    transition: {
+      duration: 0.5,
+      delay: 0.06 + i * 0.07,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
   }),
 };
 
 export default function ProcessSection() {
   return (
-    <SectionWrapper className="py-16">
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeUp}
-        custom={0}
-        className="mb-6 flex items-center justify-center gap-3"
-      >
-        <div className="h-px w-10 bg-linear-to-r from-transparent to-[#3E92CC]" />
-        <span className="text-xs font-medium tracking-widest text-[#3E92CC] uppercase">
-          Our Process
-        </span>
-        <div className="h-px w-10 bg-linear-to-l from-transparent to-[#3E92CC]" />
-      </motion.div>
+    <Section>
+      <div className="mx-auto max-w-2xl text-center">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-40px' }}
+          custom={0}
+        >
+          <Eyebrow>Our Process</Eyebrow>
+        </motion.div>
 
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeUp}
-        custom={1}
-        className="mb-12 text-center"
-      >
-        <h2 className="mb-4 text-3xl leading-tight font-bold tracking-tight text-[#0D3082] sm:text-4xl lg:text-5xl">
-          From idea to launch in{' '}
-          <span className="bg-linear-to-r from-[#0D3082] to-[#3E92CC] bg-clip-text text-transparent">
-            4 simple steps
-          </span>
-        </h2>
-        <p className="mx-auto max-w-xl text-lg leading-relaxed text-[#0D3082]/60">
+        <motion.h2
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-40px' }}
+          custom={1}
+          className="mt-4 text-heading font-medium tracking-tight text-ink"
+        >
+          From idea to launch in 4 simple steps
+        </motion.h2>
+
+        <motion.p
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-40px' }}
+          custom={2}
+          className="mx-auto mt-4 max-w-[65ch] text-subhead text-ink-muted"
+        >
           A transparent, collaborative process that keeps you informed and
           involved every step of the way.
-        </p>
-      </motion.div>
-
-      <div className="relative grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {steps.map((step, index) => {
-          const Icon = step.icon;
-          return (
-            <motion.div
-              key={step.title}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeUp}
-              custom={index + 2}
-              className="group border-[#0D3082]/08 hover:shadow-[#0D3082]/08 relative rounded-2xl border bg-[#fafbff] p-6 transition-all duration-300 hover:shadow-lg"
-            >
-              {index < steps.length - 1 && (
-                <div className="absolute top-10 left-full z-10 hidden h-px w-4 bg-linear-to-r from-[#3E92CC]/40 to-transparent lg:block" />
-              )}
-
-              <div className="mb-4 flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#3E92CC]/10">
-                  <Icon className="h-5 w-5 text-[#3E92CC]" strokeWidth={2} />
-                </div>
-                <span className="text-2xl font-bold text-[#0D3082]/10">
-                  0{index + 1}
-                </span>
-              </div>
-
-              <h3 className="mb-2 text-base font-semibold text-[#0D3082]">
-                {step.title}
-              </h3>
-              <p className="text-sm leading-relaxed text-[#0D3082]/60">
-                {step.description}
-              </p>
-            </motion.div>
-          );
-        })}
+        </motion.p>
       </div>
 
+      <ol className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+        {steps.map(({ icon: Icon, title, description }, index) => (
+          <motion.li
+            key={title}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: '-40px' }}
+            custom={index + 3}
+            className="relative flex h-full flex-col rounded-lg border border-rule bg-paper/60 p-6"
+          >
+            <div className="mb-4 flex items-center gap-3">
+              <div className="flex size-9 items-center justify-center rounded-md border border-rule text-ink">
+                <Icon className="size-4" strokeWidth={1.75} aria-hidden />
+              </div>
+              <span className="text-2xl font-medium text-ink/15">
+                0{index + 1}
+              </span>
+            </div>
+
+            <h3 className="text-body font-medium text-ink">{title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+              {description}
+            </p>
+          </motion.li>
+        ))}
+      </ol>
+
       <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
         variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: '-40px' }}
         custom={7}
         className="mt-12 text-center"
       >
-        <Link href="/contact">
-          <Button className="group h-12 rounded-full bg-linear-to-r from-[#0D3082] to-[#3E92CC] px-8 text-base font-semibold text-white shadow-xl shadow-[#0D3082]/25 transition-all duration-300 hover:opacity-90 hover:shadow-2xl hover:shadow-[#0D3082]/30">
-            Let&apos;s get started
-            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </Button>
+        <Link
+          href="/contact"
+          className="inline-flex h-11 items-center justify-center gap-2 rounded-md bg-ember px-6 text-body font-medium text-paper transition-opacity hover:opacity-90"
+        >
+          Let&apos;s get started
+          <ArrowRight className="size-4 shrink-0" strokeWidth={2.5} />
         </Link>
       </motion.div>
-    </SectionWrapper>
+    </Section>
   );
 }

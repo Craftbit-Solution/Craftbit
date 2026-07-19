@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, Variants } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import {
   Monitor,
   Search,
@@ -10,9 +10,9 @@ import {
   Headphones,
   BarChart3,
   RefreshCw,
-  LucideIcon,
+  type LucideIcon,
 } from 'lucide-react';
-import SectionWrapper from '@/components/shared/section-wrapper';
+import { Eyebrow, Section } from '@/components/design';
 
 type Feature = {
   icon: LucideIcon;
@@ -56,77 +56,76 @@ const features: Feature[] = [
 ];
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({
+  hidden: { opacity: 0, y: 16 },
+  show: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] },
+    transition: {
+      duration: 0.5,
+      delay: 0.06 + i * 0.07,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
   }),
 };
 
 export default function IncludedWithProject() {
   return (
-    <SectionWrapper className="py-16">
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeUp}
-        custom={0}
-        className="mb-6 flex items-center justify-center gap-3"
-      >
-        <div className="h-px w-10 bg-linear-to-r from-transparent to-[#3E92CC]" />
-        <span className="text-xs font-medium tracking-widest text-[#3E92CC] uppercase">
-          All Inclusive
-        </span>
-        <div className="h-px w-10 bg-linear-to-l from-transparent to-[#3E92CC]" />
-      </motion.div>
+    <Section>
+      <div className="mx-auto max-w-2xl text-center">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-40px' }}
+          custom={0}
+        >
+          <Eyebrow>All Inclusive</Eyebrow>
+        </motion.div>
 
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeUp}
-        custom={1}
-        className="mb-12 text-center"
-      >
-        <h2 className="mb-4 text-3xl leading-tight font-bold tracking-tight text-[#0D3082] sm:text-4xl lg:text-5xl">
-          What&apos;s included with{' '}
-          <span className="bg-linear-to-r from-[#0D3082] to-[#3E92CC] bg-clip-text text-transparent">
-            every project
-          </span>
-        </h2>
-        <p className="mx-auto max-w-xl text-lg leading-relaxed text-[#0D3082]/60">
+        <motion.h2
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-40px' }}
+          custom={1}
+          className="mt-4 text-heading font-medium tracking-tight text-ink"
+        >
+          What&apos;s included with every project
+        </motion.h2>
+
+        <motion.p
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-40px' }}
+          custom={2}
+          className="mx-auto mt-4 max-w-[65ch] text-subhead text-ink-muted"
+        >
           No hidden costs. Every project comes with these essentials.
-        </p>
-      </motion.div>
-
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-        {features.map((feature, index) => {
-          const Icon = feature.icon;
-          return (
-            <motion.div
-              key={feature.title}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeUp}
-              custom={index + 2}
-              className="group border-[#0D3082]/08 hover:shadow-[#0D3082]/08 rounded-2xl border bg-[#fafbff] p-5 transition-all duration-300 hover:shadow-lg"
-            >
-              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-[#3E92CC]/10">
-                <Icon className="h-5 w-5 text-[#3E92CC]" strokeWidth={2} />
-              </div>
-              <h3 className="mb-1 text-sm font-semibold text-[#0D3082]">
-                {feature.title}
-              </h3>
-              <p className="text-xs leading-relaxed text-[#0D3082]/55">
-                {feature.description}
-              </p>
-            </motion.div>
-          );
-        })}
+        </motion.p>
       </div>
-    </SectionWrapper>
+
+      <ul className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4">
+        {features.map(({ icon: Icon, title, description }, index) => (
+          <motion.li
+            key={title}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: '-40px' }}
+            custom={index + 3}
+            className="flex h-full flex-col rounded-lg border border-rule bg-paper/60 p-5 text-left"
+          >
+            <div className="mb-3 flex size-9 items-center justify-center rounded-md border border-rule text-ink">
+              <Icon className="size-4" strokeWidth={1.75} aria-hidden />
+            </div>
+            <h3 className="text-body font-medium text-ink">{title}</h3>
+            <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">
+              {description}
+            </p>
+          </motion.li>
+        ))}
+      </ul>
+    </Section>
   );
 }
