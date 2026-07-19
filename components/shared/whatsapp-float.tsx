@@ -35,7 +35,7 @@ const responses = [
   {
     keywords: ['price', 'cost', 'pricing', 'charge'],
     reply:
-      'Our pricing usually starts from ₹2,500 💰 for a clean and professional website. The final cost depends on your requirements and features.',
+      'Our pricing usually starts from ₹8,000 💰 for a clean and professional website. The final cost depends on your requirements and features.',
   },
   {
     keywords: ['mobile', 'responsive'],

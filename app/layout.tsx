@@ -26,9 +26,9 @@ const instrumentSerif = Instrument_Serif({
 export const metadata: Metadata = {
   title: 'CraftBit | Web Development & Portfolio Websites',
   description:
-    'CraftBit builds fast, modern personal websites, portfolios, and business pages. Affordable web development starting at ₹2,500.',
+    'CraftBit builds fast, modern personal websites, portfolios, and business pages. Affordable web development starting at ₹8,000.',
   keywords: [
-    'Website Starting at ₹2,500/- - Website in Just 24 Hours',
+    'Website Starting at ₹8,000/- - Website in Just 24 Hours',
     'personal website India',
     'portfolio website developer',
     'web development company India',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     'affordable website development India',
     'freelance web developer India',
     'personal portfolio website for developers',
-    'business website starting ₹2500',
+    'business website starting ₹8000',
     'fast website development service',
     'responsive website design India',
     'hire web developer for portfolio website',

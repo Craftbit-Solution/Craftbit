@@ -3,7 +3,7 @@ import ProfileSection from '../get-a-website/components/profile-section';
 export const metadata = {
   title: 'Get a Professional Website | CraftBit',
   description:
-    'Build your personal website, portfolio, or business page with CraftBit. Clean, fast, and affordable starting at ₹2,500.',
+    'Build your personal website, portfolio, or business page with CraftBit. Clean, fast, and affordable starting at ₹8,000.',
   keywords: [
     'portfolio website',
     'personal website',

@@ -1,23 +1,35 @@
 'use client';
-import { motion, Variants } from 'framer-motion';
-import { Check, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+
+import { motion, type Variants } from 'framer-motion';
+import { ArrowRight, Check, RefreshCw, Settings } from 'lucide-react';
 import Link from 'next/link';
-import SectionWrapper from '@/components/shared/section-wrapper';
+import { Eyebrow, Section } from '@/components/design';
+import { cn } from '@/lib/utils';
 
 type Plan = {
   name: string;
   price: string;
+  turnaround: string;
   description: string;
   features: string[];
   cta: string;
   popular?: boolean;
 };
 
+type OngoingService = {
+  icon: typeof Settings;
+  name: string;
+  price: string;
+  priceNote?: string;
+  description: string;
+  features: string[];
+};
+
 const plans: Plan[] = [
   {
     name: 'Starter',
     price: '₹8,000',
+    turnaround: '2–3 weeks',
     description:
       'A clean, fast business website to establish your online presence and start converting visitors.',
     features: [
@@ -32,7 +44,8 @@ const plans: Plan[] = [
   },
   {
     name: 'Growth',
-    price: '₹60,000',
+    price: '₹30,000',
+    turnaround: '4–6 weeks',
     description:
       'A conversion-focused website or e-commerce store built to grow your business.',
     features: [
@@ -48,7 +61,8 @@ const plans: Plan[] = [
   },
   {
     name: 'Custom',
-    price: '₹30,000',
+    price: '₹60,000',
+    turnaround: '8–16 weeks',
     description:
       'Full-scale web applications, SaaS products, or complex platforms built to scale.',
     features: [
@@ -63,146 +77,226 @@ const plans: Plan[] = [
   },
 ];
 
-const maintenance = {
-  features: [
-    'Regular updates & backups',
-    'Security monitoring',
-    'Performance optimization',
-    'Content updates',
-    'Priority support',
-  ],
-};
+const ongoingServices: OngoingService[] = [
+  {
+    icon: Settings,
+    name: 'Maintenance & Support',
+    price: '₹6,000 / month',
+    priceNote: 'after 6 months free',
+    description:
+      'Keep your site secure, fast, and up to date with ongoing monthly care. Peace of mind after launch.',
+    features: [
+      'Regular updates & backups',
+      'Security monitoring',
+      'Performance optimization',
+      'Content updates',
+      'Priority support',
+    ],
+  },
+  {
+    icon: RefreshCw,
+    name: 'Website Redesign',
+    price: '₹5,000 / month',
+    description:
+      'Modernize your existing website with improved design, performance, and user experience.',
+    features: [
+      'Complete visual overhaul',
+      'Performance optimization',
+      'Mobile responsiveness',
+      'Content migration',
+      'SEO preservation',
+    ],
+  },
+];
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (i: number) => ({
+  hidden: { opacity: 0, y: 16 },
+  show: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] },
+    transition: {
+      duration: 0.5,
+      delay: 0.06 + i * 0.07,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
   }),
 };
 
 export default function PricingPlans() {
   return (
-    <SectionWrapper className="py-10">
-      <div className="mb-5 grid gap-4 md:grid-cols-3">
-        {plans.map((plan, index) => (
-          <motion.div
-            key={plan.name}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            custom={index}
-            className={`relative flex flex-col rounded-2xl p-6 ${
-              plan.popular
-                ? 'border-2 border-[#3E92CC] bg-white shadow-lg shadow-[#3E92CC]/10'
-                : 'border-[#0D3082]/08 hover:shadow-[#0D3082]/06 border bg-white transition-shadow duration-300 hover:shadow-lg'
-            }`}
-          >
-            {plan.popular && (
-              <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-linear-to-r from-[#0D3082] to-[#3E92CC] px-4 py-1 text-xs font-bold text-white shadow-md shadow-[#0D3082]/20">
-                Most popular
-              </div>
-            )}
+    <>
+      <Section className="pt-0">
+        <div className="grid gap-5 md:grid-cols-3">
+          {plans.map((plan, index) => (
+            <motion.article
+              key={plan.name}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: '-40px' }}
+              custom={index}
+              className={cn(
+                'relative flex h-full flex-col rounded-lg border p-6 sm:p-8',
+                plan.popular
+                  ? 'border-ember/40 bg-ember/8 shadow-sm'
+                  : 'border-rule bg-paper/60',
+              )}
+            >
+              {plan.popular ? (
+                <p className="mb-4 font-mono text-caption font-medium tracking-[0.14em] text-ember uppercase">
+                  Most popular
+                </p>
+              ) : null}
 
-            <div className="mb-4">
-              <p className="mb-2 text-xs font-bold tracking-widest text-[#0D3082]/40 uppercase">
-                {plan.name}
-              </p>
-              <div className="flex items-baseline gap-1.5">
-                <span className="font-display text-3xl font-bold text-[#0D3082]">
+              <h3 className="text-body font-medium text-ink">{plan.name}</h3>
+
+              <div className="mt-3 flex items-baseline gap-1.5">
+                <span className="font-mono text-2xl tracking-tight tabular-nums text-ink md:text-[1.65rem]">
                   {plan.price}
                 </span>
-                <span className="text-xs text-[#0D3082]/40">onwards</span>
+                <span className="text-sm text-ink-muted">onwards</span>
               </div>
-            </div>
 
-            <p className="border-[#0D3082]/06 mb-5 border-b pb-5 text-sm leading-relaxed text-[#0D3082]/60">
-              {plan.description}
-            </p>
+              <p className="mt-3 font-mono text-caption font-medium tracking-[0.14em] text-ink-muted uppercase">
+                {plan.turnaround}
+              </p>
 
-            <ul className="mb-6 flex flex-1 flex-col gap-2.5">
-              {plan.features.map((feature) => (
-                <li key={feature} className="flex items-center gap-2.5">
-                  <div className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-green-100">
-                    <Check className="h-2.5 w-2.5 text-green-600" />
-                  </div>
-                  <span className="text-xs text-[#0D3082]/70">{feature}</span>
-                </li>
-              ))}
-            </ul>
+              <p className="mt-4 border-b border-rule pb-5 text-sm leading-relaxed text-ink-muted">
+                {plan.description}
+              </p>
 
-            <Link href="/contact">
-              <Button
-                className={`group w-full rounded-full font-semibold transition-all duration-200 ${
+              <ul className="mt-5 flex flex-1 flex-col gap-2.5">
+                {plan.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-2.5">
+                    <span className="mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full bg-success/15 text-success">
+                      <Check
+                        className="size-2.5"
+                        strokeWidth={2.5}
+                        aria-hidden
+                      />
+                    </span>
+                    <span className="text-sm leading-relaxed text-ink">
+                      {feature}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
+              <Link
+                href="/contact"
+                className={cn(
+                  'mt-6 inline-flex h-11 w-full items-center justify-center gap-2 rounded-md px-6 text-body font-medium transition-opacity hover:opacity-90',
                   plan.popular
-                    ? 'bg-linear-to-r from-[#0D3082] to-[#3E92CC] text-white shadow-md shadow-[#0D3082]/20 hover:opacity-90'
-                    : 'border-[1.5px] border-[#0D3082]/20 bg-white text-[#0D3082] hover:border-[#3E92CC] hover:bg-[#0D3082]/5'
-                }`}
-                variant={plan.popular ? 'default' : 'outline'}
+                    ? 'bg-ember text-paper'
+                    : 'border border-rule bg-transparent text-ink hover:border-ink/25 hover:bg-ink/5',
+                )}
               >
                 {plan.cta}
-                <ArrowRight className="ml-2 h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-              </Button>
-            </Link>
-          </motion.div>
-        ))}
-      </div>
-
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeUp}
-        custom={4}
-        className="border-[#0D3082]/08 rounded-2xl border bg-[#fafbff] p-6"
-      >
-        <div className="grid gap-6 lg:grid-cols-[280px_1fr_auto] lg:items-center">
-          <div>
-            <h3 className="mb-1.5 text-base font-semibold text-[#0D3082]">
-              Maintenance & Support
-            </h3>
-            <p className="text-sm leading-relaxed text-[#0D3082]/60">
-              Keep your site secure, fast, and up to date with ongoing monthly
-              care. Peace of mind after launch.
-            </p>
-          </div>
-
-          <div className="flex flex-wrap gap-2">
-            {maintenance.features.map((feature) => (
-              <span
-                key={feature}
-                className="border-[#0D3082]/08 flex items-center gap-1.5 rounded-lg border bg-white px-3 py-1.5 text-xs font-medium text-[#0D3082]/70"
-              >
-                <Check className="h-3 w-3 shrink-0 text-green-500" />
-                {feature}
-              </span>
-            ))}
-          </div>
-
-          <div className="flex flex-row items-center gap-4 lg:flex-col lg:items-end lg:gap-3">
-            <div className="lg:text-right">
-              <p className="text-xs font-medium tracking-wider text-[#0D3082]/40 uppercase">
-                Starting from
-              </p>
-              <p className="text-xl font-bold text-[#0D3082]">
-                6 months free then <br />
-                ₹6,000 / month
-              </p>
-            </div>
-            <Link href="/contact">
-              <Button
-                variant="outline"
-                className="rounded-full border-[1.5px] border-[#0D3082]/20 bg-white text-sm font-semibold whitespace-nowrap text-[#0D3082] hover:border-[#3E92CC] hover:bg-[#0D3082]/5"
-              >
-                Get started
-                <ArrowRight className="ml-2 h-3.5 w-3.5" />
-              </Button>
-            </Link>
-          </div>
+                <ArrowRight className="size-4 shrink-0" strokeWidth={2.5} />
+              </Link>
+            </motion.article>
+          ))}
         </div>
-      </motion.div>
-    </SectionWrapper>
+      </Section>
+
+      <Section>
+        <div className="mx-auto max-w-2xl text-center">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: '-40px' }}
+            custom={0}
+          >
+            <Eyebrow>Recurring</Eyebrow>
+          </motion.div>
+
+          <motion.h2
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: '-40px' }}
+            custom={1}
+            className="mt-4 text-heading font-medium tracking-tight text-ink"
+          >
+            Ongoing Services
+          </motion.h2>
+        </div>
+
+        <div className="mt-12 grid gap-5 sm:grid-cols-2">
+          {ongoingServices.map((service, index) => {
+            const Icon = service.icon;
+
+            return (
+              <motion.article
+                key={service.name}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, margin: '-40px' }}
+                custom={index + 2}
+                className="flex h-full flex-col rounded-lg border border-rule bg-paper/60 p-6 sm:p-8"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex min-w-0 items-start gap-3">
+                    <div className="flex size-10 shrink-0 items-center justify-center rounded-md border border-rule text-ink">
+                      <Icon className="size-4" strokeWidth={1.75} aria-hidden />
+                    </div>
+                    <div className="min-w-0">
+                      <h3 className="text-body font-medium text-ink">
+                        {service.name}
+                      </h3>
+                      <p className="mt-1 font-mono text-caption font-medium tracking-[0.14em] text-ink-muted uppercase">
+                        Recurring
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="shrink-0 text-right">
+                    <p className="text-body font-medium text-ink">
+                      {service.price}
+                    </p>
+                    {service.priceNote ? (
+                      <p className="mt-1 text-sm text-ink-muted">
+                        {service.priceNote}
+                      </p>
+                    ) : null}
+                  </div>
+                </div>
+
+                <p className="mt-4 text-sm leading-relaxed text-ink-muted">
+                  {service.description}
+                </p>
+
+                <ul className="mt-6 flex flex-1 flex-col gap-2.5">
+                  {service.features.map((feature) => (
+                    <li key={feature} className="flex items-start gap-2.5">
+                      <span className="mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full bg-success/15 text-success">
+                        <Check
+                          className="size-2.5"
+                          strokeWidth={2.5}
+                          aria-hidden
+                        />
+                      </span>
+                      <span className="text-sm leading-relaxed text-ink">
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                <Link
+                  href="/contact"
+                  className="mt-6 inline-flex h-11 w-full items-center justify-center gap-2 rounded-md border border-rule bg-transparent px-6 text-body font-medium text-ink transition-colors hover:border-ink/25 hover:bg-ink/5"
+                >
+                  Get started
+                  <ArrowRight className="size-4 shrink-0" strokeWidth={2.5} />
+                </Link>
+              </motion.article>
+            );
+          })}
+        </div>
+      </Section>
+    </>
   );
 }

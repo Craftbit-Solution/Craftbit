@@ -99,7 +99,7 @@ const services: Service[] = [
       'Content migration',
       'SEO preservation',
     ],
-    priceRange: '₹5,000',
+    priceRange: '₹5,000 / month',
     targetAudience: 'Established businesses with outdated websites',
   },
   {
@@ -114,7 +114,7 @@ const services: Service[] = [
       'Content updates',
       'Priority support',
     ],
-    priceRange: '₹10,000 / month',
+    priceRange: '₹6,000 / month',
     targetAudience: 'All businesses needing ongoing website care',
   },
 ];

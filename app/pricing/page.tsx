@@ -5,7 +5,7 @@ import PricingPlans from './components/pricing-plan';
 
 export default function PricingPage() {
   return (
-    <main className="bg-white">
+    <main>
       <PricingHero />
       <PricingPlans />
       <PricingFAQ />

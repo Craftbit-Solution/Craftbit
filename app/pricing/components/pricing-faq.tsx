@@ -1,8 +1,13 @@
 'use client';
-import { useState } from 'react';
-import { motion, AnimatePresence, Variants } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
-import SectionWrapper from '@/components/shared/section-wrapper';
+
+import { motion, type Variants } from 'framer-motion';
+import { Eyebrow, Section } from '@/components/design';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 
 type FAQ = {
   question: string;
@@ -43,86 +48,69 @@ const faqs: FAQ[] = [
 ];
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({
+  hidden: { opacity: 0, y: 16 },
+  show: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] },
+    transition: {
+      duration: 0.5,
+      delay: 0.06 + i * 0.07,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
   }),
 };
 
 export default function PricingFAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
   return (
-    <SectionWrapper className="py-16">
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeUp}
-        custom={0}
-        className="mb-6 flex items-center justify-center gap-3"
-      >
-        <div className="h-px w-10 bg-linear-to-r from-transparent to-[#3E92CC]" />
-        <span className="text-xs font-medium tracking-widest text-[#3E92CC] uppercase">
-          FAQ
-        </span>
-        <div className="h-px w-10 bg-linear-to-l from-transparent to-[#3E92CC]" />
-      </motion.div>
-      <motion.h2
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeUp}
-        custom={1}
-        className="mb-10 text-center text-3xl font-bold tracking-tight text-[#0D3082] sm:text-4xl"
-      >
-        Questions we get asked
-      </motion.h2>
-      <div className="divide-[#0D3082]/06 mx-auto max-w-2xl divide-y">
-        {faqs.map((faq, index) => (
-          <motion.div
-            key={faq.question}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            custom={index + 2}
-          >
-            <button
-              onClick={() => setOpenIndex(openIndex === index ? null : index)}
-              className="flex w-full items-center justify-between gap-4 py-5 text-left"
-            >
-              <span className="text-sm font-semibold text-[#0D3082]">
-                {faq.question}
-              </span>
-              <ChevronDown
-                className={`h-4 w-4 shrink-0 text-[#3E92CC] transition-transform duration-200 ${
-                  openIndex === index ? 'rotate-180' : ''
-                }`}
-              />
-            </button>
+    <Section>
+      <div className="mx-auto max-w-2xl text-center">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-40px' }}
+          custom={0}
+        >
+          <Eyebrow>FAQ</Eyebrow>
+        </motion.div>
 
-            <AnimatePresence initial={false}>
-              {openIndex === index && (
-                <motion.div
-                  key="answer"
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-                  className="overflow-hidden"
-                >
-                  <p className="pb-5 text-sm leading-relaxed text-[#0D3082]/60">
-                    {faq.answer}
-                  </p>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.div>
-        ))}
+        <motion.h2
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-40px' }}
+          custom={1}
+          className="mt-4 text-heading font-medium tracking-tight text-ink"
+        >
+          Questions we get asked
+        </motion.h2>
       </div>
-    </SectionWrapper>
+
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: '-40px' }}
+        custom={2}
+        className="mx-auto mt-12 max-w-2xl"
+      >
+        <Accordion type="single" collapsible className="w-full">
+          {faqs.map((faq) => (
+            <AccordionItem
+              key={faq.question}
+              value={faq.question}
+              className="border-rule"
+            >
+              <AccordionTrigger className="py-5 text-left text-body font-medium text-ink hover:no-underline [&[data-state=open]]:text-ink">
+                {faq.question}
+              </AccordionTrigger>
+              <AccordionContent className="text-sm leading-relaxed text-ink-muted">
+                {faq.answer}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </motion.div>
+    </Section>
   );
 }
