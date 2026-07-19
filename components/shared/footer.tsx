@@ -1,8 +1,8 @@
-import { ArrowUpRight, Mail, Phone, MapPin, Linkedin } from 'lucide-react';
+import { ArrowUpRight, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
 import Link from 'next/link';
+import { Eyebrow } from '@/components/design';
 
 export default function Footer() {
-  
   const links = {
     services: [
       { name: 'Custom Web Apps', path: 'Services' },
@@ -22,26 +22,24 @@ export default function Footer() {
   return (
     <footer className="bg-slate-950 text-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-12 py-16 md:grid-cols-2 lg:grid-cols-4 lg:gap-8 lg:py-24">
+        <div className="grid grid-cols-1 gap-10 py-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-8 lg:py-16">
           <div className="lg:col-span-1">
-            <div className="mb-6">
-              <div className="inline-flex items-center rounded-lg bg-white/5 ring-1 ring-white/10 backdrop-blur-sm">
-                <img
-                  src="./images/craftbit-logo.png"
-                  alt="CraftBit"
-                  className="h-12 w-auto rounded-md object-contain"
-                />
-              </div>
+            <div className="mb-4 inline-flex items-center rounded-md bg-white/5 ring-1 ring-white/10">
+              <img
+                src="./images/craftbit-logo.png"
+                alt="CraftBit"
+                className="h-10 w-auto rounded-md object-contain"
+              />
             </div>
-            <p className="mb-6 text-sm leading-relaxed text-slate-400">
+            <p className="max-w-xs text-sm leading-relaxed text-slate-400">
               A dedicated team of developers delivering premium web solutions
               without agency overhead.
             </p>
           </div>
 
           <div>
-            <h4 className="mb-6 font-semibold text-white">Services</h4>
-            <ul className="space-y-3">
+            <Eyebrow className="mb-3 text-slate-500">Services</Eyebrow>
+            <ul className="space-y-2">
               {links.services.map((link) => (
                 <li key={link.name}>
                   <div className="group flex items-center text-sm text-slate-400 transition-colors hover:text-white">
@@ -54,15 +52,16 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-6 font-semibold text-white">Company</h4>
-            <ul className="space-y-3">
+            <Eyebrow className="mb-3 text-slate-500">Company</Eyebrow>
+            <ul className="space-y-2">
               {links.company.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href}>
-                  <div className="group flex items-center text-sm text-slate-400 transition-colors hover:text-white">
+                  <Link
+                    href={link.href}
+                    className="group inline-flex items-center text-sm text-slate-400 transition-colors hover:text-white"
+                  >
                     {link.name}
                     <ArrowUpRight className="ml-1 h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100" />
-                  </div>
                   </Link>
                 </li>
               ))}
@@ -70,25 +69,38 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-6 font-semibold text-white">Contact</h4>
-            <ul className="space-y-4">
+            <Eyebrow className="mb-3 text-slate-500">Contact</Eyebrow>
+            <ul className="space-y-2">
               <li>
                 <a
                   href="mailto:hello@craftbit.in"
-                  className="flex items-center gap-3 text-sm text-slate-400 transition-colors hover:text-white"
+                  className="flex items-center gap-3 rounded-md border border-white/8 bg-white/3 px-3 py-2.5 transition-colors hover:border-white/15 hover:bg-white/5"
                 >
-                  <Mail className="h-4 w-4 text-blue-500" />
-                  hello@craftbit.in
+                  <Mail
+                    className="size-3.5 shrink-0 text-slate-500"
+                    strokeWidth={1.75}
+                    aria-hidden
+                  />
+                  <span className="text-sm text-slate-200">
+                    hello@craftbit.in
+                  </span>
                 </a>
               </li>
               <li>
                 <a
                   href="tel:+919876543210"
-                  className="flex items-center gap-3 text-sm text-slate-400 transition-colors hover:text-white"
+                  className="flex items-start gap-3 rounded-md border border-white/8 bg-white/3 px-3 py-2.5 transition-colors hover:border-white/15 hover:bg-white/5"
                 >
-                  <Phone className="h-4 w-4 text-blue-500" />
-                  +91 6201855200 <br />
-                  +91 7870402553
+                  <Phone
+                    className="mt-0.5 size-3.5 shrink-0 text-slate-500"
+                    strokeWidth={1.75}
+                    aria-hidden
+                  />
+                  <span className="text-sm leading-snug text-slate-200">
+                    +91 6201855200
+                    <br />
+                    +91 7870402553
+                  </span>
                 </a>
               </li>
               <li>
@@ -96,37 +108,46 @@ export default function Footer() {
                   href="https://www.linkedin.com/company/craftbit-digital-solution/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-start gap-3 text-sm text-slate-400 hover:text-blue-400 transition-colors"
+                  className="flex items-center gap-3 rounded-md border border-white/8 bg-white/3 px-3 py-2.5 transition-colors hover:border-white/15 hover:bg-white/5"
                 >
-                  <Linkedin className="mt-0.5 h-4 w-4 text-blue-500" />
-                  CraftBit Digital Solution
+                  <Linkedin
+                    className="size-3.5 shrink-0 text-slate-500"
+                    strokeWidth={1.75}
+                    aria-hidden
+                  />
+                  <span className="text-sm text-slate-200">
+                    CraftBit Digital Solution
+                  </span>
                 </a>
               </li>
               <li>
-                <span className="flex items-start gap-3 text-sm text-slate-400">
-                  <MapPin className="mt-0.5 h-4 w-4 text-blue-500" />
-                  Remote
+                <span className="flex items-center gap-3 rounded-md border border-white/8 bg-white/3 px-3 py-2.5">
+                  <MapPin
+                    className="size-3.5 shrink-0 text-slate-500"
+                    strokeWidth={1.75}
+                    aria-hidden
+                  />
+                  <span className="text-sm text-slate-200">Remote</span>
                 </span>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="flex flex-col items-center justify-between gap-4 border-t border-slate-800 py-6 md:flex-row">
-          <p className="text-sm text-slate-500">
+        <div className="flex flex-col items-center justify-between gap-3 border-t border-slate-800/80 py-5 md:flex-row">
+          <p className="text-xs text-slate-500">
             © 2025 Craftbit. All rights reserved.
           </p>
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-5">
             <a
               href="#"
-              className="text-sm text-slate-500 transition-colors hover:text-white"
+              className="text-xs text-slate-500 transition-colors hover:text-white"
             >
               Privacy Policy
             </a>
             <a
               href="#"
-              className="text-sm text-slate-500 transition-colors hover:text-white"
+              className="text-xs text-slate-500 transition-colors hover:text-white"
             >
               Terms of Service
             </a>
