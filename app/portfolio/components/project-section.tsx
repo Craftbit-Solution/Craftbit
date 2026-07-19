@@ -1,18 +1,11 @@
 'use client';
-import { Button } from '@/components/ui/button';
-import { AnimatePresence, motion } from 'framer-motion';
-import { ExternalLink, Layers } from 'lucide-react';
-import { useState } from 'react';
-import SectionWrapper from '@/components/shared/section-wrapper';
 
-const categories: string[] = [
-  'All',
-  'Web Development',
-  'Business Website',
-  'Portfolio/Profile',
-  'E-Commerce',
-  'UI/UX Design',
-];
+import { motion, type Variants } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import SectionWrapper from '@/components/shared/section-wrapper';
+import { cn } from '@/lib/utils';
 
 type Project = {
   id: number;
@@ -22,6 +15,7 @@ type Project = {
   image: string;
   tags: string[];
   live_url: string;
+  status?: string;
 };
 
 const projects: Project[] = [
@@ -30,19 +24,19 @@ const projects: Project[] = [
     title: 'Organic Store',
     category: 'E-Commerce',
     description:
-      'An organic products store where customers can browse and buy natural food products.',
-    image:
-      './images/organic-store.png',
+      'An e-commerce platform for organic products — live and in active development. Includes an admin dashboard, storefront, payments, product listing, filtering, and search.',
+    image: '/images/organic-store.png',
     tags: ['React', 'Tailwind CSS', 'Node.js', 'MongoDB'],
     live_url: 'https://organicstore.vercel.app/',
+    status: 'Live · Ongoing',
   },
   {
     id: 2,
     title: 'Varsha Farm House',
     category: 'Business Website',
     description:
-      'Experience the charm of countryside living with modern amenities and delicious farm-to-table cuisine.',
-    image: './images/varsha-farm-house1.png',
+      'A landing page with a contact page for a countryside farm house property.',
+    image: '/images/varsha-farm-house1.png',
     tags: ['React', 'Tailwind CSS'],
     live_url: 'https://www.varshafarmhouse.com/',
   },
@@ -50,152 +44,110 @@ const projects: Project[] = [
     id: 3,
     title: 'Anurag Pandey Portfolio',
     category: 'Portfolio/Profile',
-    description:
-      'A modern developer portfolio showcasing projects, skills, and experience with smooth animations and 3D elements.',
-    image: './images/anurag-pandey-ap001-portfolio.png',
+    description: 'A developer portfolio site.',
+    image: '/images/anurag-pandey-ap001-portfolio.png',
     tags: ['Next.js', 'Tailwind CSS', 'Three.js'],
     live_url: 'https://demo-anurag-p.vercel.app/',
   },
-  {
-    id: 32,
-    title: 'Luxe Fashion Store',
-    category: 'E-Commerce',
-    description:
-      'Premium e-commerce experience for a luxury fashion brand with a focus on conversion.',
-    image:
-      'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop',
-    tags: ['Shopify', 'Custom Theme', 'SEO'],
-    live_url: '',
-  },
-  {
-    id: 4,
-    title: 'HealthHub App',
-    category: 'UI/UX Design',
-    description:
-      'Modern healthcare platform redesign improving usability and user engagement.',
-    image:
-      'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop',
-    tags: ['Figma', 'User Research', 'Prototyping'],
-    live_url: '',
-  },
-  {
-    id: 5,
-    title: 'Finova Banking',
-    category: 'Web Development',
-    description:
-      'Secure digital banking solution with analytics dashboard and financial tools.',
-    image:
-      'https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=800&h=600&fit=crop',
-    tags: ['Next.js', 'TypeScript', 'Security'],
-    live_url: '',
-  },
-  {
-    id: 6,
-    title: 'Artisan Marketplace',
-    category: 'E-Commerce',
-    description:
-      'Multi-vendor marketplace connecting independent artisans with global customers.',
-    image:
-      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop',
-    tags: ['WooCommerce', 'Multi-vendor', 'Payments'],
-    live_url: '',
-  },
 ];
 
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  show: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.55,
+      delay: 0.06 + i * 0.08,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
+  }),
+};
+
 export default function ProjectSection() {
-  const [activeCategory, setActiveCategory] = useState('All');
-
-  const filteredProjects =
-    activeCategory === 'All'
-      ? projects
-      : projects.filter((p) => p.category === activeCategory);
-
   return (
-    <SectionWrapper className="pb-16">
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className="mb-10 flex flex-wrap justify-center gap-2"
-      >
-        {categories.map((category) => (
-          <button
-            key={category}
-            onClick={() => setActiveCategory(category)}
-            className={`rounded-full px-5 py-2 text-sm font-medium transition-all duration-200 ${activeCategory === category
-              ? 'bg-linear-to-r from-[#0D3082] to-[#3E92CC] text-white shadow-md shadow-[#0D3082]/20'
-              : 'border border-[#0D3082]/12 bg-white text-[#0D3082]/70 hover:bg-[#0D3082]/5'
-              }`}
-          >
-            {category}
-          </button>
-        ))}
-      </motion.div>
+    <SectionWrapper className="pb-16 md:pb-20">
+      <div className="flex flex-col gap-16 md:gap-24">
+        {projects.map((project, index) => {
+          const imageRight = index % 2 === 1;
 
-      <motion.div
-        layout
-        className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3"
-      >
-        <AnimatePresence mode="popLayout">
-          {filteredProjects.map((project, index) => (
-            <motion.div
+          return (
+            <motion.article
               key={project.id}
-              layout
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.96 }}
-              transition={{ duration: 0.35, delay: index * 0.06 }}
-              className="group border-[#0D3082]/08 hover:shadow-[#0D3082]/08 overflow-hidden rounded-2xl border bg-white transition-all duration-300 hover:shadow-lg"
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: '-60px' }}
+              custom={0}
+              className="group grid items-center gap-8 lg:grid-cols-2 lg:gap-14"
             >
-              {/* Image */}
-              <div className="relative h-52 overflow-hidden">
-                <img
+              <div
+                className={cn(
+                  'relative aspect-16/10 overflow-hidden rounded-lg border border-rule bg-paper/60',
+                  imageRight && 'lg:order-2',
+                )}
+              >
+                <Image
                   src={project.image}
                   alt={project.title}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  fill
+                  className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                  sizes="(min-width: 1024px) 32rem, 100vw"
+                  priority={index === 0}
                 />
-                <div className="absolute inset-0 flex items-center justify-center bg-[#0D3082]/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  {project.live_url && (
-                    <Button
-                      onClick={() => window.open(project.live_url, '_blank')}
-                      className="rounded-full cursor-pointer bg-white px-5 text-sm font-semibold text-[#0D3082] hover:bg-white/90"
-                    >
-                      <ExternalLink className="mr-2 h-4 w-4" />
-                      View live
-                    </Button>
-                  )}
-                </div>
               </div>
 
-              <div className="p-5">
-                <div className="mb-2 flex items-center gap-2">
-                  <Layers className="h-3.5 w-3.5 text-[#3E92CC]" />
-                  <span className="text-xs font-medium text-[#3E92CC]">
+              <div className={cn(imageRight && 'lg:order-1')}>
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+                  <span className="font-mono text-caption font-medium tracking-[0.18em] text-ink-muted uppercase">
                     {project.category}
                   </span>
+                  {project.status ? (
+                    <>
+                      <span
+                        className="size-1 rounded-full bg-rule"
+                        aria-hidden
+                      />
+                      <span className="font-mono text-caption font-medium tracking-[0.14em] text-ember uppercase">
+                        {project.status}
+                      </span>
+                    </>
+                  ) : null}
                 </div>
-                <h3 className="mb-1.5 text-base font-semibold text-[#0D3082] transition-colors group-hover:text-[#3E92CC]">
+
+                <h2 className="mt-4 text-heading font-medium tracking-tight text-ink">
                   {project.title}
-                </h3>
-                <p className="mb-4 text-sm leading-relaxed text-[#0D3082]/60">
+                </h2>
+
+                <p className="mt-4 max-w-[52ch] text-subhead text-ink-muted">
                   {project.description}
                 </p>
-                <div className="flex flex-wrap gap-1.5">
+
+                <ul className="mt-6 flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
-                    <span
+                    <li
                       key={tag}
-                      className="bg-[#0D3082]/05 rounded-full px-2.5 py-1 text-xs font-medium text-[#0D3082]/65"
+                      className="rounded-md border border-rule bg-paper/60 px-2.5 py-1 text-sm text-ink-muted"
                     >
                       {tag}
-                    </span>
+                    </li>
                   ))}
-                </div>
+                </ul>
+
+                <Link
+                  href={project.live_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-8 inline-flex h-11 items-center justify-center gap-2 rounded-md bg-ember px-6 text-body font-medium text-paper transition-opacity hover:opacity-90"
+                >
+                  Visit live site
+                  <ArrowUpRight className="size-4 shrink-0" strokeWidth={2.5} />
+                </Link>
               </div>
-            </motion.div>
-          ))}
-        </AnimatePresence>
-      </motion.div>
+            </motion.article>
+          );
+        })}
+      </div>
     </SectionWrapper>
   );
 }

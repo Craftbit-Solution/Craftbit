@@ -7,7 +7,7 @@ import ProjectSection from './components/project-section';
 
 export default function PortfolioPage() {
   return (
-    <main className="bg-white">
+    <main>
       <PortfolioHero />
       <ProjectSection />
       <WhyChooseUs />

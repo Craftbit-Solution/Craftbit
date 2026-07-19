@@ -1,9 +1,23 @@
 'use client';
-import { motion, Variants } from 'framer-motion';
-import { MessageCircle, Gem, Clock, Headphones } from 'lucide-react';
+
+import { motion, type Variants } from 'framer-motion';
+import {
+  MessageCircle,
+  Gem,
+  Clock,
+  Headphones,
+  type LucideIcon,
+} from 'lucide-react';
+import { Eyebrow } from '@/components/design';
 import SectionWrapper from '@/components/shared/section-wrapper';
 
-const reasons = [
+type Reason = {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+};
+
+const reasons: Reason[] = [
   {
     icon: MessageCircle,
     title: 'Clear communication',
@@ -31,73 +45,78 @@ const reasons = [
 ];
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({
+  hidden: { opacity: 0, y: 16 },
+  show: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] },
+    transition: {
+      duration: 0.5,
+      delay: 0.06 + i * 0.07,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
   }),
 };
 
 export default function WhyChooseUs() {
   return (
-    <SectionWrapper className="py-16">
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeUp}
-        custom={0}
-        className="mb-6 flex items-center justify-center gap-3"
-      >
-        <div className="h-px w-10 bg-linear-to-r from-transparent to-[#3E92CC]" />
-        <span className="text-xs font-medium tracking-widest text-[#3E92CC] uppercase">
-          Why work with us
-        </span>
-        <div className="h-px w-10 bg-linear-to-l from-transparent to-[#3E92CC]" />
-      </motion.div>
+    <SectionWrapper className="section-y">
+      <div className="mx-auto max-w-2xl text-center">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-40px' }}
+          custom={0}
+        >
+          <Eyebrow>Why work with us</Eyebrow>
+        </motion.div>
 
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeUp}
-        custom={1}
-        className="mb-12 text-center"
-      >
-        <h2 className="mb-4 text-3xl leading-tight font-bold tracking-tight text-[#0D3082] sm:text-4xl">
+        <motion.h2
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-40px' }}
+          custom={1}
+          className="mt-4 text-heading font-medium tracking-tight text-ink"
+        >
           What makes the difference
-        </h2>
-        <p className="mx-auto max-w-lg text-lg leading-relaxed text-[#0D3082]/60">
-          Good work is table stakes. Here&apos;s what we do beyond that.
-        </p>
-      </motion.div>
+        </motion.h2>
 
-      <div className="grid gap-4 sm:grid-cols-2">
-        {reasons.map((reason, index) => (
-          <motion.div
-            key={reason.title}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
+        <motion.p
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-40px' }}
+          custom={2}
+          className="mx-auto mt-4 max-w-[65ch] text-subhead text-ink-muted"
+        >
+          Good work is table stakes. Here&apos;s what we do beyond that.
+        </motion.p>
+      </div>
+
+      <ul className="mt-12 grid gap-4 sm:grid-cols-2">
+        {reasons.map(({ icon: Icon, title, description }, index) => (
+          <motion.li
+            key={title}
             variants={fadeUp}
-            custom={index + 2}
-            className="border-[#0D3082]/08 hover:shadow-[#0D3082]/08 flex items-start gap-4 rounded-2xl border bg-[#fafbff] p-6 transition-all duration-300 hover:shadow-lg"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: '-40px' }}
+            custom={index + 3}
+            className="flex h-full items-start gap-4 rounded-lg border border-rule bg-paper/60 p-6 text-left"
           >
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#3E92CC]/10">
-              <reason.icon className="h-5 w-5 text-[#3E92CC]" strokeWidth={2} />
+            <div className="flex size-9 shrink-0 items-center justify-center rounded-md border border-rule text-ink">
+              <Icon className="size-4" strokeWidth={1.75} aria-hidden />
             </div>
             <div>
-              <h3 className="mb-1.5 text-base font-semibold text-[#0D3082]">
-                {reason.title}
-              </h3>
-              <p className="text-sm leading-relaxed text-[#0D3082]/60">
-                {reason.description}
+              <h3 className="text-body font-medium text-ink">{title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+                {description}
               </p>
             </div>
-          </motion.div>
+          </motion.li>
         ))}
-      </div>
+      </ul>
     </SectionWrapper>
   );
 }
