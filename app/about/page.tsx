@@ -1,15 +1,15 @@
+import AboutCTA from './components/about-cta';
 import AboutHero from './components/about-hero';
 import OurStory from './components/our-story';
-import CraftSection from './components/craft-section';
-import TheTeam from './components/the-team';
+import Values from './components/values';
 
 export default function About() {
   return (
-    <main className="bg-white">
+    <main>
       <AboutHero />
       <OurStory />
-      <CraftSection />
-      <TheTeam />
+      <Values />
+      <AboutCTA />
     </main>
   );
 }

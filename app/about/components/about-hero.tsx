@@ -1,15 +1,19 @@
 'use client';
-import { motion, Variants } from 'framer-motion';
+
+import { ArrowRight } from 'lucide-react';
+import { motion, type Variants } from 'framer-motion';
+import Link from 'next/link';
+import { Eyebrow } from '@/components/design';
 import SectionWrapper from '@/components/shared/section-wrapper';
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 16 },
   show: (i: number) => ({
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
-      delay: i * 0.12,
+      duration: 0.55,
+      delay: 0.08 + i * 0.1,
       ease: [0.22, 1, 0.36, 1] as const,
     },
   }),
@@ -17,43 +21,64 @@ const fadeUp: Variants = {
 
 export default function AboutHero() {
   return (
-    <SectionWrapper className="pt-12 pb-16 text-center">
-      <motion.div
-        variants={fadeUp}
-        initial="hidden"
-        animate="show"
-        custom={0}
-        className="mb-7 inline-flex items-center gap-2 rounded-full border border-[#0D3082]/12 bg-[#f0f4ff] px-4 py-2 text-sm font-medium text-[#0D3082]"
-      >
-        <span className="h-2 w-2 shrink-0 rounded-full bg-[#3E92CC]" />
-        About CraftBit
-      </motion.div>
+    <SectionWrapper className="pt-16 pb-20 md:pt-20 md:pb-24">
+      <div className="mx-auto max-w-3xl text-center">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          animate="show"
+          custom={0}
+        >
+          <Eyebrow>About CraftBit</Eyebrow>
+        </motion.div>
 
-      <motion.h1
-        variants={fadeUp}
-        initial="hidden"
-        animate="show"
-        custom={1}
-        className="mb-5 text-4xl leading-[1.12] font-bold tracking-tight text-[#0D3082] sm:text-5xl lg:text-[3.5rem]"
-      >
-        A small team that does
-        <br />
-        <span className="bg-linear-to-r from-[#0D3082] to-[#3E92CC] bg-clip-text text-transparent">
-          focused, quality work
-        </span>
-      </motion.h1>
+        <motion.h1
+          variants={fadeUp}
+          initial="hidden"
+          animate="show"
+          custom={1}
+          className="mt-5 text-display font-medium tracking-tight text-ink"
+        >
+          A small team that does{' '}
+          <span className="font-serif text-[1.05em] font-normal italic">
+            focused, quality work
+          </span>
+        </motion.h1>
 
-      <motion.p
-        variants={fadeUp}
-        initial="hidden"
-        animate="show"
-        custom={2}
-        className="mx-auto max-w-xl text-lg leading-relaxed text-[#0D3082]/60"
-      >
-        CraftBit helps growing businesses build fast, clean digital products.
-        We&apos;re selective about the work we take on — because we believe in
-        doing fewer things exceptionally well.
-      </motion.p>
+        <motion.p
+          variants={fadeUp}
+          initial="hidden"
+          animate="show"
+          custom={2}
+          className="mx-auto mt-6 max-w-[65ch] text-subhead text-ink-muted"
+        >
+          CraftBit helps growing businesses build fast, clean digital products.
+          We&apos;re selective about the work we take on — because we believe in
+          doing fewer things exceptionally well.
+        </motion.p>
+
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          animate="show"
+          custom={3}
+          className="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center"
+        >
+          <Link
+            href="/contact"
+            className="inline-flex h-11 items-center justify-center gap-2 rounded-md bg-ember px-6 text-body font-medium text-paper transition-opacity hover:opacity-90"
+          >
+            Start a project
+            <ArrowRight className="size-4 shrink-0" strokeWidth={2.5} />
+          </Link>
+          <Link
+            href="/portfolio"
+            className="inline-flex h-11 items-center justify-center gap-2 rounded-md border border-rule bg-transparent px-6 text-body font-medium text-ink transition-colors hover:border-ink/25 hover:bg-ink/5"
+          >
+            See our work
+          </Link>
+        </motion.div>
+      </div>
     </SectionWrapper>
   );
 }
