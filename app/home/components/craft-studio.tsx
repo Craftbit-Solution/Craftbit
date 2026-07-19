@@ -1,22 +1,24 @@
 'use client';
 
-import SectionWrapper from '@/components/shared/section-wrapper';
-import { motion, Variants } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import {
+  Clock,
   Code2,
   Monitor,
-  Clock,
   Shield,
-  CheckCircle2,
-  LucideIcon,
+  type LucideIcon,
 } from 'lucide-react';
 import Link from 'next/link';
+import { Eyebrow } from '@/components/design';
+import SectionWrapper from '@/components/shared/section-wrapper';
+import { cn } from '@/lib/utils';
 
 type Reason = {
   icon: LucideIcon;
   title: string;
   description: string;
 };
+
 const reasons: Reason[] = [
   {
     icon: Code2,
@@ -65,142 +67,148 @@ const comparisons = [
 ];
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({
+  hidden: { opacity: 0, y: 16 },
+  show: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] },
+    transition: {
+      duration: 0.5,
+      delay: 0.06 + i * 0.07,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
   }),
 };
 
 export default function CraftStudio() {
   return (
-    <SectionWrapper className="py-16">
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeUp}
-        custom={0}
-        className="mb-6 flex items-center justify-center gap-3"
-      >
-        <div className="h-px w-10 bg-linear-to-r from-transparent to-[#3E92CC]" />
-        <span className="text-xs font-medium tracking-widest text-[#3E92CC] uppercase">
-          Our positioning
-        </span>
-        <div className="h-px w-10 bg-linear-to-l from-transparent to-[#3E92CC]" />
-      </motion.div>
+    <SectionWrapper className="section-y">
+      <div className="mx-auto max-w-2xl text-center">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-40px' }}
+          custom={0}
+        >
+          <Eyebrow>Our positioning</Eyebrow>
+        </motion.div>
 
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeUp}
-        custom={1}
-        className="mx-auto mb-10 max-w-2xl text-center"
-      >
-        <h2 className="mb-5 text-3xl leading-tight font-bold tracking-tight text-[#0D3082] sm:text-4xl lg:text-5xl">
+        <motion.h2
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-40px' }}
+          custom={1}
+          className="mt-4 text-heading font-medium tracking-tight text-ink"
+        >
           The sweet spot between{' '}
-          <span className="bg-linear-to-r from-[#0D3082] to-[#3E92CC] bg-clip-text text-transparent">
+          <span className="font-serif italic font-normal">
             agency and freelancer
           </span>
-        </h2>
-        <p className="text-lg leading-relaxed text-[#0D3082]/60">
+        </motion.h2>
+
+        <motion.p
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-40px' }}
+          custom={2}
+          className="mx-auto mt-4 max-w-[65ch] text-subhead text-ink-muted"
+        >
           Agencies charge too much and move too slow. Freelancers are affordable
           but risky. We&apos;re built to give you the best of both — without the
           tradeoffs.
-        </p>
-      </motion.div>
-
-      <div className="mb-5 grid gap-4 md:grid-cols-2">
-        {reasons.map((reason, index) => (
-          <motion.div
-            key={reason.title}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            custom={index + 2}
-            whileHover={{ scale: 1.01 }}
-            className="border-[#0D3082]/08 hover:shadow-[#0D3082]/08 flex items-start gap-4 rounded-2xl border bg-white p-6 transition-all duration-300 hover:shadow-lg"
-          >
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#3E92CC]/10">
-              <reason.icon className="h-5 w-5 text-[#3E92CC]" strokeWidth={2} />
-            </div>
-            <div>
-              <h3 className="mb-2 flex items-center gap-2 text-base font-semibold text-[#0D3082]">
-                <CheckCircle2 className="h-4 w-4 shrink-0 text-green-500" />
-                {reason.title}
-              </h3>
-              <p className="text-sm leading-relaxed text-[#0D3082]/60">
-                {reason.description}
-              </p>
-            </div>
-          </motion.div>
-        ))}
+        </motion.p>
       </div>
 
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeUp}
-        custom={6}
-        className="rounded-2xl bg-[#0D3082] p-6 sm:p-8"
-      >
-        <div className="flex flex-col gap-3 sm:grid sm:grid-cols-3 sm:gap-0 sm:divide-x sm:divide-white/10">
-          {comparisons.map((col) => (
-            <div
-              key={col.label}
-              className={`relative rounded-xl px-5 py-4 text-center sm:rounded-none sm:px-6 sm:py-2 ${
-                col.featured
-                  ? 'border border-[#3E92CC]/30 bg-[#3E92CC]/15 sm:border-0 sm:bg-transparent'
-                  : 'bg-white/5 sm:bg-transparent'
-              }`}
-            >
-              {col.featured && (
-                <div className="absolute inset-0 hidden rounded-xl border border-[#3E92CC]/30 bg-[#3E92CC]/15 sm:block" />
+      {/* Comparison columns */}
+      <ul className="mt-12 grid items-stretch gap-3 md:grid-cols-3 md:gap-0">
+        {comparisons.map((col, index) => (
+          <motion.li
+            key={col.label}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: '-40px' }}
+            custom={index + 3}
+            className={cn(
+              'relative flex flex-col px-5 py-6 text-center md:px-6 md:py-8',
+              col.featured
+                ? 'z-10 rounded-lg border border-ember/40 bg-ember/8 py-8 shadow-sm md:-my-3 md:py-11'
+                : 'rounded-lg border border-rule bg-paper/50 md:rounded-none md:border-y md:border-x-0',
+              !col.featured && index === 0 && 'md:rounded-l-lg md:border-l',
+              !col.featured && index === 2 && 'md:rounded-r-lg md:border-r',
+            )}
+          >
+            <span
+              className={cn(
+                'font-mono text-caption font-medium tracking-[0.14em] uppercase',
+                col.featured ? 'text-ember' : 'text-ink-muted',
               )}
-              <div className="flex items-center justify-between gap-3 sm:flex-col sm:items-center sm:justify-center sm:gap-0">
-                <div
-                  className={`min-w-[100px] text-left text-xs font-semibold tracking-widest uppercase sm:mb-2 sm:min-w-0 sm:text-center ${
-                    col.featured ? 'text-[#3E92CC]' : 'text-white/40'
-                  }`}
-                >
-                  {col.label}
-                </div>
-                <div className="relative text-right text-xl font-bold text-white sm:mb-2 sm:text-center sm:text-2xl">
-                  {col.price}
-                </div>
-                <div
-                  className={`relative hidden text-center text-xs leading-relaxed sm:block ${
-                    col.featured ? 'text-white/75' : 'text-white/40'
-                  }`}
-                >
-                  {col.desc}
-                </div>
-              </div>
-              <p
-                className={`mt-1.5 text-left text-xs leading-relaxed sm:hidden ${
-                  col.featured ? 'text-white/70' : 'text-white/35'
-                }`}
-              >
-                {col.desc}
-              </p>
-            </div>
-          ))}
-        </div>
-      </motion.div>
+            >
+              {col.label}
+            </span>
+            <p
+              className={cn(
+                'mt-3 font-mono text-2xl tracking-tight tabular-nums md:text-[1.65rem]',
+                col.featured ? 'text-ink' : 'text-ink/80',
+              )}
+            >
+              {col.price}
+            </p>
+            <p
+              className={cn(
+                'mt-3 text-sm leading-relaxed',
+                col.featured ? 'text-ink-muted' : 'text-ink-muted/80',
+              )}
+            >
+              {col.desc}
+            </p>
+          </motion.li>
+        ))}
+      </ul>
 
-      <p className="mt-3 text-center text-xs text-[#0D3082]/50">
+      <motion.p
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: '-40px' }}
+        custom={6}
+        className="mt-4 text-center text-caption text-ink-muted"
+      >
         Pricing varies by project scope.{' '}
         <Link
           href="/contact"
-          className="cursor-pointer font-medium text-[#0D3082] transition-colors hover:text-[#3E92CC]"
+          className="font-medium text-ink transition-colors hover:text-ember"
         >
           Get a free quote →
         </Link>
-      </p>
+      </motion.p>
+
+      {/* Reason cards */}
+      <ul className="mt-12 grid gap-3 sm:grid-cols-2">
+        {reasons.map(({ icon: Icon, title, description }, index) => (
+          <motion.li
+            key={title}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: '-40px' }}
+            custom={index + 7}
+            className="flex gap-3.5 rounded-lg border border-rule bg-paper/60 p-5"
+          >
+            <div className="flex size-9 shrink-0 items-center justify-center rounded-md border border-rule text-ink">
+              <Icon className="size-4" strokeWidth={1.75} aria-hidden />
+            </div>
+            <div className="min-w-0">
+              <h3 className="text-body font-medium text-ink">{title}</h3>
+              <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">
+                {description}
+              </p>
+            </div>
+          </motion.li>
+        ))}
+      </ul>
     </SectionWrapper>
   );
 }
